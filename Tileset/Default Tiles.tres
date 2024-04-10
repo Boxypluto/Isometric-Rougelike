@@ -1,0 +1,42 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b6paixhth3mpp"]
+
+[ext_resource type="Texture2D" uid="uid://b2y2wxdl20n6k" path="res://Tileset/Isometic Tiles Testing.png" id="1_6u5ss"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_igjro"]
+texture = ExtResource("1_6u5ss")
+2:0/size_in_atlas = Vector2i(1, 2)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -8)
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/size_in_atlas = Vector2i(3, 6)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 35)
+3:0/0/y_sort_origin = -4
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 4.5, -25.5, -7.5, 0, -18, 22.981, -7.07107)
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/size_in_atlas = Vector2i(1, 2)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 8)
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, -8)
+6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:0/0/physics_layer_0/angular_velocity = 0.0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 0, -4.5, 8, 0, 0, 4.5)
+
+[resource]
+tile_shape = 1
+tile_size = Vector2i(16, 8)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_igjro")
