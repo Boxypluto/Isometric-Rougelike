@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://co3hr8p30ged5"]
+[gd_scene load_steps=6 format=3 uid="uid://co3hr8p30ged5"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_seqry"]
 [ext_resource type="Texture2D" uid="uid://ucysq7b4l6oo" path="res://Player/PlayerPlaceholder.png" id="2_i0uht"]
@@ -6,6 +6,10 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkbr2"]
 radius = 2.23607
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yn864"]
+radius = 7.00002
+height = 36.0
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
@@ -19,8 +23,16 @@ texture = ExtResource("2_i0uht")
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_kkbr2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Attack" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = ExtResource("3_1f41h")
 animation = &"Attack"
+autoplay = "Nothing"
 offset = Vector2(20, 0)
+
+[node name="AttackArea" type="Area2D" parent="Attack"]
+
+[node name="AttackShape" type="CollisionShape2D" parent="Attack/AttackArea"]
+position = Vector2(18, 0)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_yn864")

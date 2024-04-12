@@ -42,7 +42,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_rm08v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_qrxcw")
+"texture": null
 }],
 "loop": false,
 "name": &"Attack",
