@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://co3hr8p30ged5"]
+[gd_scene load_steps=7 format=3 uid="uid://co3hr8p30ged5"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_seqry"]
 [ext_resource type="Texture2D" uid="uid://ucysq7b4l6oo" path="res://Player/PlayerPlaceholder.png" id="2_i0uht"]
 [ext_resource type="SpriteFrames" uid="uid://0mauhwjjapbp" path="res://Player/AttackFrames.tres" id="3_1f41h"]
+[ext_resource type="Script" path="res://Player/PlayerAttack.gd" id="4_ilk1c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkbr2"]
 radius = 2.23607
@@ -14,6 +15,7 @@ height = 36.0
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_seqry")
+RecoilStrength = 256.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -31,8 +33,13 @@ autoplay = "Nothing"
 offset = Vector2(20, 0)
 
 [node name="AttackArea" type="Area2D" parent="Attack"]
+script = ExtResource("4_ilk1c")
 
 [node name="AttackShape" type="CollisionShape2D" parent="Attack/AttackArea"]
 position = Vector2(18, 0)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_yn864")
+disabled = true
+
+[connection signal="AttackHasHit" from="Attack/AttackArea" to="." method="SuccessfullMelleAttack"]
+[connection signal="area_entered" from="Attack/AttackArea" to="Attack/AttackArea" method="AttackEntered"]
