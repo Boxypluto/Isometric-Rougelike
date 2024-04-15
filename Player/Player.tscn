@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ucysq7b4l6oo" path="res://Player/PlayerPlaceholder.png" id="2_i0uht"]
 [ext_resource type="SpriteFrames" uid="uid://0mauhwjjapbp" path="res://Player/AttackFrames.tres" id="3_1f41h"]
 [ext_resource type="Script" path="res://Player/PlayerAttack.gd" id="4_ilk1c"]
-[ext_resource type="Script" path="res://Components/HurtBoxComponent.gd" id="5_4wr88"]
-[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="6_a2pee"]
+[ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="5_4wr88"]
+[ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="6_a2pee"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkbr2"]
 radius = 2.23607
@@ -31,6 +31,7 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_kkbr2")
 
 [node name="Attack" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -7)
 sprite_frames = ExtResource("3_1f41h")
 animation = &"Attack"
@@ -50,7 +51,7 @@ disabled = true
 script = ExtResource("5_4wr88")
 HurtBoxType = "Player"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBoxComponent"]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_l075r")
 

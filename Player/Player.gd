@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
 # Speed of the player
-const SPEED = 64
+const SPEED = 96
+
+# The HurtBox's Shape for the Player
+@onready var hurt_box_shape = $HurtBoxComponent/HurtBoxShape
 
 # The Spell Scene
 const PLAYER_SPELL = preload("res://Player/PlayerSpell.tscn")
@@ -30,9 +33,12 @@ var direction : Vector2
 var Attacking : bool = false
 
 # Dashing Variables
-var DashFrames : float = 7
+var DashFrames : int = 7
 var DashSpeed : float = 640
-var StartedDashFrame : float
+var StartedDashFrame : int
+var DashCooldownFrames : int = 30
+var StartedDashCooldownFrame : int
+var DashIsOnCooldown : bool = false
 var PlayerIsDashing = false
 var PlayerDashDirection : Vector2 = Vector2.ZERO
 
@@ -49,13 +55,17 @@ func _physics_process(delta):
 	frames += 1
 	
 	if PlayerIsDashing:
-		print("DASHING!")
 		velocity = PlayerDashDirection * DashSpeed
 		if frames >= StartedDashFrame + DashFrames:
-			print("DASHEND! " + str(frames) + ", " + str(StartedDashFrame) + ", " + str(DashFrames))
 			PlayerIsDashing = false
 			PlayerCanMove = true
 			PlayerCanShoot = true
+			hurt_box_shape.disabled = false
+			StartedDashCooldownFrame = frames
+			DashIsOnCooldown = true
+	if DashIsOnCooldown:
+		if frames >= StartedDashCooldownFrame + DashCooldownFrames:
+			DashIsOnCooldown = false
 	
 	#region WALKING
 	# Set a Vector2 names "direction" to the axis of the player's input
@@ -109,13 +119,14 @@ func _process(delta):
 
 func _input(event):
 	
-	if event.is_action_pressed("Dash") and not PlayerIsDashing:
-		print("DASH!")
+	if event.is_action_pressed("Dash") and (not PlayerIsDashing) and (not DashIsOnCooldown):
 		StartedDashFrame = frames
 		PlayerIsDashing = true
 		PlayerCanMove = false
 		PlayerCanShoot = false
 		PlayerDashDirection = direction
+		hurt_box_shape.disabled = true
+		
 	
 	##region SCRAPPED_ATTACK
 	#

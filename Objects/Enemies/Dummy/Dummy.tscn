@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Objects/Enemies/Dummy/Dummy.gd" id="1_5b88o"]
 [ext_resource type="Texture2D" uid="uid://baenhglam4ysl" path="res://Objects/Enemies/Dummy/Dummy.png" id="1_lyhvl"]
-[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="2_ro6rq"]
-[ext_resource type="Script" path="res://Components/DeathComponent.gd" id="3_rjwtb"]
-[ext_resource type="Script" path="res://Components/HurtBoxComponent.gd" id="4_8kmbq"]
+[ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="2_ro6rq"]
+[ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="3_rjwtb"]
+[ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="4_8kmbq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
 radius = 2.06155

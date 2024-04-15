@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Objects/Enemies/Flare/Flare.gd" id="1_0e6t5"]
 [ext_resource type="SpriteFrames" uid="uid://udtoluc37p5i" path="res://Objects/Enemies/Flare/FlareAnimations.tres" id="2_2iwwn"]
-[ext_resource type="Script" path="res://Components/DamagingAreaComponent.gd" id="3_521ww"]
-[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="4_mqbur"]
-[ext_resource type="Script" path="res://Components/DeathComponent.gd" id="5_30s8q"]
-[ext_resource type="Script" path="res://Components/HurtBoxComponent.gd" id="6_6ilmd"]
+[ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="3_521ww"]
+[ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="4_mqbur"]
+[ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="5_30s8q"]
+[ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="6_6ilmd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r4624"]
 radius = 4.12311
