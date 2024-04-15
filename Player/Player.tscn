@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://co3hr8p30ged5"]
+[gd_scene load_steps=10 format=3 uid="uid://co3hr8p30ged5"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_seqry"]
 [ext_resource type="Texture2D" uid="uid://ucysq7b4l6oo" path="res://Player/PlayerPlaceholder.png" id="2_i0uht"]
 [ext_resource type="SpriteFrames" uid="uid://0mauhwjjapbp" path="res://Player/AttackFrames.tres" id="3_1f41h"]
 [ext_resource type="Script" path="res://Player/PlayerAttack.gd" id="4_ilk1c"]
+[ext_resource type="Script" path="res://Components/HurtBoxComponent.gd" id="5_4wr88"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="6_a2pee"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkbr2"]
 radius = 2.23607
@@ -11,6 +13,9 @@ radius = 2.23607
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yn864"]
 radius = 7.00002
 height = 36.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l075r"]
+radius = 3.0
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
@@ -41,5 +46,18 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_yn864")
 disabled = true
 
+[node name="HurtBoxComponent" type="Area2D" parent="."]
+script = ExtResource("5_4wr88")
+HurtBoxType = "Player"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_l075r")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("6_a2pee")
+InitialMaxHealth = 6
+
 [connection signal="AttackHasHit" from="Attack/AttackArea" to="." method="SuccessfullMelleAttack"]
 [connection signal="area_entered" from="Attack/AttackArea" to="Attack/AttackArea" method="AttackEntered"]
+[connection signal="Hit" from="HurtBoxComponent" to="." method="PlayerIsHit"]

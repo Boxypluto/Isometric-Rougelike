@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://udtoluc37p5i"]
+
+[ext_resource type="Texture2D" uid="uid://dgvhe1efjne1o" path="res://Objects/Enemies/Flare/Flare.png" id="1_pcuii"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovmi5"]
+atlas = ExtResource("1_pcuii")
+region = Rect2(0, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h480l"]
+atlas = ExtResource("1_pcuii")
+region = Rect2(15, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3o6p"]
+atlas = ExtResource("1_pcuii")
+region = Rect2(30, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i03av"]
+atlas = ExtResource("1_pcuii")
+region = Rect2(45, 0, 15, 15)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovmi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h480l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3o6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i03av")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

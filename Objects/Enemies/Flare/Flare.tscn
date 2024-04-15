@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkmjhyr7cc1f7"]
+
+[ext_resource type="Script" path="res://Objects/Enemies/Flare/Flare.gd" id="1_0e6t5"]
+[ext_resource type="SpriteFrames" uid="uid://udtoluc37p5i" path="res://Objects/Enemies/Flare/FlareAnimations.tres" id="2_2iwwn"]
+[ext_resource type="Script" path="res://Components/DamagingAreaComponent.gd" id="3_521ww"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="4_mqbur"]
+[ext_resource type="Script" path="res://Components/DeathComponent.gd" id="5_30s8q"]
+[ext_resource type="Script" path="res://Components/HurtBoxComponent.gd" id="6_6ilmd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4624"]
+radius = 4.12311
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oiln3"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vlejo"]
+radius = 4.0
+
+[node name="Flare" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_0e6t5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_r4624")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_2iwwn")
+autoplay = "default"
+
+[node name="DamagingAreaComponent" type="Area2D" parent="."]
+script = ExtResource("3_521ww")
+hitTags = Array[String](["Player"])
+Damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamagingAreaComponent"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_oiln3")
+debug_color = Color(0.854902, 0.368627, 0.0313726, 0.419608)
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("4_mqbur")
+InitialMaxHealth = 5
+
+[node name="DeathComponent" type="Node2D" parent="." node_paths=PackedStringArray("ObjectParent")]
+script = ExtResource("5_30s8q")
+ObjectParent = NodePath("..")
+
+[node name="HurtBoxComponent" type="Area2D" parent="."]
+position = Vector2(0, -3)
+script = ExtResource("6_6ilmd")
+HurtBoxType = "Enemy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_vlejo")
+debug_color = Color(0.921569, 0.203922, 0.478431, 0.419608)
+
+[connection signal="area_entered" from="DamagingAreaComponent" to="DamagingAreaComponent" method="AreaEntered"]
+[connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnHealthZero"]
+[connection signal="Hit" from="HurtBoxComponent" to="." method="FlareIsHit"]

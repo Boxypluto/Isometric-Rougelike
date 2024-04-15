@@ -20,6 +20,9 @@ var frames : int
 # The CollisionShape of the player's attack
 @onready var attack_shape : CollisionShape2D = $Attack/AttackArea/AttackShape
 
+# Components
+@onready var health : HealthComponent = $HealthComponent
+
 # Direction variable
 var direction : Vector2
 
@@ -137,3 +140,7 @@ func player_to_mouse_angle():
 
 func player_to_mouse_vector():
 	return Vector2.from_angle(player_to_mouse_angle())
+
+
+func PlayerIsHit(damage):
+	print("Player took " + str(damage) + "!")
