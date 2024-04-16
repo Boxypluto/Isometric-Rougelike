@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://bp5ebenvevhe8"]
+
+[ext_resource type="Script" path="res://Objects/Enemies/Bird/Bird.gd" id="1_85l0l"]
+[ext_resource type="Texture2D" uid="uid://baenhglam4ysl" path="res://Objects/Enemies/Dummy/Dummy.png" id="2_me665"]
+[ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="3_2jprj"]
+[ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="4_6quqm"]
+[ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="5_agwwo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
+radius = 2.06155
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aa344"]
+size = Vector2(8, 16)
+
+[node name="Bird" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 2
+script = ExtResource("1_85l0l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("CircleShape2D_fir61")
+debug_color = Color(0.980392, 0, 0.396078, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_me665")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("3_2jprj")
+InitialMaxHealth = 10
+
+[node name="DeathComponent" type="Node2D" parent="." node_paths=PackedStringArray("ObjectParent")]
+script = ExtResource("4_6quqm")
+ObjectParent = NodePath("..")
+
+[node name="HurtBoxComponent" type="Area2D" parent="."]
+script = ExtResource("5_agwwo")
+HurtBoxType = "Enemy"
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_aa344")
+
+[connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnZeroHealth"]
+[connection signal="Hit" from="HurtBoxComponent" to="." method="OnBirdHit"]
