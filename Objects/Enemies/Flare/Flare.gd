@@ -1,7 +1,4 @@
-extends CharacterBody2D
-
-@onready var health : HealthComponent = $HealthComponent
-@onready var death : DeathComponent = $DeathComponent
+extends Enemy
 
 func FlareIsHit(damage):
 	health.DealDamage(damage)

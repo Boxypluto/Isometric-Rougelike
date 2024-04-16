@@ -1,8 +1,4 @@
-extends CharacterBody2D
-
-@onready var health : HealthComponent = $HealthComponent
-@onready var death : DeathComponent = $DeathComponent
-@onready var hurt_box : HurtBoxComponent = $HurtBoxComponent
+extends Enemy
 
 func DummyIsHit(damage):
 	health.DealDamage(damage)
