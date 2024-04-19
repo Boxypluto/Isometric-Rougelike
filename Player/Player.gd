@@ -155,3 +155,4 @@ func player_to_mouse_vector():
 
 func PlayerIsHit(damage):
 	print("Player took " + str(damage) + "!")
+	health.DealDamage(damage)

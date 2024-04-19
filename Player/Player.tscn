@@ -48,6 +48,7 @@ shape = SubResource("CapsuleShape2D_yn864")
 disabled = true
 
 [node name="HurtBoxComponent" type="Area2D" parent="."]
+collision_mask = 3
 script = ExtResource("5_4wr88")
 HurtBoxType = "Player"
 

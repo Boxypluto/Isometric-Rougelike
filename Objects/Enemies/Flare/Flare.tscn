@@ -30,6 +30,7 @@ sprite_frames = ExtResource("2_2iwwn")
 autoplay = "default"
 
 [node name="DamagingAreaComponent" type="Area2D" parent="."]
+collision_layer = 3
 script = ExtResource("3_521ww")
 hitTags = Array[String](["Player"])
 Damage = 1
