@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp5ebenvevhe8"]
+[gd_scene load_steps=12 format=3 uid="uid://bp5ebenvevhe8"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/Bird/Bird.gd" id="1_85l0l"]
 [ext_resource type="Texture2D" uid="uid://baenhglam4ysl" path="res://Objects/Enemies/Dummy/Dummy.png" id="2_me665"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="5_agwwo"]
 [ext_resource type="Script" path="res://Classes/StateMachine.gd" id="6_1ilop"]
 [ext_resource type="Script" path="res://Tools/DirectionRaycastMatrix.gd" id="7_742wb"]
+[ext_resource type="Script" path="res://States/DirectChaseState.gd" id="7_e230l"]
+[ext_resource type="Script" path="res://States/WaitForNearbyState.gd" id="8_l2c1s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
 radius = 2.06155
@@ -18,12 +20,16 @@ size = Vector2(8, 16)
 texture_filter = 1
 collision_layer = 2
 script = ExtResource("1_85l0l")
+Speed = 16.0
+ChaseNearDistance = 32.0
+NoticeDistance = 64.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.5)
 shape = SubResource("CircleShape2D_fir61")
+disabled = true
 debug_color = Color(0.980392, 0, 0.396078, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -48,6 +54,12 @@ shape = SubResource("RectangleShape2D_aa344")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("6_1ilop")
+
+[node name="DirectChaseState" type="Node" parent="StateMachine"]
+script = ExtResource("7_e230l")
+
+[node name="WaitForNearbyState" type="Node" parent="StateMachine"]
+script = ExtResource("8_l2c1s")
 
 [node name="DirectionRaycastMatrix" type="Node2D" parent="."]
 visible = false
@@ -88,3 +100,5 @@ target_position = Vector2(0, 16)
 
 [connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnZeroHealth"]
 [connection signal="Hit" from="HurtBoxComponent" to="." method="OnBirdHit"]
+[connection signal="NearTo" from="StateMachine/DirectChaseState" to="." method="ChaseCloseToPlayer"]
+[connection signal="NearTo" from="StateMachine/WaitForNearbyState" to="." method="NearToPlayer"]
