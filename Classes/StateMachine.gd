@@ -2,6 +2,7 @@ extends Node
 class_name StateMachine
 
 var initial_state : State
+var state_name
 
 var current_state : State
 var states : Dictionary = {}
@@ -18,6 +19,7 @@ func setup():
 func _process(delta):
 	if current_state:
 		current_state.update(delta)
+		state_name = current_state.name
 
 func _physics_process(delta):
 	if current_state:

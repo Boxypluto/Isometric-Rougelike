@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bp5ebenvevhe8"]
+[gd_scene load_steps=13 format=3 uid="uid://bp5ebenvevhe8"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/Bird/Bird.gd" id="1_85l0l"]
 [ext_resource type="Texture2D" uid="uid://baenhglam4ysl" path="res://Objects/Enemies/Dummy/Dummy.png" id="2_me665"]
@@ -6,9 +6,10 @@
 [ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="4_6quqm"]
 [ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="5_agwwo"]
 [ext_resource type="Script" path="res://Classes/StateMachine.gd" id="6_1ilop"]
-[ext_resource type="Script" path="res://Tools/DirectionRaycastMatrix.gd" id="7_742wb"]
 [ext_resource type="Script" path="res://States/DirectChaseState.gd" id="7_e230l"]
 [ext_resource type="Script" path="res://States/WaitForNearbyState.gd" id="8_l2c1s"]
+[ext_resource type="Script" path="res://States/OrbitState.gd" id="9_twfpn"]
+[ext_resource type="Script" path="res://States/MoveToPointState.gd" id="10_8iixe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
 radius = 2.06155
@@ -20,9 +21,6 @@ size = Vector2(8, 16)
 texture_filter = 1
 collision_layer = 2
 script = ExtResource("1_85l0l")
-Speed = 16.0
-ChaseNearDistance = 32.0
-NoticeDistance = 64.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
@@ -52,6 +50,10 @@ HurtBoxType = "Enemy"
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_aa344")
 
+[node name="DiveTimer" type="Timer" parent="."]
+wait_time = 2.237
+one_shot = true
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("6_1ilop")
 
@@ -61,44 +63,15 @@ script = ExtResource("7_e230l")
 [node name="WaitForNearbyState" type="Node" parent="StateMachine"]
 script = ExtResource("8_l2c1s")
 
-[node name="DirectionRaycastMatrix" type="Node2D" parent="."]
-visible = false
-script = ExtResource("7_742wb")
-RaycastLength = 16.0
+[node name="OrbitState" type="Node" parent="StateMachine"]
+script = ExtResource("9_twfpn")
 
-[node name="RayCast2D" type="RayCast2D" parent="DirectionRaycastMatrix"]
-rotation = 3.14159
-target_position = Vector2(0, 16)
-
-[node name="RayCast2D2" type="RayCast2D" parent="DirectionRaycastMatrix"]
-rotation = 3.92699
-target_position = Vector2(0, 16)
-
-[node name="RayCast2D3" type="RayCast2D" parent="DirectionRaycastMatrix"]
-rotation = 4.71239
-target_position = Vector2(0, 16)
-
-[node name="RayCast2D4" type="RayCast2D" parent="DirectionRaycastMatrix"]
-rotation = 5.49779
-target_position = Vector2(0, 16)
-
-[node name="RayCast2D5" type="RayCast2D" parent="DirectionRaycastMatrix"]
-rotation = 6.28319
-target_position = Vector2(0, 16)
-
-[node name="RayCast2D6" type="RayCast2D" parent="DirectionRaycastMatrix"]
-rotation = 0.785398
-target_position = Vector2(0, 16)
-
-[node name="RayCast2D7" type="RayCast2D" parent="DirectionRaycastMatrix"]
-rotation = 1.5708
-target_position = Vector2(0, 16)
-
-[node name="RayCast2D8" type="RayCast2D" parent="DirectionRaycastMatrix"]
-rotation = 2.35619
-target_position = Vector2(0, 16)
+[node name="MoveToPointState" type="Node" parent="StateMachine"]
+script = ExtResource("10_8iixe")
 
 [connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnZeroHealth"]
 [connection signal="Hit" from="HurtBoxComponent" to="." method="OnBirdHit"]
+[connection signal="timeout" from="DiveTimer" to="." method="StartDive"]
 [connection signal="NearTo" from="StateMachine/DirectChaseState" to="." method="ChaseCloseToPlayer"]
 [connection signal="NearTo" from="StateMachine/WaitForNearbyState" to="." method="NearToPlayer"]
+[connection signal="AtPoint" from="StateMachine/MoveToPointState" to="." method="DashEnded"]

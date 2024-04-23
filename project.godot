@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Isometric Rougelike"
-run/main_scene="res://Scenes/Menus/StartMenu.tscn"
+run/main_scene="res://Scenes/Areas/Area 1/GrassIslands.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
 

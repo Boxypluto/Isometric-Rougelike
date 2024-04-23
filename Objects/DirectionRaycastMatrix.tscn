@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://c544cthdrupsc"]
+
+[ext_resource type="Script" path="res://Tools/DirectionRaycastMatrix.gd" id="1_t7xug"]
+
+[node name="DirectionRaycastMatrix" type="Node2D"]
+visible = false
+script = ExtResource("1_t7xug")
+RaycastLength = 16.0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = 3.14159
+target_position = Vector2(0, 16)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+rotation = 3.92699
+target_position = Vector2(0, 16)
+
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+rotation = 4.71239
+target_position = Vector2(0, 16)
+
+[node name="RayCast2D4" type="RayCast2D" parent="."]
+rotation = 5.49779
+target_position = Vector2(0, 16)
+
+[node name="RayCast2D5" type="RayCast2D" parent="."]
+rotation = 6.28319
+target_position = Vector2(0, 16)
+
+[node name="RayCast2D6" type="RayCast2D" parent="."]
+rotation = 0.785398
+target_position = Vector2(0, 16)
+
+[node name="RayCast2D7" type="RayCast2D" parent="."]
+rotation = 1.5708
+target_position = Vector2(0, 16)
+
+[node name="RayCast2D8" type="RayCast2D" parent="."]
+rotation = 2.35619
+target_position = Vector2(0, 16)
