@@ -14,6 +14,6 @@ func _ready():
 			EnemyGroupChildren[index].IndexInEnemyDict = index
 			EnemyGroupChildren[index].RoomNode = self
 
-func _process(delta):
+func _process(_delta):
 	if EnemiesDict.is_empty() and not DEBUG_MODE:
 		GameManager.ProgressRooms(self)

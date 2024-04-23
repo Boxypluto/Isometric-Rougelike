@@ -54,6 +54,7 @@ func _ready():
 	orbit_state.Distance = OrbitDistance
 	orbit_state.Speed = OrbitSpeed
 	orbit_state.Smoothing = OrbitSmoothing
+	orbit_state.SpriteRotationOffset = PI/2
 	
 	# Dash Setup
 	dash_state.Actor = self
@@ -77,8 +78,9 @@ func StartDive():
 	animation.animation = "Dive"
 	dive_timer.stop()
 	orbit_state.Speed = OrbitSpeed/4
-	animation.rotation = player.position.angle_to_point(position) + PI/2
+	orbit_state.ActorSprite = animation
 	await get_tree().create_timer(DashDelay).timeout
+	orbit_state.ActorSprite = null
 	orbit_state.Speed = OrbitSpeed
 	dash_state.TargetPos = ((player.position - position) * 2) + position
 	print(dash_state.TargetPos)

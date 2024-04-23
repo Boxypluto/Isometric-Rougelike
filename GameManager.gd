@@ -67,12 +67,10 @@ func ProgressRooms(scene_to_remove = null):
 	if scene_to_remove is Node:
 		scene_to_remove.queue_free()
 
-
-
-
-
-
-
-
-
-
+## @deprecated
+func FrameFreeze(duration : float, fps : int):
+	Engine.time_scale = fps / 60.0
+	Engine.physics_ticks_per_second = fps
+	await get_tree().create_timer(duration * (fps / 60.0)).timeout
+	Engine.physics_ticks_per_second = fps
+	Engine.time_scale = 1

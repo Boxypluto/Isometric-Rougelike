@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 # Speed of the player
 const SPEED = 96
+const ATTACKING_WALK_SPEED = 96/2
 
 # The HurtBox's Shape for the Player
 @onready var hurt_box_shape = $HurtBoxComponent/HurtBoxShape
@@ -50,7 +51,10 @@ var PlayerCanShoot = true
 var RecoilVelocity : Vector2 = Vector2.ZERO
 @export var RecoilStrength : float
 
-func _physics_process(delta):
+# Camera
+@onready var camera = $"../../Camera2D"
+
+func _physics_process(_delta):
 	
 	frames += 1
 	
@@ -85,7 +89,10 @@ func _physics_process(delta):
 	#endregion
 		
 	if PlayerCanMove:
-		velocity = (direction * SPEED) + RecoilVelocity
+		var Speed
+		if Input.is_action_pressed("Attack"): Speed = ATTACKING_WALK_SPEED
+		else: Speed = SPEED
+		velocity = (direction * Speed) + RecoilVelocity
 		RecoilVelocity = Vector2.ZERO
 	
 	move_and_slide()
@@ -98,7 +105,7 @@ func _physics_process(delta):
 		spell.StartVelocity = Vector2.ZERO
 		#SuccessfullMelleAttack(spell.rotation)
 
-func _process(delta):
+func _process(_delta):
 	
 	var MousePos = get_global_mouse_position()
 	
@@ -154,5 +161,6 @@ func player_to_mouse_vector():
 
 
 func PlayerIsHit(damage):
+	camera.cause_shake(2)
 	print("Player took " + str(damage) + "!")
 	health.DealDamage(damage)

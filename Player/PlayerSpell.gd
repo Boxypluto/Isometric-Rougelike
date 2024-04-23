@@ -10,7 +10,7 @@ var LivingTime
 func _ready():
 	LivingTime = ALIVE_FRAMES
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = (Vector2.from_angle(rotation) * SPEED) + StartVelocity
 	LivingTime -= 1
 	if LivingTime < (ALIVE_FRAMES / 3):
