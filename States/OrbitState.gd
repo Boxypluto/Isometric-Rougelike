@@ -14,5 +14,5 @@ func enter():
 
 func physics_update(_delta):
 	Angle += (Speed/Distance)
-	var Point : Vector2 = Target.position + (Vector2(cos(Angle-(PI/2)), sin(Angle-(PI/2))) * Distance)
-	Actor.position =  Point #Actor.position.lerp(Point, Smoothing)
+	var Point : Vector2 = Target.position + (Vector2(cos(Angle), sin(Angle)) * Distance)
+	Actor.position =  Actor.position.lerp(Point, Smoothing)

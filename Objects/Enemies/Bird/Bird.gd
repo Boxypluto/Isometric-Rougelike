@@ -19,7 +19,8 @@ var ChaseNearDistance : float = 32
 var NoticeDistance : float = 64
 var OrbitDistance : float = 32
 var OrbitSpeed : float = 2
-var OrbitSmoothing : float = 0.03
+var OrbitSmoothing : float = 0.5
+var DashSpeed : float = 256
 
 func OnZeroHealth():
 	death.Kill()
@@ -49,7 +50,7 @@ func _ready():
 	
 	# Dash Setup
 	dash_state.Actor = self
-	dash_state.Speed = Speed
+	dash_state.Speed = DashSpeed
 	
 	# State Machine Setup
 	state_machine.initial_state = nearby_state
@@ -64,7 +65,8 @@ func ChaseCloseToPlayer():
 
 func StartDive():
 	dive_timer.stop()
-	dash_state.TargetPos = (position.direction_to(player.position) * OrbitDistance)
+	dash_state.TargetPos = ((player.position - position) * 2) + position
+	print(dash_state.TargetPos)
 	state_machine.change_state("MoveToPointState")
 
 func DashEnded():
