@@ -14,3 +14,9 @@ position = Vector2(48, 2)
 
 [node name="Bird" parent="Y-Sortables/Enemies" index="0" instance=ExtResource("2_4n5ff")]
 position = Vector2(-20, -87)
+
+[node name="Bird2" parent="Y-Sortables/Enemies" index="1" instance=ExtResource("2_4n5ff")]
+position = Vector2(143, -63)
+
+[node name="Bird3" parent="Y-Sortables/Enemies" index="2" instance=ExtResource("2_4n5ff")]
+position = Vector2(-91, -74)
