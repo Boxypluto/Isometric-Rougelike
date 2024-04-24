@@ -28,8 +28,7 @@ debug_color = Color(0.980392, 0, 0.396078, 0.419608)
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = ExtResource("2_o6i6q")
-animation = &"Idle"
-frame_progress = 0.754441
+animation = &"UpSide"
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_dfh8m")
