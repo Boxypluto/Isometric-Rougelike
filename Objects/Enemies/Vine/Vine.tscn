@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dhlt64s12lncd"]
 
-[ext_resource type="Script" path="res://Objects/Enemies/Dummy/Dummy.gd" id="1_1oa2q"]
-[ext_resource type="Texture2D" uid="uid://baenhglam4ysl" path="res://Objects/Enemies/Dummy/Dummy.png" id="2_tjq2b"]
+[ext_resource type="Script" path="res://Objects/Enemies/Vine/Vine.gd" id="1_govq1"]
+[ext_resource type="SpriteFrames" uid="uid://cukcs2w2e458s" path="res://Objects/Enemies/Vine/VineAnimations.tres" id="2_o6i6q"]
 [ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="3_dfh8m"]
 [ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="4_0366o"]
 [ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="5_1sobh"]
@@ -9,23 +9,27 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
 radius = 2.06155
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aa344"]
-size = Vector2(8, 16)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ntsre"]
+radius = 5.0
+height = 22.0
 
 [node name="Vine" type="CharacterBody2D"]
 texture_filter = 1
 collision_layer = 2
 motion_mode = 1
-script = ExtResource("1_1oa2q")
+script = ExtResource("1_govq1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -1.5)
 shape = SubResource("CircleShape2D_fir61")
 debug_color = Color(0.980392, 0, 0.396078, 0.419608)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Animations" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
-texture = ExtResource("2_tjq2b")
+sprite_frames = ExtResource("2_o6i6q")
+animation = &"Idle"
+frame_progress = 0.754441
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_dfh8m")
@@ -40,8 +44,8 @@ script = ExtResource("5_1sobh")
 HurtBoxType = "Enemy"
 
 [node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBoxComponent"]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_aa344")
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_ntsre")
 
 [connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnZeroHealth"]
 [connection signal="Hit" from="HurtBoxComponent" to="." method="DummyIsHit"]
