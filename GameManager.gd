@@ -1,5 +1,7 @@
 extends Node
 
+var DEBUG_MODE = true
+
 var TestingRooms : Array = [
 	preload("res://Scenes/Rooms/Room 1.tscn"),
 	preload("res://Scenes/Rooms/Room 2.tscn"),

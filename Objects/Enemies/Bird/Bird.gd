@@ -88,6 +88,8 @@ func StartDive():
 	dive_timer.stop()
 	# Slow Speed
 	orbit_state.Speed = OrbitSpeed/4
+	# Steepen Smoothing
+	orbit_state.Smoothing = 0.001
 	# Rotate Sprite to Player
 	orbit_state.ActorSprite = animation
 	
@@ -98,6 +100,8 @@ func StartDive():
 	orbit_state.ActorSprite = null
 	# Reset Speed
 	orbit_state.Speed = OrbitSpeed
+	# Reset Smoothing
+	orbit_state.Smoothing = OrbitSmoothing
 	# Setup Dash to Overshoot Player by Twice the Distance from the Player
 	dash_state.TargetPos = ((player.position - position) * 2) + position
 	# Change to Dash State
@@ -107,8 +111,15 @@ func DashEnded():
 	
 	# Set Aniamtion to Fly
 	animation.animation = "Fly"
-	# Change to Orbit State
-	state_machine.change_state("OrbitState")
+	
+	# If the Bird is Still Close to the Player...
+	if position.distance_to(player.position) <= ChaseNearDistance:
+		# Change to Orbit State
+		state_machine.change_state("OrbitState")
+	else:
+		# Otherwise Chase
+		state_machine.change_state(chase_state.name)
+	
 	# Reset Rotation
 	animation.rotation = 0
 	# Start the Dive Timer

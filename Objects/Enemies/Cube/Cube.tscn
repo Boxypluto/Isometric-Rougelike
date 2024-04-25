@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://dvsku3svveqwc"]
+
+[ext_resource type="Script" path="res://Objects/Enemies/Cube/Cube.gd" id="1_x1827"]
+[ext_resource type="SpriteFrames" uid="uid://urgtfqmt6mis" path="res://Objects/Enemies/Cube/CubeAnimation.tres" id="2_tvyso"]
+[ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="3_31f3j"]
+[ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="4_sku36"]
+[ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="5_gssur"]
+[ext_resource type="Script" path="res://Classes/StateMachine.gd" id="6_0u1jg"]
+[ext_resource type="Script" path="res://States/DirectChaseState.gd" id="7_dhf3y"]
+[ext_resource type="Script" path="res://States/BlankState.gd" id="8_p0kqh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
+radius = 2.06155
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qtt8b"]
+
+[node name="Cube" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_x1827")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -1.5)
+shape = SubResource("CircleShape2D_fir61")
+disabled = true
+debug_color = Color(0.980392, 0, 0.396078, 0.419608)
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = ExtResource("2_tvyso")
+animation = &"Cube"
+autoplay = "Cube"
+frame_progress = 0.0777359
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("3_31f3j")
+InitialMaxHealth = 10
+
+[node name="DeathComponent" type="Node2D" parent="." node_paths=PackedStringArray("ObjectParent")]
+script = ExtResource("4_sku36")
+ObjectParent = NodePath("..")
+
+[node name="HurtBoxComponent" type="Area2D" parent="."]
+script = ExtResource("5_gssur")
+HurtBoxType = "Enemy"
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_qtt8b")
+debug_color = Color(0.984314, 0, 0.352941, 0.14902)
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("6_0u1jg")
+
+[node name="BlankState" type="Node" parent="StateMachine"]
+script = ExtResource("8_p0kqh")
+
+[node name="DirectChaseState" type="Node" parent="StateMachine"]
+script = ExtResource("7_dhf3y")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnHealthZero"]
+[connection signal="Hit" from="HurtBoxComponent" to="." method="OnCubeHit"]

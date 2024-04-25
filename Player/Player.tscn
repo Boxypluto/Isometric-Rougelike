@@ -55,6 +55,7 @@ radius = 11.0
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
+collision_layer = 0
 script = ExtResource("1_seqry")
 RecoilStrength = 256.0
 
@@ -124,3 +125,4 @@ disabled = true
 [connection signal="Hit" from="HurtBoxComponent" to="." method="PlayerIsHit"]
 [connection signal="Hit" from="BigHurtBoxComponent" to="." method="PlayerIsHit"]
 [connection signal="animation_finished" from="Slash" to="." method="SlashAnimationFinished"]
+[connection signal="area_entered" from="Slash/DamagingAreaComponent" to="Slash/DamagingAreaComponent" method="AreaEntered"]
