@@ -67,27 +67,49 @@ func _ready():
 	state_machine.setup()
 
 func NearToPlayer():
+	
+	# Set Animation Speed to Normal
 	animation.speed_scale = 1
+	# Change to Chase State
 	state_machine.change_state("DirectChaseState")
 
 func ChaseCloseToPlayer():
+	
+	# Change to Orbit State
 	state_machine.change_state("OrbitState")
+	# Start Dive Timer
 	dive_timer.start()
 
 func StartDive():
+	
+	# Start Dive Animation
 	animation.animation = "Dive"
+	# Stop Dive Timer
 	dive_timer.stop()
+	# Slow Speed
 	orbit_state.Speed = OrbitSpeed/4
+	# Rotate Sprite to Player
 	orbit_state.ActorSprite = animation
+	
+	# Wait for DashDelay Seconds
 	await get_tree().create_timer(DashDelay).timeout
+	
+	# Stop Looking Towards Player
 	orbit_state.ActorSprite = null
+	# Reset Speed
 	orbit_state.Speed = OrbitSpeed
+	# Setup Dash to Overshoot Player by Twice the Distance from the Player
 	dash_state.TargetPos = ((player.position - position) * 2) + position
-	print(dash_state.TargetPos)
+	# Change to Dash State
 	state_machine.change_state("MoveToPointState")
 
 func DashEnded():
+	
+	# Set Aniamtion to Fly
 	animation.animation = "Fly"
+	# Change to Orbit State
 	state_machine.change_state("OrbitState")
+	# Reset Rotation
 	animation.rotation = 0
+	# Start the Dive Timer
 	dive_timer.start()

@@ -60,7 +60,7 @@ shape = SubResource("RectangleShape2D_aa344")
 
 [node name="DamagingAreaComponent" type="Area2D" parent="."]
 script = ExtResource("6_b5k8n")
-hitTags = Array[String](["Player"])
+hitTags = Array[String](["PlayerBig"])
 Damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamagingAreaComponent"]

@@ -52,7 +52,6 @@ position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_ntsre")
 
 [node name="DamagingAreaComponent" type="Area2D" parent="."]
-visible = false
 script = ExtResource("6_wl2je")
 hitTags = Array[String](["Player"])
 Damage = 1
@@ -90,8 +89,6 @@ script = ExtResource("8_18a5j")
 script = ExtResource("9_o7o7m")
 
 [connection signal="animation_finished" from="Animations" to="." method="AnimationFinished"]
-[connection signal="frame_changed" from="Animations" to="." method="FrameChanged"]
-[connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnHealthIsZero"]
-[connection signal="Hit" from="HurtBoxComponent" to="." method="VineIsHit"]
-[connection signal="area_entered" from="DamagingAreaComponent" to="DamagingAreaComponent" method="AreaEntered"]
+[connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnZeroHealth"]
+[connection signal="Hit" from="HurtBoxComponent" to="." method="DummyIsHit"]
 [connection signal="NearTo" from="StateMachine/WaitForNearbyState" to="." method="PlayerClose"]

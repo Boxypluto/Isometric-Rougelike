@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://du1u0enataycy"]
+[gd_scene load_steps=5 format=3 uid="uid://du1u0enataycy"]
 
 [ext_resource type="PackedScene" uid="uid://bemq8nyf8v5t2" path="res://Scenes/Template Room.tscn" id="1_3ujfu"]
 [ext_resource type="Script" path="res://CameraController.gd" id="2_toum8"]
+[ext_resource type="PackedScene" uid="uid://dhlt64s12lncd" path="res://Objects/Enemies/Vine/Vine.tscn" id="3_bv0jk"]
+[ext_resource type="PackedScene" uid="uid://bp5ebenvevhe8" path="res://Objects/Enemies/Bird/Bird.tscn" id="4_6x4y4"]
 
 [node name="Room" instance=ExtResource("1_3ujfu")]
 
@@ -15,3 +17,12 @@ layer_1/tile_data = PackedInt32Array(-2752497, 131072, 8, -2752496, 131072, 8, -
 [node name="Player" parent="Y-Sortables" index="1"]
 position = Vector2(-111, 23)
 motion_mode = 1
+
+[node name="Vine" parent="Y-Sortables/Enemies" index="0" instance=ExtResource("3_bv0jk")]
+position = Vector2(80, -88)
+
+[node name="Bird2" parent="Y-Sortables/Enemies" index="1" instance=ExtResource("4_6x4y4")]
+position = Vector2(88, -32)
+
+[node name="Bird" parent="Y-Sortables/Enemies" index="2" instance=ExtResource("4_6x4y4")]
+position = Vector2(-24, -96)
