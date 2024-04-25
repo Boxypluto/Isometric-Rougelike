@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://djn774iugvcqu"]
 
-[ext_resource type="Script" path="res://Player/PlayerSpell.gd" id="1_d6xuj"]
-[ext_resource type="Texture2D" uid="uid://c2fnmdhctpq30" path="res://Player/PlayerSpell.png" id="1_vqilj"]
+[ext_resource type="Script" path="res://Player/Scrapped/PlayerSpell.gd" id="1_d6xuj"]
+[ext_resource type="Texture2D" uid="uid://c2fnmdhctpq30" path="res://Player/Scrapped/PlayerSpell.png" id="1_vqilj"]
 [ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="3_780py"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sg0fh"]

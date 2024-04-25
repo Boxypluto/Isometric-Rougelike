@@ -6,10 +6,17 @@ var TestingRooms : Array = [
 	preload("res://Scenes/Rooms/Room 3.tscn")
 ]
 
+var Area1 : Array = [
+	preload("res://Scenes/Areas/Area 1/Archipelago.tscn"),
+	preload("res://Scenes/Areas/Area 1/AtopTheWall.tscn"),
+	preload("res://Scenes/Areas/Area 1/GrassIslands.tscn")
+]
+
 var AreaLevelCount : int = 3
 
 var Areas : Dictionary = {
-	"Testing" : TestingRooms
+	#"Testing" : TestingRooms,
+	"Area1" : Area1
 }
 
 var WorldDictionary : Dictionary = {}
@@ -27,7 +34,7 @@ func GenerateRooms():
 		
 		var AreaDictionary : Dictionary
 		var LevelList : Array
-		for scene in TestingRooms:
+		for scene in Area1:
 			LevelList.append(scene)
 		
 		WorldDictionary[area] = { }

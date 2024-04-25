@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bemq8nyf8v5t2"]
+[gd_scene load_steps=6 format=3 uid="uid://bemq8nyf8v5t2"]
 
 [ext_resource type="PackedScene" uid="uid://dqudfxufqnmfe" path="res://GUI/MainGUI.tscn" id="1_axkqf"]
 [ext_resource type="Script" path="res://Scenes/Room.gd" id="1_oja0b"]
 [ext_resource type="TileSet" uid="uid://b6paixhth3mpp" path="res://Tileset/Default Tiles.tres" id="2_y47fr"]
+[ext_resource type="Script" path="res://CameraController.gd" id="3_bh7wg"]
 [ext_resource type="PackedScene" uid="uid://co3hr8p30ged5" path="res://Player/Player.tscn" id="3_c0ddp"]
 
 [node name="Room" type="Node2D"]
@@ -16,6 +17,7 @@ offset_bottom = -213.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(4, -53)
+script = ExtResource("3_bh7wg")
 
 [node name="Y-Sortables" type="Node2D" parent="."]
 y_sort_enabled = true

@@ -4,7 +4,7 @@ class_name Room
 @export var EnemiesDict : Dictionary
 @onready var EnemiesNode = $"Y-Sortables/Enemies"
 
-const DEBUG_MODE = true
+const DEBUG_MODE = false
 
 func _ready():
 	var EnemyGroupChildren : Array = EnemiesNode.get_children()
@@ -15,5 +15,8 @@ func _ready():
 			EnemyGroupChildren[index].RoomNode = self
 
 func _process(_delta):
-	if EnemiesDict.is_empty() and not DEBUG_MODE:
-		GameManager.ProgressRooms(self)
+	var IsEn = false
+	for key in EnemiesDict.values():
+		if key != null:
+			IsEn = true
+	if IsEn == false: GameManager.ProgressRooms(self)

@@ -10,6 +10,11 @@ const ATTACKING_WALK_SPEED = 96/2
 # Frames, counts the physics frames
 var frames : int
 
+# Slash
+@onready var slash : AnimatedSprite2D = $Slash
+@onready var slash_damager : DamagingAreaComponent = $Slash/DamagingAreaComponent
+@onready var slash_collision : CollisionShape2D = $Slash/DamagingAreaComponent/CollisionShape2D
+
 # Instantiated Node
 @onready var instantiated = $"../Instantiated"
 
@@ -41,7 +46,7 @@ var RecoilVelocity : Vector2 = Vector2.ZERO
 @export var RecoilStrength : float
 
 # Camera
-@onready var camera = $"../../Camera2D"
+@onready var Camera = $"../../Camera2D"
 
 func _physics_process(_delta):
 	
@@ -89,6 +94,7 @@ func _physics_process(_delta):
 
 func _process(_delta):
 	var MousePos = get_global_mouse_position()
+	if not Attacking: slash.rotation = slash.global_position.angle_to_point(get_global_mouse_position())
 
 func _input(event):
 	
@@ -99,6 +105,14 @@ func _input(event):
 		PlayerCanShoot = false
 		PlayerDashDirection = direction
 		hurt_box_shape.disabled = true
+	
+	if event.is_action_pressed("Attack"):
+		if not Attacking:
+			Attacking = true
+			slash.animation = "Slash"
+			slash_collision.disabled = false
+			slash.flip_v = not slash.flip_v
+			slash.play()
 
 func player_to_mouse_angle():
 	return (global_position - Vector2(0, 8)).angle_to_point(get_global_mouse_position())
@@ -107,6 +121,12 @@ func player_to_mouse_vector():
 	return Vector2.from_angle(player_to_mouse_angle())
 
 func PlayerIsHit(damage):
-	camera.cause_shake(2)
+	Camera.cause_shake(2)
 	print("Player took " + str(damage) + "!")
 	health.DealDamage(damage)
+
+func SlashAnimationFinished():
+	if slash.animation == "Slash":
+		slash_collision.disabled = true
+		Attacking = false
+		slash.animation = "Blank"

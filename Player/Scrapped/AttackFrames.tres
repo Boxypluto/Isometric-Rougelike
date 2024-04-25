@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://0mauhwjjapbp"]
 
-[ext_resource type="Texture2D" uid="uid://e43u51dsgjhr" path="res://Player/PlayerAttack.png" id="1_b0pj6"]
+[ext_resource type="Texture2D" uid="uid://e43u51dsgjhr" path="res://Player/Scrapped/PlayerAttack.png" id="1_b0pj6"]
 [ext_resource type="Texture2D" uid="uid://dklfmud82ri0k" path="res://Sprites/Blank.png" id="2_qrxcw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sddij"]
