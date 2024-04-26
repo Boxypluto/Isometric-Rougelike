@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvsku3svveqwc"]
+[gd_scene load_steps=14 format=3 uid="uid://dvsku3svveqwc"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/Cube/Cube.gd" id="1_x1827"]
 [ext_resource type="SpriteFrames" uid="uid://urgtfqmt6mis" path="res://Objects/Enemies/Cube/CubeAnimation.tres" id="2_tvyso"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://States/MoveToPointState.gd" id="8_fj77s"]
 [ext_resource type="Script" path="res://States/BlankState.gd" id="8_p0kqh"]
 [ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="9_hy6in"]
+[ext_resource type="SpriteFrames" uid="uid://oyeidfqh3i8a" path="res://Objects/Enemies/Cube/CubePointerAnimations.tres" id="10_vtt41"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
 radius = 2.06155
@@ -73,6 +74,12 @@ Damage = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamagingAreaComponent"]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_5b0jm")
+
+[node name="CubePointer" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = ExtResource("10_vtt41")
+animation = &"Shrink"
+offset = Vector2(21, 0)
 
 [connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnHealthZero"]
 [connection signal="Hit" from="HurtBoxComponent" to="." method="OnCubeHit"]

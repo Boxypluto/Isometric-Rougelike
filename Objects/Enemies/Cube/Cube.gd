@@ -9,6 +9,9 @@ const CUBE_AFTER_IMAGE = preload("res://Objects/Enemies/Cube/CubeAfterImage.tscn
 # Animations
 @onready var animations = $Animations
 
+# Pointer Animations
+@onready var pointer : AnimatedSprite2D = $CubePointer
+
 # Target Texture
 const CUBE_TARGET = preload("res://Objects/Enemies/Cube/CubeTargetAnimation.tres")
 
@@ -51,8 +54,8 @@ func _ready():
 	state_machine.initial_state = blank_state
 	state_machine.setup()
 
-func _draw():
-	draw_line(Vector2.ZERO, LineEndPos - position, LineColor, 1)
+#func _draw():
+	#draw_line(Vector2.ZERO, LineEndPos - position, LineColor, 1)
 
 func _process(delta):
 	
@@ -76,9 +79,13 @@ func _physics_process(delta):
 		if PlayerInSight:
 			WaitedFrames += 1
 			Target.play("Target")
+			if pointer.animation != "Grow": pointer.animation = "Grow"
+			pointer.frame = floorf((WaitedFrames/float(WaitFrames))*4)-1
+			print(pointer.frame)
 		else:
 			WaitedFrames = 0
 			Target.play("Blank")
+			if pointer.animation != "Shrink": pointer.play("Shrink")
 		
 		if WaitedFrames > WaitFrames:
 			Idle = false
@@ -93,6 +100,12 @@ func _physics_process(delta):
 		else:
 			animations.speed_scale = 1 + (float(WaitedFrames)/WaitFrames/2.0)
 			animations.modulate = Color.from_hsv(0, clamp(WaitedFrames/float(WaitFrames), 0, 1)*0.6, (clamp(WaitedFrames/float(WaitFrames), 0, 1)*2) + 1)
+	
+	else:
+		if pointer.animation != "Shrink": pointer.play("Shrink")
+	
+	pointer.modulate = animations.modulate
+	pointer.rotation = pointer.global_position.angle_to_point(player.global_position)
 	
 	if frame % 2 == 0:
 		AfterImage()
