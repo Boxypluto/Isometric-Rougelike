@@ -26,6 +26,7 @@ var AreaArray : Array
 
 var CurrentRoomIndex : int
 var CurrentAreaIndex : int
+var CurrentRoomScene : Node
 
 func GenerateRooms():
 	
@@ -72,6 +73,7 @@ func ProgressRooms(scene_to_remove = null):
 	
 	var room = WorldDictionary.values()[CurrentAreaIndex][CurrentRoomIndex].instantiate()
 	get_tree().root.add_child(room)
+	CurrentRoomScene = room
 	
 	if scene_to_remove is Node:
 		scene_to_remove.queue_free()

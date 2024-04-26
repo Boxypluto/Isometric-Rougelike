@@ -68,3 +68,4 @@ Dash={
 2d_physics/layer_1="Main"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Ground"
+2d_physics/layer_4="Cubes"

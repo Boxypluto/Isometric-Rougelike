@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bj5rw2pf0iyva"]
+
+[ext_resource type="Texture2D" uid="uid://cn8o26i5kf18m" path="res://Objects/Enemies/Cube/CubeTarget.png" id="1_tfbjg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnx6r"]
+atlas = ExtResource("1_tfbjg")
+region = Rect2(0, 0, 10, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weuoh"]
+atlas = ExtResource("1_tfbjg")
+region = Rect2(10, 0, 10, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d483f"]
+atlas = ExtResource("1_tfbjg")
+region = Rect2(20, 0, 10, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd7dg"]
+atlas = ExtResource("1_tfbjg")
+region = Rect2(30, 0, 10, 5)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Blank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnx6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weuoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d483f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd7dg")
+}],
+"loop": true,
+"name": &"Target",
+"speed": 12.0
+}]

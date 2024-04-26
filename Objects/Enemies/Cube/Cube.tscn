@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvsku3svveqwc"]
+[gd_scene load_steps=13 format=3 uid="uid://dvsku3svveqwc"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/Cube/Cube.gd" id="1_x1827"]
 [ext_resource type="SpriteFrames" uid="uid://urgtfqmt6mis" path="res://Objects/Enemies/Cube/CubeAnimation.tres" id="2_tvyso"]
@@ -6,25 +6,27 @@
 [ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="4_sku36"]
 [ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="5_gssur"]
 [ext_resource type="Script" path="res://Classes/StateMachine.gd" id="6_0u1jg"]
-[ext_resource type="Script" path="res://States/DirectChaseState.gd" id="7_dhf3y"]
+[ext_resource type="Script" path="res://States/MoveToPointState.gd" id="8_fj77s"]
 [ext_resource type="Script" path="res://States/BlankState.gd" id="8_p0kqh"]
+[ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="9_hy6in"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
 radius = 2.06155
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qtt8b"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5b0jm"]
+
 [node name="Cube" type="CharacterBody2D"]
 texture_filter = 1
-collision_layer = 2
+collision_layer = 10
+collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_x1827")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -1.5)
 shape = SubResource("CircleShape2D_fir61")
-disabled = true
 debug_color = Color(0.980392, 0, 0.396078, 0.419608)
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
@@ -57,10 +59,22 @@ script = ExtResource("6_0u1jg")
 [node name="BlankState" type="Node" parent="StateMachine"]
 script = ExtResource("8_p0kqh")
 
-[node name="DirectChaseState" type="Node" parent="StateMachine"]
-script = ExtResource("7_dhf3y")
+[node name="MoveToPointState" type="Node" parent="StateMachine"]
+script = ExtResource("8_fj77s")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
+[node name="DamagingAreaComponent" type="Area2D" parent="."]
+collision_layer = 3
+script = ExtResource("9_hy6in")
+hitTags = Array[String](["PlayerBig"])
+Damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamagingAreaComponent"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_5b0jm")
+
 [connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnHealthZero"]
 [connection signal="Hit" from="HurtBoxComponent" to="." method="OnCubeHit"]
+[connection signal="AtPoint" from="StateMachine/MoveToPointState" to="." method="FinishedDash"]
+[connection signal="area_entered" from="DamagingAreaComponent" to="DamagingAreaComponent" method="AreaEntered"]
