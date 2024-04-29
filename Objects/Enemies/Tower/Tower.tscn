@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnqccr3eyfj36"]
+[gd_scene load_steps=9 format=3 uid="uid://bnqccr3eyfj36"]
 
+[ext_resource type="Material" uid="uid://c476aywx1ixii" path="res://Objects/Enemies/EnemyFlashMAT.tres" id="1_ofc3b"]
 [ext_resource type="Script" path="res://Objects/Enemies/Tower/Tower.gd" id="1_u3vx4"]
 [ext_resource type="SpriteFrames" uid="uid://c62nu6tfw1b7g" path="res://Objects/Enemies/Tower/TowerAnimation.tres" id="2_xbjht"]
 [ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="3_a5mma"]
@@ -14,6 +15,7 @@ size = Vector2(8, 16)
 
 [node name="Tower" type="CharacterBody2D"]
 texture_filter = 1
+material = ExtResource("1_ofc3b")
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_u3vx4")
@@ -26,6 +28,7 @@ disabled = true
 debug_color = Color(0.980392, 0, 0.396078, 0.419608)
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 position = Vector2(0, -19)
 sprite_frames = ExtResource("2_xbjht")
 autoplay = "default"
@@ -33,7 +36,7 @@ frame_progress = 0.493323
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_a5mma")
-InitialMaxHealth = 10
+InitialMaxHealth = 6
 
 [node name="DeathComponent" type="Node2D" parent="." node_paths=PackedStringArray("ObjectParent")]
 script = ExtResource("4_24ps8")
@@ -50,4 +53,6 @@ shape = SubResource("RectangleShape2D_aa344")
 [node name="ShootTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnHealthZero"]
+[connection signal="Hit" from="HurtBoxComponent" to="." method="OnTowerHit"]
 [connection signal="timeout" from="ShootTimer" to="." method="ShootProjectile"]

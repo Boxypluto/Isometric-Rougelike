@@ -1,0 +1,129 @@
+[gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://b3xu3thfk3w7v"]
+
+[ext_resource type="Texture2D" uid="uid://c3nhocq7mjgml" path="res://Objects/Enemies/Tower/Tower.png" id="1_fbott"]
+
+[sub_resource type="VisualShaderNodeCompare" id="VisualShaderNodeCompare_lfe3t"]
+default_input_values = [0, 0.0, 1, 0.5, 2, 1e-05]
+function = 2
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_wbmmf"]
+
+[sub_resource type="VisualShaderNodeCompare" id="VisualShaderNodeCompare_pp174"]
+output_port_for_preview = 0
+default_input_values = [0, false, 1, false, 2, 1e-05]
+type = 6
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_uxb7k"]
+output_port_for_preview = 0
+default_input_values = [0, false, 1, true, 2, false]
+op_type = 6
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_vhv7m"]
+constant = 0.5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_8hxdk"]
+source = 2
+texture = ExtResource("1_fbott")
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_1bjfl"]
+output_port_for_preview = 0
+default_input_values = [0, false, 1, Vector3(1, 1, 1), 2, Vector3(0, 0, 0)]
+op_type = 4
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_0lwn1"]
+parameter_name = "White"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_a07yo"]
+function = 2
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform bool White = false;
+
+
+
+void fragment() {
+// BooleanParameter:7
+	bool n_out7p0 = White;
+
+
+	vec4 n_out5p0;
+// Texture2D:5
+	n_out5p0 = texture(TEXTURE, UV);
+
+
+	vec3 n_out9p0;
+// ColorFunc:9
+	{
+		vec3 c = vec3(n_out5p0.xyz);
+		vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+		vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+		vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+		float d = q.x - min(q.w, q.y);
+		float e = 1.0e-10;
+		n_out9p0 = vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+	}
+
+
+// VectorDecompose:11
+	float n_out11p0 = n_out9p0.x;
+	float n_out11p1 = n_out9p0.y;
+	float n_out11p2 = n_out9p0.z;
+
+
+// Compare:10
+	float n_in10p1 = 0.50000;
+	bool n_out10p0 = n_out11p2 > n_in10p1;
+
+
+// Compare:13
+	bool n_out13p0 = n_out7p0 == n_out10p0;
+
+
+	bool n_out14p0;
+// Switch:14
+	bool n_in14p2 = false;
+	if (n_out7p0) {
+		n_out14p0 = n_out13p0;
+	} else {
+		n_out14p0 = n_in14p2;
+	}
+
+
+	vec3 n_out6p0;
+// Switch:6
+	vec3 n_in6p1 = vec3(1.00000, 1.00000, 1.00000);
+	n_out6p0 = mix(vec3(n_out5p0.xyz), n_in6p1, float(n_out14p0));
+
+
+// Output:0
+	COLOR.rgb = n_out6p0;
+
+
+}
+"
+graph_offset = Vector2(-541.782, 81.2477)
+mode = 1
+flags/light_only = false
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_vhv7m")
+nodes/fragment/3/position = Vector2(460, 360)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_8hxdk")
+nodes/fragment/5/position = Vector2(-640, 240)
+nodes/fragment/6/node = SubResource("VisualShaderNodeSwitch_1bjfl")
+nodes/fragment/6/position = Vector2(40, 200)
+nodes/fragment/7/node = SubResource("VisualShaderNodeBooleanParameter_0lwn1")
+nodes/fragment/7/position = Vector2(-700, 40)
+nodes/fragment/9/node = SubResource("VisualShaderNodeColorFunc_a07yo")
+nodes/fragment/9/position = Vector2(-360, 480)
+nodes/fragment/10/node = SubResource("VisualShaderNodeCompare_lfe3t")
+nodes/fragment/10/position = Vector2(120, 540)
+nodes/fragment/11/node = SubResource("VisualShaderNodeVectorDecompose_wbmmf")
+nodes/fragment/11/position = Vector2(-120, 500)
+nodes/fragment/13/node = SubResource("VisualShaderNodeCompare_pp174")
+nodes/fragment/13/position = Vector2(-240, 40)
+nodes/fragment/14/node = SubResource("VisualShaderNodeSwitch_uxb7k")
+nodes/fragment/14/position = Vector2(-27.9713, -19.9985)
+nodes/fragment/connections = PackedInt32Array(6, 0, 0, 0, 5, 0, 6, 2, 5, 0, 9, 0, 9, 0, 11, 0, 11, 2, 10, 0, 10, 0, 13, 1, 13, 0, 14, 1, 14, 0, 6, 0, 7, 0, 13, 0, 7, 0, 14, 0)

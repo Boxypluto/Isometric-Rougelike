@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="3_5am2u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ds8k3"]
-radius = 31.0
+radius = 26.0
 
 [node name="TowerTarget" type="Node2D"]
 texture_filter = 1

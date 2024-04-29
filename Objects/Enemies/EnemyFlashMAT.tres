@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c476aywx1ixii"]
+
+[ext_resource type="Shader" uid="uid://b3xu3thfk3w7v" path="res://Objects/Enemies/EnemyFlash.tres" id="1_8443t"]
+
+[resource]
+shader = ExtResource("1_8443t")
+shader_parameter/White = null

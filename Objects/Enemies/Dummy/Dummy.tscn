@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfp6m2dnsb2pa"]
+[gd_scene load_steps=10 format=3 uid="uid://dfp6m2dnsb2pa"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/Dummy/Dummy.gd" id="1_5b88o"]
+[ext_resource type="Shader" uid="uid://b3xu3thfk3w7v" path="res://Objects/Enemies/EnemyFlash.tres" id="1_l2wk7"]
 [ext_resource type="Texture2D" uid="uid://baenhglam4ysl" path="res://Objects/Enemies/Dummy/Dummy.png" id="1_lyhvl"]
 [ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="2_ro6rq"]
 [ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="3_rjwtb"]
 [ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="4_8kmbq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_prvxg"]
+shader = ExtResource("1_l2wk7")
+shader_parameter/White = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
 radius = 2.06155
@@ -14,6 +19,7 @@ size = Vector2(8, 16)
 
 [node name="Dummy" type="CharacterBody2D"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_prvxg")
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_5b88o")

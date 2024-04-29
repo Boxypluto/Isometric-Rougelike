@@ -2,9 +2,11 @@ extends Projectile
 class_name TowerProjectile
 
 var Target : Vector2
-var Speed : float = 2
+var Speed : float = 2.5
 
 var TargetNode : Node2D
+# Time is in frames
+var AirTime : float = 30
 
 signal NearTarget
 
@@ -12,6 +14,7 @@ signal NearTarget
 @onready var shadow : Sprite2D = $Shadow
 
 var TotalDist : float
+var inits : bool = false
 
 func _ready():
 	sprites.play("Max")
@@ -27,7 +30,6 @@ func _physics_process(delta):
 	var y = abs(sprites.position.y)
 	
 	var percent = (y)/MaxHeight
-	print(percent)
 	
 	if percent > 0.9:sprites.play("Normal")
 	elif percent > 0.8:sprites.play("Between")
