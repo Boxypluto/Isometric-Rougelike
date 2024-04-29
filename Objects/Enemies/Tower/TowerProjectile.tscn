@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgmvaawfvsunc"]
+
+[ext_resource type="Script" path="res://Objects/Enemies/Tower/TowerProjectile.gd" id="1_8au33"]
+[ext_resource type="SpriteFrames" uid="uid://bjfji1emempn7" path="res://Objects/Enemies/Tower/TowerProjectileSprites.tres" id="2_cyy3s"]
+[ext_resource type="Texture2D" uid="uid://ds2gtx2sykmia" path="res://Objects/Enemies/Tower/TowerProjectileShadow.png" id="3_px8tx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gfy5v"]
+
+[node name="TowerProjectile" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_8au33")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.498039)
+texture = ExtResource("3_px8tx")
+
+[node name="Sprites" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -48)
+sprite_frames = ExtResource("2_cyy3s")
+animation = &"Max"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_gfy5v")
+disabled = true

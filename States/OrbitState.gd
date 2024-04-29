@@ -20,5 +20,5 @@ func physics_update(_delta):
 	if ActorSprite: ActorSprite.rotation = Target.position.angle_to_point(Actor.position) + SpriteRotationOffset
 	
 	Angle += (Speed/Distance)
-	var Point : Vector2 = Target.position + (Vector2(cos(Angle), sin(Angle)) * Distance)
+	var Point : Vector2 = Target.position + ((Vector2(cos(Angle), sin(Angle)) * Distance) / Vector2(1, 2))
 	Actor.position =  Actor.position.lerp(Point, Smoothing)

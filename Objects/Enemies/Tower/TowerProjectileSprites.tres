@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bjfji1emempn7"]
+
+[ext_resource type="Texture2D" uid="uid://8h3gyxguyxte" path="res://Objects/Enemies/Tower/TowerProjectile.png" id="1_spjr4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbnx8"]
+atlas = ExtResource("1_spjr4")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1pym"]
+atlas = ExtResource("1_spjr4")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78rk2"]
+atlas = ExtResource("1_spjr4")
+region = Rect2(32, 0, 16, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbnx8")
+}],
+"loop": true,
+"name": &"Between",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1pym")
+}],
+"loop": true,
+"name": &"Max",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78rk2")
+}],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]

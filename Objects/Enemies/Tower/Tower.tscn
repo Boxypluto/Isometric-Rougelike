@@ -46,3 +46,8 @@ HurtBoxType = "Enemy"
 [node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBoxComponent"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_aa344")
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="ShootProjectile"]
