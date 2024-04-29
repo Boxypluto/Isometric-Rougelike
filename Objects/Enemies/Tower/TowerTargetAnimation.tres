@@ -1,0 +1,44 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cc1hu4q782l04"]
+
+[ext_resource type="Texture2D" uid="uid://cadhi1escsymn" path="res://Objects/Enemies/Tower/Target.png" id="1_lsbdu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqf7j"]
+atlas = ExtResource("1_lsbdu")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o0q5"]
+atlas = ExtResource("1_lsbdu")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrwq5"]
+atlas = ExtResource("1_lsbdu")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvtb1"]
+atlas = ExtResource("1_lsbdu")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqf7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o0q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrwq5")
+}],
+"loop": false,
+"name": &"Fire",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvtb1")
+}],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}]
