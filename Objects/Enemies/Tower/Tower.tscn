@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnqccr3eyfj36"]
+
+[ext_resource type="Script" path="res://Objects/Enemies/Tower/Tower.gd" id="1_u3vx4"]
+[ext_resource type="SpriteFrames" uid="uid://c62nu6tfw1b7g" path="res://Objects/Enemies/Tower/TowerAnimation.tres" id="2_xbjht"]
+[ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="3_a5mma"]
+[ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="4_24ps8"]
+[ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="5_q6ppk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
+radius = 2.06155
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aa344"]
+size = Vector2(8, 16)
+
+[node name="Tower" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_u3vx4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -1.5)
+shape = SubResource("CircleShape2D_fir61")
+disabled = true
+debug_color = Color(0.980392, 0, 0.396078, 0.419608)
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -19)
+sprite_frames = ExtResource("2_xbjht")
+autoplay = "default"
+frame_progress = 0.493323
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("3_a5mma")
+InitialMaxHealth = 10
+
+[node name="DeathComponent" type="Node2D" parent="." node_paths=PackedStringArray("ObjectParent")]
+script = ExtResource("4_24ps8")
+ObjectParent = NodePath("..")
+
+[node name="HurtBoxComponent" type="Area2D" parent="."]
+script = ExtResource("5_q6ppk")
+HurtBoxType = "Enemy"
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_aa344")

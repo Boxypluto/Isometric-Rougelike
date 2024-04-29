@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://co3hr8p30ged5"]
+[gd_scene load_steps=13 format=3 uid="uid://co3hr8p30ged5"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_seqry"]
 [ext_resource type="Texture2D" uid="uid://ucysq7b4l6oo" path="res://Player/PlayerPlaceholder.png" id="2_i0uht"]
-[ext_resource type="Texture2D" uid="uid://byny2wf013c2w" path="res://Player/Scrapped/Sword.png" id="5_0jaa6"]
 [ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="5_4wr88"]
 [ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="6_a2pee"]
 [ext_resource type="SpriteFrames" uid="uid://bgfj1cdpda4j4" path="res://Player/SlashAnimations.tres" id="6_tpkyy"]
@@ -96,7 +95,6 @@ InitialMaxHealth = 6
 visible = false
 position = Vector2(0, -6)
 rotation = -2.35619
-texture = ExtResource("5_0jaa6")
 offset = Vector2(0, -10)
 flip_h = true
 

@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://c62nu6tfw1b7g"]
+
+[ext_resource type="Texture2D" uid="uid://c3nhocq7mjgml" path="res://Objects/Enemies/Tower/Tower.png" id="1_mn77n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdf4p"]
+atlas = ExtResource("1_mn77n")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts0b4"]
+atlas = ExtResource("1_mn77n")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdsbm"]
+atlas = ExtResource("1_mn77n")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4h03"]
+atlas = ExtResource("1_mn77n")
+region = Rect2(96, 0, 32, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdf4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts0b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdsbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4h03")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

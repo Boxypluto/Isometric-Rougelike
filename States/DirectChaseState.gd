@@ -18,4 +18,6 @@ func physics_update(_delta):
 	if Actor.position.distance_to(Target.position) < Actor.velocity.length():
 		Actor.velocity = Actor.velocity.normalized() * Actor.position.distance_to(Target.position)
 	
+	Actor.velocity.y /= 2
+	
 	Actor.move_and_slide()
