@@ -11,6 +11,10 @@ extends Enemy
 # Sprite Animator
 @onready var animation : AnimatedSprite2D = $Animations
 
+# Audio Streams
+@onready var hit = $Hit
+@onready var screech = $Screech
+
 # Player
 @onready var player : CharacterBody2D = $"../../Player"
 # Dive Timer
@@ -30,6 +34,7 @@ func OnZeroHealth():
 	death.Kill()
 
 func OnBirdHit(damage):
+	hit.play()
 	health.DealDamage(damage)
 
 func _ready():
@@ -70,6 +75,7 @@ func _ready():
 
 func NearToPlayer():
 	
+	hit.play()
 	# Set Animation Speed to Normal
 	animation.speed_scale = 1
 	# Change to Chase State
@@ -94,6 +100,8 @@ func StartDive():
 	orbit_state.Smoothing = 0.001
 	# Rotate Sprite to Player
 	orbit_state.ActorSprite = animation
+	
+	screech.play()
 	
 	# Wait for DashDelay Seconds
 	await get_tree().create_timer(DashDelay).timeout

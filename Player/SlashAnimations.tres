@@ -26,6 +26,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5m2fm")
+}, {
+"duration": 0.1,
+"texture": null
 }],
 "loop": false,
 "name": &"Slash",

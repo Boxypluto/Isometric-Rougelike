@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://co3hr8p30ged5"]
+[gd_scene load_steps=15 format=3 uid="uid://co3hr8p30ged5"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_seqry"]
 [ext_resource type="Texture2D" uid="uid://ucysq7b4l6oo" path="res://Player/PlayerPlaceholder.png" id="2_i0uht"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="6_a2pee"]
 [ext_resource type="SpriteFrames" uid="uid://bgfj1cdpda4j4" path="res://Player/SlashAnimations.tres" id="6_tpkyy"]
 [ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="7_3y08f"]
+[ext_resource type="AudioStream" uid="uid://cmitmjgayatf4" path="res://SFX/Hit.wav" id="7_vo06u"]
+[ext_resource type="AudioStream" uid="uid://ctgb625w1cqs" path="res://SFX/Deep Hit.wav" id="8_6d4cl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkbr2"]
 radius = 2.23607
@@ -120,7 +122,14 @@ position = Vector2(7, 0)
 shape = SubResource("CircleShape2D_jynhi")
 disabled = true
 
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_vo06u")
+
+[node name="Deep Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_6d4cl")
+
 [connection signal="Hit" from="HurtBoxComponent" to="." method="PlayerIsHit"]
 [connection signal="Hit" from="BigHurtBoxComponent" to="." method="PlayerIsHit"]
 [connection signal="animation_finished" from="Slash" to="." method="SlashAnimationFinished"]
+[connection signal="Success" from="Slash/DamagingAreaComponent" to="." method="SuccessfulHit"]
 [connection signal="area_entered" from="Slash/DamagingAreaComponent" to="Slash/DamagingAreaComponent" method="AreaEntered"]

@@ -43,3 +43,6 @@ y_sort_enabled = true
 
 [node name="Enemies" type="Node2D" parent="Y-Sortables"]
 y_sort_enabled = true
+
+[node name="Objects" type="Node2D" parent="Y-Sortables"]
+y_sort_enabled = true

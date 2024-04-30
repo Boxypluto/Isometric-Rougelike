@@ -10,6 +10,10 @@ const ATTACKING_WALK_SPEED = 96/2
 # Frames, counts the physics frames
 var frames : int
 
+# Audio Players
+@onready var hit : AudioStreamPlayer2D = $Hit
+@onready var deep_hit : AudioStreamPlayer2D = $"Deep Hit"
+
 # Slash
 @onready var slash : AnimatedSprite2D = $Slash
 @onready var slash_damager : DamagingAreaComponent = $Slash/DamagingAreaComponent
@@ -107,7 +111,7 @@ func _input(event):
 		hurt_box_shape.disabled = true
 	
 	if event.is_action_pressed("Attack"):
-		if not Attacking:
+		if not Attacking and slash.animation == "Blank":
 			Attacking = true
 			slash.animation = "Slash"
 			slash_collision.disabled = false
@@ -129,4 +133,8 @@ func SlashAnimationFinished():
 	if slash.animation == "Slash":
 		slash_collision.disabled = true
 		Attacking = false
+		await get_tree().create_timer(0.15).timeout
 		slash.animation = "Blank"
+
+func SuccessfulHit():
+	hit.play()

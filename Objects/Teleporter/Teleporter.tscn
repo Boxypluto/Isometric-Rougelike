@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://4v0upwg4bvax"]
+
+[ext_resource type="Script" path="res://Objects/Teleporter/Teleporter.gd" id="1_enwvx"]
+[ext_resource type="Texture2D" uid="uid://b4eeftslggupm" path="res://Objects/Teleporter/Teleporter.png" id="2_p5ki8"]
+
+[node name="Teleporter" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_enwvx")
+
+[node name="Tele1" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tele1"]
+texture = ExtResource("2_p5ki8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tele1"]
+build_mode = 1
+polygon = PackedVector2Array(0, -4, -8, 0, 0, 4, 8, 0)
+
+[node name="Tele2" type="Area2D" parent="."]
+position = Vector2(22, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tele2"]
+position = Vector2(-0.200001, 0)
+texture = ExtResource("2_p5ki8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tele2"]
+position = Vector2(-0.200001, 0)
+build_mode = 1
+polygon = PackedVector2Array(0, -4, -8, 0, 0, 4, 8, 0)
+
+[connection signal="area_entered" from="Tele1" to="." method="TeleOneEntered"]
+[connection signal="area_entered" from="Tele2" to="." method="TeleTwoEntered"]

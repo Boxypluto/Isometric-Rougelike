@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bp5ebenvevhe8"]
+[gd_scene load_steps=21 format=3 uid="uid://bp5ebenvevhe8"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/Bird/Bird.gd" id="1_85l0l"]
 [ext_resource type="Material" uid="uid://c476aywx1ixii" path="res://Objects/Enemies/EnemyFlashMAT.tres" id="1_cvcb0"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" path="res://States/WaitForNearbyState.gd" id="8_l2c1s"]
 [ext_resource type="Script" path="res://States/OrbitState.gd" id="9_twfpn"]
 [ext_resource type="Script" path="res://States/MoveToPointState.gd" id="10_8iixe"]
+[ext_resource type="AudioStream" uid="uid://dpiwvhmxcxwxr" path="res://SFX/BirdHit.wav" id="13_kc77m"]
+[ext_resource type="AudioStream" uid="uid://bjb68t3o2tn4o" path="res://SFX/BirdScreech1.wav" id="14_70plx"]
+[ext_resource type="AudioStream" uid="uid://d2s2ujr284dli" path="res://SFX/BirdScreech2.wav" id="15_vtyg2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
 radius = 2.06155
@@ -21,6 +24,21 @@ size = Vector2(8, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7vqgq"]
 radius = 4.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ohaun"]
+random_pitch = 2.23
+streams_count = 1
+stream_0/stream = ExtResource("13_kc77m")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7obki"]
+playback_mode = 1
+random_pitch = 2.0
+streams_count = 2
+stream_0/stream = ExtResource("14_70plx")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("15_vtyg2")
+stream_1/weight = 1.0
 
 [node name="Bird" type="CharacterBody2D"]
 texture_filter = 1
@@ -89,6 +107,12 @@ script = ExtResource("9_twfpn")
 
 [node name="MoveToPointState" type="Node" parent="StateMachine"]
 script = ExtResource("10_8iixe")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ohaun")
+
+[node name="Screech" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_7obki")
 
 [connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnZeroHealth"]
 [connection signal="Hit" from="HurtBoxComponent" to="." method="OnBirdHit"]
