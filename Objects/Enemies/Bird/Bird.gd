@@ -65,6 +65,8 @@ func _ready():
 	# State Machine Setup
 	state_machine.initial_state = nearby_state
 	state_machine.setup()
+	
+	super()
 
 func NearToPlayer():
 	

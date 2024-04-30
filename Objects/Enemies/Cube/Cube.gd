@@ -38,6 +38,8 @@ var Target = AnimatedSprite2D.new()
 var frame : int = 0
 var Idle : bool = true
 
+var FlashMat
+
 func _ready():
 	
 	# Setup Target
@@ -53,6 +55,11 @@ func _ready():
 	# Setup State Machine
 	state_machine.initial_state = blank_state
 	state_machine.setup()
+	
+	super()
+	
+	FlashMat = material
+	material = null
 
 #func _draw():
 	#draw_line(Vector2.ZERO, LineEndPos - position, LineColor, 1)
@@ -112,8 +119,12 @@ func _physics_process(delta):
 
 func OnCubeHit(damage):
 	health.DealDamage(damage)
+	material = FlashMat
+	await FlashEnded
+	material = null
 
 func OnHealthZero():
+	Target.queue_free()
 	death.Kill() 
 
 func FinishedDash():

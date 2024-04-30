@@ -32,6 +32,7 @@ shape = SubResource("CircleShape2D_fir61")
 debug_color = Color(0.980392, 0, 0.396078, 0.419608)
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 position = Vector2(0, -8)
 sprite_frames = ExtResource("2_o6i6q")
 animation = &"Slam"
@@ -39,7 +40,7 @@ autoplay = "Idle"
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_dfh8m")
-InitialMaxHealth = 3
+InitialMaxHealth = 7
 
 [node name="DeathComponent" type="Node2D" parent="." node_paths=PackedStringArray("ObjectParent")]
 script = ExtResource("4_0366o")

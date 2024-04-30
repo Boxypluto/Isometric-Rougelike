@@ -82,6 +82,7 @@ func _ready():
 	state_machine.setup()
 	
 	UnsetAllCollisions()
+	super()
 
 func _process(delta):
 	if not Attacking: SetDirectionToPlayer()

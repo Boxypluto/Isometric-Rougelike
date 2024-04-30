@@ -33,6 +33,7 @@ shape = SubResource("CircleShape2D_fir61")
 debug_color = Color(0.980392, 0, 0.396078, 0.419608)
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 position = Vector2(0, -8)
 sprite_frames = ExtResource("2_tvyso")
 animation = &"Cube"
@@ -66,6 +67,7 @@ script = ExtResource("8_p0kqh")
 script = ExtResource("8_fj77s")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 4
 
 [node name="DamagingAreaComponent" type="Area2D" parent="."]
 collision_layer = 3

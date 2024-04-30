@@ -3,5 +3,6 @@
 [ext_resource type="Shader" uid="uid://b3xu3thfk3w7v" path="res://Objects/Enemies/EnemyFlash.tres" id="1_8443t"]
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_8443t")
-shader_parameter/White = null
+shader_parameter/White = false

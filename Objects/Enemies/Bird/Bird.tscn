@@ -38,6 +38,7 @@ disabled = true
 debug_color = Color(0.980392, 0, 0.396078, 0.419608)
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 position = Vector2(0, -8)
 sprite_frames = ExtResource("2_j4jd8")
 animation = &"Fly"
@@ -46,7 +47,7 @@ frame_progress = 0.374199
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_2jprj")
-InitialMaxHealth = 1
+InitialMaxHealth = 4
 
 [node name="DeathComponent" type="Node2D" parent="." node_paths=PackedStringArray("ObjectParent")]
 script = ExtResource("4_6quqm")
