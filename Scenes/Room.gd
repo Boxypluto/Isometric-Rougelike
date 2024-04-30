@@ -13,8 +13,8 @@ func _ready():
 			EnemyGroupChildren[index].RoomNode = self
 
 func _process(_delta):
-	var IsEn = false
+	var IsEnemyRoom = false
 	for key in EnemiesDict.values():
 		if key != null:
-			IsEn = true
-	if IsEn == false and not GameManager.DEBUG_MODE: GameManager.ProgressRooms(self)
+			IsEnemyRoom = true
+	if IsEnemyRoom == false and not GameManager.DEBUG_MODE: GameManager.ProgressRooms(self)

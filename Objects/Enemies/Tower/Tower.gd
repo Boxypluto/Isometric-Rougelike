@@ -6,6 +6,9 @@ const TOWER_TARGET : PackedScene = preload("res://Objects/Enemies/Tower/TowerTar
 # Player
 @onready var player : CharacterBody2D = $"../../Player"
 
+# Audio Steams
+@onready var bong : AudioStreamPlayer2D = $Bong
+
 @onready var enemies = $".."
 
 func ShootProjectile():
@@ -40,6 +43,8 @@ func ShootProjectile():
 	projectile.TotalDist = projectile.position.distance_to(projectile.Target)
 	# Set the Target Node to the TARGET
 	projectile.TargetNode = target
+	
+	bong.play()
 
 func OnHealthZero():
 	death.Kill()

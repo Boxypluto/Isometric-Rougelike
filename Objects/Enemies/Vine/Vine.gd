@@ -15,6 +15,9 @@ var AttackStartDistance = 40
 @onready var damaging_area_component = $DamagingAreaComponent
 @onready var blank_state = $StateMachine/BlankState
 
+# Audio Steams
+@onready var slap = $Slap
+
 # State Mahcine
 @onready var state_machine = $StateMachine
 # States
@@ -153,6 +156,7 @@ func PlayerClose():
 func AnimationFinished():
 	if animations.animation == SlamAnimations[Direction]["Anim"]:
 		Collisions[CurrentAnimDict[Direction]["Coll"]].disabled = false
+		slap.play()
 		await get_tree().create_timer(0.3).timeout
 		UnsetAllCollisions()
 		Attacking = false

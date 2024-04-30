@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dhlt64s12lncd"]
+[gd_scene load_steps=14 format=3 uid="uid://dhlt64s12lncd"]
 
 [ext_resource type="Material" uid="uid://c476aywx1ixii" path="res://Objects/Enemies/EnemyFlashMAT.tres" id="1_ax8u5"]
 [ext_resource type="Script" path="res://Objects/Enemies/Vine/Vine.gd" id="1_govq1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Classes/StateMachine.gd" id="7_r8uhv"]
 [ext_resource type="Script" path="res://States/WaitForNearbyState.gd" id="8_18a5j"]
 [ext_resource type="Script" path="res://States/BlankState.gd" id="9_o7o7m"]
+[ext_resource type="AudioStream" uid="uid://cmw6vbyq2ttxi" path="res://SFX/Slap.wav" id="11_er5ka"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
 radius = 2.06155
@@ -91,6 +92,9 @@ script = ExtResource("8_18a5j")
 
 [node name="BlankState" type="Node" parent="StateMachine"]
 script = ExtResource("9_o7o7m")
+
+[node name="Slap" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_er5ka")
 
 [connection signal="animation_finished" from="Animations" to="." method="AnimationFinished"]
 [connection signal="frame_changed" from="Animations" to="." method="FrameChanged"]
