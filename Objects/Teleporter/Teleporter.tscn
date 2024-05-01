@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://4v0upwg4bvax"]
+[gd_scene load_steps=6 format=3 uid="uid://4v0upwg4bvax"]
 
 [ext_resource type="Script" path="res://Objects/Teleporter/Teleporter.gd" id="1_enwvx"]
 [ext_resource type="SpriteFrames" uid="uid://b1p2rke3iwuub" path="res://Objects/Teleporter/TeleporterFrames.tres" id="2_svwqr"]
 [ext_resource type="AudioStream" uid="uid://d7asx7hjajrb" path="res://SFX/Blink.wav" id="3_8h80d"]
+[ext_resource type="SpriteFrames" uid="uid://bjl0lqlyec2iq" path="res://Objects/Teleporter/TeleporterEffect.tres" id="4_0lidd"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rd483"]
 random_pitch = 1.3
@@ -27,6 +28,12 @@ autoplay = "On"
 build_mode = 1
 polygon = PackedVector2Array(0, -4, -8, 0, 0, 4, 8, 0)
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tele1"]
+position = Vector2(0, -20)
+sprite_frames = ExtResource("4_0lidd")
+animation = &"Teleport"
+autoplay = "Teleport"
+
 [node name="Tele2" type="Area2D" parent="."]
 position = Vector2(22, 0)
 
@@ -40,6 +47,12 @@ animation = &"On"
 position = Vector2(-0.200001, 0)
 build_mode = 1
 polygon = PackedVector2Array(0, -4, -8, 0, 0, 4, 8, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tele2"]
+position = Vector2(0, -20)
+sprite_frames = ExtResource("4_0lidd")
+animation = &"Teleport"
+autoplay = "Teleport"
 
 [node name="Blink" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_rd483")

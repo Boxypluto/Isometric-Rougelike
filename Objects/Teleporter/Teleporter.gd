@@ -9,10 +9,17 @@ extends Node2D
 @onready var animation_1 = $Tele1/Animation1
 @onready var animation_2 = $Tele2/Animation2
 
+@onready var teleport_effect_1 = $Tele1/AnimatedSprite2D
+@onready var teleport_effect_2 = $Tele2/AnimatedSprite2D
+
 # Audio Stream
 @onready var blink = $Blink
 
 var teleporting : bool = false
+
+func _ready():
+	teleport_effect_1.frame = 3
+	teleport_effect_2.frame = 3
 
 func TeleOneEntered(HitBox : HurtBoxComponent):
 	if not teleporting: TeleporterEntered(HitBox, tele_2)
@@ -21,6 +28,8 @@ func TeleTwoEntered(HitBox : HurtBoxComponent):
 	if not teleporting: TeleporterEntered(HitBox, tele_1)
 
 func TeleporterEntered(HitBox : HurtBoxComponent, TeleTo : Area2D):
+	teleport_effect_1.play("Teleport")
+	teleport_effect_2.play("Teleport")
 	blink.play()
 	print("TO: " + TeleTo.name)
 	teleporting = true

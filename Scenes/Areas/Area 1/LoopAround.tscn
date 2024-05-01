@@ -581,7 +581,7 @@ position = Vector2(86, -110)
 
 [node name="Vine" parent="Y-Sortables/Enemies" index="3" instance=ExtResource("4_fnhbu")]
 material = SubResource("ShaderMaterial_5vygs")
-position = Vector2(-142, -84)
+position = Vector2(-159, -87)
 
 [node name="Vine2" parent="Y-Sortables/Enemies" index="4" instance=ExtResource("4_fnhbu")]
 material = SubResource("ShaderMaterial_7qoje")

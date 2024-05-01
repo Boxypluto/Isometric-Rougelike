@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://bjl0lqlyec2iq"]
+
+[ext_resource type="Texture2D" uid="uid://dg0bk7sif836f" path="res://Objects/Teleporter/TeleportEffect.png" id="1_06pxo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3bi3"]
+atlas = ExtResource("1_06pxo")
+region = Rect2(0, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcg2c"]
+atlas = ExtResource("1_06pxo")
+region = Rect2(16, 0, 16, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3bi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcg2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3bi3")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Teleport",
+"speed": 12.0
+}]

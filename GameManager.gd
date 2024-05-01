@@ -32,7 +32,7 @@ var Area3 : Array = [
 	preload("res://Scenes/Areas/Area 3/Spread.tscn")
 ]
 
-var AreaLevelCount : int = 3
+var AreaLevelCount : int = 1
 
 var Areas : Dictionary = {
 	"Area1" : Area1,
@@ -40,12 +40,23 @@ var Areas : Dictionary = {
 	"Area3" : Area3
 }
 
+var AreaMusicList = [
+	preload("res://Music/FloweringSeaStacks.mp3"),
+	preload("res://Music/TheSnowstormBelowTheWorld.mp3"),
+	preload("res://Music/KingdomOfTheRainingMountains.mp3")
+]
+
 var WorldDictionary : Dictionary = {}
 var AreaArray : Array
 
 var CurrentRoomIndex : int
 var CurrentAreaIndex : int
 var CurrentRoomScene : Node
+
+@onready var MusicPlayer = AudioStreamPlayer.new()
+
+func _ready():
+	add_child(MusicPlayer)
 
 func GenerateRooms():
 	
@@ -81,16 +92,21 @@ func StartGame(scene_to_remove = null):
 	var room = WorldDictionary.values()[CurrentAreaIndex][CurrentRoomIndex].instantiate()
 	get_tree().root.add_child(room)
 	
+	MusicPlayer.stream = AreaMusicList[CurrentAreaIndex]
+	MusicPlayer.play()
+	
 	if scene_to_remove is Node:
 		scene_to_remove.queue_free()
 
 func ProgressRooms(scene_to_remove = null):
 	
-	if not CurrentAreaIndex < 3:
+	if not CurrentAreaIndex < 2:
 		print("CONGRADULATIONS YOU FOUND ALL 7 NOTEBOOKS!!!!!!!!!!!!!!!!!!!!?!?!")
 	if CurrentRoomIndex == len(WorldDictionary.values()[CurrentAreaIndex]) - 1:
 		CurrentAreaIndex += 1
 		CurrentRoomIndex = 0
+		MusicPlayer.stream = AreaMusicList[CurrentAreaIndex]
+		MusicPlayer.play()
 	else:
 		CurrentRoomIndex += 1
 	
