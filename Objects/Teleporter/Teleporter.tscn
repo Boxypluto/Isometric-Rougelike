@@ -11,12 +11,14 @@ stream_0/stream = ExtResource("3_8h80d")
 stream_0/weight = 1.0
 
 [node name="Teleporter" type="Node2D"]
+z_index = -1
 texture_filter = 1
 script = ExtResource("1_enwvx")
 
 [node name="Tele1" type="Area2D" parent="."]
 
 [node name="Animation1" type="AnimatedSprite2D" parent="Tele1"]
+y_sort_enabled = true
 sprite_frames = ExtResource("2_svwqr")
 animation = &"Off"
 autoplay = "On"
@@ -29,6 +31,7 @@ polygon = PackedVector2Array(0, -4, -8, 0, 0, 4, 8, 0)
 position = Vector2(22, 0)
 
 [node name="Animation2" type="AnimatedSprite2D" parent="Tele2"]
+y_sort_enabled = true
 position = Vector2(-0.200001, 0)
 sprite_frames = ExtResource("2_svwqr")
 animation = &"On"
