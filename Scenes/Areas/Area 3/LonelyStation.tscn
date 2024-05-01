@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj60xwhkjvjo0"]
+[gd_scene load_steps=4 format=3 uid="uid://cj60xwhkjvjo0"]
 
 [ext_resource type="PackedScene" uid="uid://bemq8nyf8v5t2" path="res://Scenes/Template Room.tscn" id="1_mo6aa"]
 [ext_resource type="PackedScene" uid="uid://4v0upwg4bvax" path="res://Objects/Teleporter/Teleporter.tscn" id="2_1u5bs"]
+[ext_resource type="PackedScene" uid="uid://brddgd2254uhc" path="res://Objects/Enemies/Blaster/Blaster.tscn" id="3_7kw3r"]
 
 [node name="Room" instance=ExtResource("1_mo6aa")]
 
@@ -10,6 +11,9 @@ layer_1/tile_data = PackedInt32Array(-2752497, 327680, 29, -2752496, 327680, 29,
 
 [node name="Player" parent="Y-Sortables" index="1"]
 position = Vector2(-60, -1)
+
+[node name="Blaster" parent="Y-Sortables/Enemies" index="0" instance=ExtResource("3_7kw3r")]
+position = Vector2(-31, -81)
 
 [node name="Teleporter" parent="Y-Sortables/Objects" index="0" instance=ExtResource("2_1u5bs")]
 position = Vector2(-96, -32)

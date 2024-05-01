@@ -39,6 +39,7 @@ var frame : int = 0
 var Idle : bool = true
 
 var FlashMat
+var Started = false
 
 func _ready():
 	
@@ -60,62 +61,66 @@ func _ready():
 	
 	FlashMat = material
 	material = null
+	
+	Started = true
 
 #func _draw():
 	#draw_line(Vector2.ZERO, LineEndPos - position, LineColor, 1)
 
 func _process(delta):
 	
-	frame += 1
-	
-	cast.target_position = player.global_position - cast.global_position
-	if cast.is_colliding():
-		LineEndPos = cast.get_collision_point()
-		PlayerInSight = false
-		LineColor = Color.DODGER_BLUE
-	else:
-		LineEndPos = player.global_position
-		PlayerInSight = true
-		LineColor = Color.CRIMSON
-	
-	queue_redraw()
+	if Started:
+		frame += 1
+		
+		cast.target_position = player.global_position - cast.global_position
+		if cast.is_colliding():
+			LineEndPos = cast.get_collision_point()
+			PlayerInSight = false
+			LineColor = Color.DODGER_BLUE
+		else:
+			LineEndPos = player.global_position
+			PlayerInSight = true
+			LineColor = Color.CRIMSON
+		
+		queue_redraw()
 
 func _physics_process(delta):
 	
-	if Idle:
-		if PlayerInSight:
-			WaitedFrames += 1
-			Target.play("Target")
-			if pointer.animation != "Grow": pointer.animation = "Grow"
-			pointer.frame = floorf((WaitedFrames/float(WaitFrames))*4)-1
-			print(pointer.frame)
+	if Started:
+		if Idle:
+			if PlayerInSight:
+				WaitedFrames += 1
+				Target.play("Target")
+				if pointer.animation != "Grow": pointer.animation = "Grow"
+				pointer.frame = floorf((WaitedFrames/float(WaitFrames))*4)-1
+				print(pointer.frame)
+			else:
+				WaitedFrames = 0
+				Target.play("Blank")
+				if pointer.animation != "Shrink": pointer.play("Shrink")
+			
+			if WaitedFrames > WaitFrames:
+				Idle = false
+				move_state.TargetPos = player.position
+				animations.speed_scale = 0.5
+				animations.modulate = Color.from_hsv(0.8, clamp(WaitedFrames/float(WaitFrames), 0, 1)*0.6, (clamp(WaitedFrames/float(WaitFrames), 0, 1)*2) + 1)
+				await get_tree().create_timer(WaitTime).timeout
+				animations.speed_scale = 2
+				WaitedFrames = 0
+				state_machine.change_state(move_state.name)
+				Dashing = true
+			else:
+				animations.speed_scale = 1 + (float(WaitedFrames)/WaitFrames/2.0)
+				animations.modulate = Color.from_hsv(0, clamp(WaitedFrames/float(WaitFrames), 0, 1)*0.6, (clamp(WaitedFrames/float(WaitFrames), 0, 1)*2) + 1)
+		
 		else:
-			WaitedFrames = 0
-			Target.play("Blank")
 			if pointer.animation != "Shrink": pointer.play("Shrink")
 		
-		if WaitedFrames > WaitFrames:
-			Idle = false
-			move_state.TargetPos = player.position
-			animations.speed_scale = 0.5
-			animations.modulate = Color.from_hsv(0.8, clamp(WaitedFrames/float(WaitFrames), 0, 1)*0.6, (clamp(WaitedFrames/float(WaitFrames), 0, 1)*2) + 1)
-			await get_tree().create_timer(WaitTime).timeout
-			animations.speed_scale = 2
-			WaitedFrames = 0
-			state_machine.change_state(move_state.name)
-			Dashing = true
-		else:
-			animations.speed_scale = 1 + (float(WaitedFrames)/WaitFrames/2.0)
-			animations.modulate = Color.from_hsv(0, clamp(WaitedFrames/float(WaitFrames), 0, 1)*0.6, (clamp(WaitedFrames/float(WaitFrames), 0, 1)*2) + 1)
-	
-	else:
-		if pointer.animation != "Shrink": pointer.play("Shrink")
-	
-	pointer.modulate = animations.modulate
-	pointer.rotation = pointer.global_position.angle_to_point(player.global_position)
-	
-	if frame % 2 == 0:
-		AfterImage()
+		pointer.modulate = animations.modulate
+		pointer.rotation = pointer.global_position.angle_to_point(player.global_position)
+		
+		if frame % 2 == 0:
+			AfterImage()
 
 func OnCubeHit(damage):
 	health.DealDamage(damage)

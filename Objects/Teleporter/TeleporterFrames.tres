@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://b1p2rke3iwuub"]
+
+[ext_resource type="Texture2D" uid="uid://dlnivlaqpyav1" path="res://Objects/Teleporter/TeleporterOff.png" id="1_8qwen"]
+[ext_resource type="Texture2D" uid="uid://b4eeftslggupm" path="res://Objects/Teleporter/Teleporter.png" id="2_nekqw"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8qwen")
+}],
+"loop": true,
+"name": &"Off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nekqw")
+}],
+"loop": true,
+"name": &"On",
+"speed": 5.0
+}]

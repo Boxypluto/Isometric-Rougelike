@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bl1f4yupoqt8a"]
+
+[ext_resource type="Texture2D" uid="uid://bachv2govr4ja" path="res://Objects/Lobby/BlankSlider.png" id="1_48c8l"]
+[ext_resource type="StyleBox" uid="uid://dqtneli1bq6y" path="res://Objects/Lobby/Box.tres" id="2_ksklq"]
+
+[resource]
+HSlider/icons/grabber = ExtResource("1_48c8l")
+HSlider/icons/grabber_highlight = ExtResource("1_48c8l")
+HSlider/styles/grabber_area = ExtResource("2_ksklq")
+HSlider/styles/grabber_area_highlight = ExtResource("2_ksklq")
+HSlider/styles/slider = ExtResource("2_ksklq")

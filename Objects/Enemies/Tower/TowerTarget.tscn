@@ -31,5 +31,6 @@ disabled = true
 
 [node name="Crash" type="AudioStreamPlayer2D" parent="Mover"]
 stream = ExtResource("4_djk3e")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Mover/DamagingAreaComponent" to="Mover/DamagingAreaComponent" method="AreaEntered"]

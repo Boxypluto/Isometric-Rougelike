@@ -52,10 +52,12 @@ position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_aa344")
 
 [node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="Bong" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_3073k")
+bus = &"SFX"
 
 [connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnHealthZero"]
 [connection signal="Hit" from="HurtBoxComponent" to="." method="OnTowerHit"]

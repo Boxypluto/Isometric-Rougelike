@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://ffeeaegdx4qa"]
+
+[ext_resource type="Script" path="res://Objects/Enemies/Blaster/BlasterBlast.gd" id="1_ai723"]
+[ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="2_wpqcx"]
+[ext_resource type="Texture2D" uid="uid://1rm5yxr7l5xs" path="res://Objects/Enemies/Blaster/Blast.png" id="3_s83aq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ciyyf"]
+radius = 5.09902
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5lacj"]
+radius = 5.09902
+
+[node name="BlasterBlast" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_ai723")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_s83aq")
+
+[node name="DamagingAreaComponent" type="Area2D" parent="."]
+script = ExtResource("2_wpqcx")
+hitTags = Array[String](["Player"])
+Damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamagingAreaComponent"]
+shape = SubResource("CircleShape2D_ciyyf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_5lacj")
+disabled = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[connection signal="Success" from="DamagingAreaComponent" to="." method="HitPlayer"]
+[connection signal="area_entered" from="DamagingAreaComponent" to="DamagingAreaComponent" method="AreaEntered"]
+[connection signal="timeout" from="DeathTimer" to="." method="DeathTimeout"]

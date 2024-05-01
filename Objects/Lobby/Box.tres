@@ -1,0 +1,15 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dqtneli1bq6y"]
+
+[ext_resource type="Texture2D" uid="uid://bt3daelfvxm48" path="res://Objects/Lobby/9-PATCH.png" id="1_v0rsx"]
+
+[resource]
+content_margin_left = 0.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource("1_v0rsx")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

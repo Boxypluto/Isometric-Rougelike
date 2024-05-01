@@ -102,7 +102,7 @@ func _process(_delta):
 
 func _input(event):
 	
-	if event.is_action_pressed("Dash") and (not PlayerIsDashing) and (not DashIsOnCooldown):
+	if event.is_action_pressed("Dash") and (not PlayerIsDashing) and (not DashIsOnCooldown) and false:
 		StartedDashFrame = frames
 		PlayerIsDashing = true
 		PlayerCanMove = false
@@ -117,6 +117,7 @@ func _input(event):
 			slash_collision.disabled = false
 			slash.flip_v = not slash.flip_v
 			slash.play()
+			hit.play()
 
 func player_to_mouse_angle():
 	return (global_position - Vector2(0, 8)).angle_to_point(get_global_mouse_position())
@@ -128,6 +129,7 @@ func PlayerIsHit(damage):
 	Camera.cause_shake(2)
 	print("Player took " + str(damage) + "!")
 	health.DealDamage(damage)
+	deep_hit.play()
 
 func SlashAnimationFinished():
 	if slash.animation == "Slash":

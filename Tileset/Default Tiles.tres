@@ -353,6 +353,7 @@ texture = ExtResource("1_6u5ss")
 10:35/size_in_atlas = Vector2i(6, 6)
 10:35/0 = 0
 10:35/0/texture_origin = Vector2i(0, 36)
+10:35/0/y_sort_origin = -28
 10:35/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:35/0/physics_layer_0/angular_velocity = 0.0
 10:35/0/physics_layer_1/linear_velocity = Vector2(0, 0)
@@ -369,6 +370,14 @@ texture = ExtResource("1_6u5ss")
 6:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 0, -4, 8, 0, 0, 4)
 6:35/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 6:35/0/physics_layer_1/angular_velocity = 0.0
+5:18/size_in_atlas = Vector2i(1, 4)
+5:18/0 = 0
+5:18/0/texture_origin = Vector2i(0, -20)
+5:18/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:18/0/physics_layer_0/angular_velocity = 0.0
+5:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -4, -8, 0, 0, 4, 8, 0)
+5:18/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+5:18/0/physics_layer_1/angular_velocity = 0.0
 
 [resource]
 tile_shape = 1
