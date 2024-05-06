@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://byrfsem8sytbp"]
+
+[ext_resource type="Texture2D" uid="uid://dsa607iordmst" path="res://Bosses/Floweye/GuardianLaser.png" id="1_ybsba"]
+
+[resource]
+texture = ExtResource("1_ybsba")
+texture_margin_left = 32.0
+texture_margin_top = 62.0
+texture_margin_right = 32.0
+axis_stretch_vertical = 1

@@ -48,6 +48,8 @@ var AreaMusicList = [
 	preload("res://Music/FinalAscent.mp3")
 ]
 
+const WEED_OF_LIFE = preload("res://Music/WeedofLife.mp3")
+
 var WorldDictionary : Dictionary = {}
 var AreaArray : Array
 
@@ -115,6 +117,11 @@ func ProgressRooms(scene_to_remove = null):
 		MusicPlayer.play()
 	else:
 		CurrentRoomIndex += 1
+	
+	if CurrentRoomIndex == AreaLevelCount:
+			if CurrentAreaIndex == 0:
+				MusicPlayer.stream = WEED_OF_LIFE
+				MusicPlayer.play()
 	
 	var room = WorldDictionary.values()[CurrentAreaIndex][CurrentRoomIndex].instantiate()
 	get_tree().root.add_child(room)

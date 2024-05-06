@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/FinalAscent.mp3-23c03f8cdf907f2e9d6a1b4c6ef77
 [params]
 
 loop=true
-loop_offset=204.8
+loop_offset=102.47
 bpm=150.0
 beat_count=0
 bar_beats=4

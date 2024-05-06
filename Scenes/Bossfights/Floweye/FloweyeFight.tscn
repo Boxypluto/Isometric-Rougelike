@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://8pvtns5hj4s0"]
+[gd_scene load_steps=18 format=3 uid="uid://8pvtns5hj4s0"]
 
 [ext_resource type="PackedScene" uid="uid://bemq8nyf8v5t2" path="res://Scenes/Template Room.tscn" id="1_o6o00"]
-[ext_resource type="AudioStream" uid="uid://b6kt3gq6gwiwy" path="res://Music/WeedofLife.mp3" id="2_ehsba"]
 [ext_resource type="Texture2D" uid="uid://qfwufy1f6jcr" path="res://Bosses/Floweye/Stem.png" id="2_ijf5f"]
 [ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/Floweye.gd" id="2_vg1f6"]
 [ext_resource type="Theme" uid="uid://bl1f4yupoqt8a" path="res://Objects/Lobby/UI Theme.tres" id="3_8341r"]
@@ -23,12 +22,7 @@
 texture_filter = 1
 IsEnemyRoom = false
 
-[node name="Weed of Life" type="AudioStreamPlayer" parent="." index="0"]
-stream = ExtResource("2_ehsba")
-autoplay = true
-bus = &"Music"
-
-[node name="Y-Sortables" parent="." index="3"]
+[node name="Y-Sortables" parent="." index="2"]
 position = Vector2(0, 16)
 
 [node name="TileMap" parent="Y-Sortables" index="0"]
@@ -65,22 +59,26 @@ max_value = 72.0
 show_percentage = false
 
 [node name="Stem" type="Sprite2D" parent="Y-Sortables/Floweye" index="4"]
+use_parent_material = true
 position = Vector2(0, 24)
 texture = ExtResource("2_ijf5f")
 offset = Vector2(0, -24)
 
 [node name="Face" type="Node2D" parent="Y-Sortables/Floweye" index="5"]
+use_parent_material = true
 script = ExtResource("6_k3a8m")
 Amplitude = 8.0
 Frequency = 0.5
 
 [node name="Flower" type="Sprite2D" parent="Y-Sortables/Floweye/Face" index="0"]
+use_parent_material = true
 position = Vector2(0, -32)
 texture = ExtResource("3_ku3i0")
 script = ExtResource("5_ufu2a")
 speed = 1.0
 
 [node name="Eye" type="Sprite2D" parent="Y-Sortables/Floweye/Face" index="1"]
+use_parent_material = true
 position = Vector2(0, -32)
 texture = ExtResource("4_2baor")
 
@@ -184,7 +182,7 @@ script = ExtResource("7_r618m")
 [node name="PedalVolleyState" type="Node" parent="Y-Sortables/Floweye/StateMachine" index="2"]
 script = ExtResource("16_321it")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource("18_jiip7")
 
 [connection signal="HealthReachedZero" from="Y-Sortables/Floweye/HealthComponent" to="Y-Sortables/Floweye" method="OnHealthZero"]
