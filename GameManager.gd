@@ -32,6 +32,8 @@ var Area3 : Array = [
 	preload("res://Scenes/Areas/Area 3/Spread.tscn")
 ]
 
+const FLOWEYE_FIGHT = preload("res://Scenes/Bossfights/Floweye/FloweyeFight.tscn")
+
 var AreaLevelCount : int = 1
 
 var Areas : Dictionary = {
@@ -80,6 +82,9 @@ func GenerateRooms():
 			LevelList.pop_at(LevelIndex)
 			
 			WorldDictionary[area][room] = Level
+		
+		if area == 0:
+			WorldDictionary[area][AreaLevelCount] = FLOWEYE_FIGHT
 	
 	print(WorldDictionary)
 

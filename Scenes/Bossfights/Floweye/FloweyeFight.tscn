@@ -21,6 +21,7 @@
 
 [node name="Room" instance=ExtResource("1_o6o00")]
 texture_filter = 1
+IsEnemyRoom = false
 
 [node name="Weed of Life" type="AudioStreamPlayer" parent="." index="0"]
 stream = ExtResource("2_ehsba")
@@ -40,7 +41,7 @@ script = ExtResource("2_vg1f6")
 
 [node name="HealthComponent" type="Node2D" parent="Y-Sortables/Floweye" index="0"]
 script = ExtResource("3_eyq3i")
-InitialMaxHealth = 72
+InitialMaxHealth = 32
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Y-Sortables/Floweye" index="1"]
 

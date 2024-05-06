@@ -5,6 +5,8 @@ extends Node2D
 @onready var shoot_flowers : ShootFlowersState = $StateMachine/ShootFlowersState
 @onready var pedal_volley : PedalVolleyState = $StateMachine/PedalVolleyState
 
+@onready var room : Room = $"../.."
+
 const StateArray : Array[String] = [
 	"summon_vines",
 	"shoot_flowers",
@@ -23,6 +25,8 @@ var CurrentStateArray : Array[String]
 @onready var health : HealthComponent = $HealthComponent
 
 @onready var flower : Spin = $Face/Flower
+var FlowerInitSpeed : float
+var FlowerFastSpeed : float = 2
 
 @onready var player = $"../Player"
 
@@ -55,10 +59,13 @@ func _ready():
 	
 	hurt_box.Hit.connect(Callable(self, "OnHit"))
 	material = FLASH_MAT.duplicate()
+	health_bar.max_value = health.Health
 	
 	FlowerSpotDict[0] = [flower_summoner_1, flower_summoner_2]
 	FlowerSpotDict[1] = [flower_summoner_3, flower_summoner_4]
 	FlowerSpotDict[2] = [flower_summoner_5, flower_summoner_6]
+	
+	FlowerInitSpeed = flower.speed
 	
 	# Setup Summon Vines State
 	summon_vines.GrowSpotArray = get_tree().get_nodes_in_group("VineSummoner")
@@ -69,7 +76,7 @@ func _ready():
 	shoot_flowers.PositionsDict = FlowerSpotDict
 	
 	# Setup Fire Pedals State
-	pedal_volley.FireTimes = 10
+	pedal_volley.FireTimes = 5
 	pedal_volley.FireNode = flower
 	pedal_volley.TargetNode = player
 	pedal_volley.ProjectileOwner = self
@@ -88,7 +95,9 @@ func StateComplete():
 			CurrentStateArray.append(entry)
 		CurrentStateArray.shuffle()
 		print("NEW ARRAY: " + str(CurrentStateArray))
-		
+	
+	#flower.speed = FlowerInitSpeed
+	
 	await get_tree().create_timer(2).timeout
 	
 	print(CurrentStateArray)
@@ -98,6 +107,7 @@ func StateComplete():
 	if NextState == "summon_vines":
 		state_machine.change_state(summon_vines.name)
 	elif NextState == "shoot_flowers":
+		#flower.Speed = FlowerInitSpeed
 		state_machine.change_state(shoot_flowers.name)
 	elif NextState == "pedal_volley":
 		state_machine.change_state(pedal_volley.name)
@@ -105,7 +115,11 @@ func StateComplete():
 		print("INVALID STATE!")
 
 func _process(delta):
-	health_bar.value = health.Health
+	
+	health_bar.value = clamp(health.Health, 0, 64000000)
+	
+	if health.Health <= 0:
+		room.ProgressRooms()
 
 func FloweyeHit(damage):
 	health.DealDamage(damage)
