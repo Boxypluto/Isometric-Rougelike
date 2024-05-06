@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8ic2lxtj5qb4"]
+
+[ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/PedalProjectile.gd" id="1_2f3lv"]
+[ext_resource type="Texture2D" uid="uid://bpmkkcapgjvpg" path="res://Bosses/Floweye/FloweyePedal.png" id="1_n11ui"]
+[ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="3_lpbhj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4x5ka"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5hpcm"]
+radius = 7.0
+
+[node name="PedalProjectile" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_2f3lv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n11ui")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_4x5ka")
+disabled = true
+
+[node name="DamagingAreaComponent" type="Area2D" parent="."]
+script = ExtResource("3_lpbhj")
+hitTags = Array[String](["Player"])
+Damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamagingAreaComponent"]
+shape = SubResource("CircleShape2D_5hpcm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="CreateAfterimage"]

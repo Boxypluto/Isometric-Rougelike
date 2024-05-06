@@ -3,10 +3,28 @@ extends Node2D
 @onready var state_machine : StateMachine = $StateMachine
 @onready var summon_vines : SummonVinesState = $StateMachine/SummonVinesState
 @onready var shoot_flowers : ShootFlowersState = $StateMachine/ShootFlowersState
+@onready var pedal_volley : PedalVolleyState = $StateMachine/PedalVolleyState
+
+const StateArray : Array[String] = [
+	"summon_vines",
+	"shoot_flowers",
+	"shoot_flowers",
+	"shoot_flowers",
+	"shoot_flowers",
+	"pedal_volley",
+	"pedal_volley",
+	"pedal_volley"
+]
+
+var CurrentStateArray : Array[String]
 
 @onready var enemies = $"../Enemies"
 
 @onready var health : HealthComponent = $HealthComponent
+
+@onready var flower : Spin = $Face/Flower
+
+@onready var player = $"../Player"
 
 var GrowSpotArray : Array[Node2D] = [
 	$VineSummoner1,
@@ -46,17 +64,45 @@ func _ready():
 	summon_vines.GrowSpotArray = get_tree().get_nodes_in_group("VineSummoner")
 	summon_vines.EnemiesNode = enemies
 	
-	# Setup State Machine
-	state_machine.setup()
+	# Setup Shoot Flowers State
+	shoot_flowers.Parent = self
+	shoot_flowers.PositionsDict = FlowerSpotDict
 	
+	# Setup Fire Pedals State
+	pedal_volley.FireTimes = 10
+	pedal_volley.FireNode = flower
+	pedal_volley.TargetNode = player
+	pedal_volley.ProjectileOwner = self
+	
+	await get_tree().create_timer(3.20).timeout
+	
+	# Setup State Machine
+	state_machine.initial_state = summon_vines
+	state_machine.setup()
+
+func StateComplete():
+	
+	if CurrentStateArray == []:
+		print("RESHUFFLE")
+		for entry in StateArray:
+			CurrentStateArray.append(entry)
+		CurrentStateArray.shuffle()
+		print("NEW ARRAY: " + str(CurrentStateArray))
+		
 	await get_tree().create_timer(2).timeout
 	
-	shoot_flowers.PositionsDict = FlowerSpotDict
-	state_machine.change_state(shoot_flowers.name)
+	print(CurrentStateArray)
 	
-	await  get_tree().create_timer(4).timeout
+	var NextState : String = CurrentStateArray.pop_back()
 	
-	state_machine.change_state(summon_vines.name)
+	if NextState == "summon_vines":
+		state_machine.change_state(summon_vines.name)
+	elif NextState == "shoot_flowers":
+		state_machine.change_state(shoot_flowers.name)
+	elif NextState == "pedal_volley":
+		state_machine.change_state(pedal_volley.name)
+	else:
+		print("INVALID STATE!")
 
 func _process(delta):
 	health_bar.value = health.Health

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7pmxxnkg0qe1"]
+
+[ext_resource type="Texture2D" uid="uid://bpmkkcapgjvpg" path="res://Bosses/Floweye/FloweyePedal.png" id="1_bhy0s"]
+[ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/PedalAfterimage.gd" id="2_4m3hc"]
+
+[node name="PedalAfterimage" type="Sprite2D"]
+texture = ExtResource("1_bhy0s")
+script = ExtResource("2_4m3hc")

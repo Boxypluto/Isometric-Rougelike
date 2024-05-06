@@ -5,6 +5,8 @@ var GrowSpotArray : Array[Node]
 var EnemiesNode : Node2D
 const VINE = preload("res://Objects/Enemies/Vine/Vine.tscn")
 
+signal Complete
+
 func enter():
 	
 	print(GrowSpotArray)
@@ -16,3 +18,5 @@ func enter():
 			EnemiesNode.add_child(vine)
 			spot.vine = vine
 			vine.global_position = spot.global_position
+	
+	Complete.emit()

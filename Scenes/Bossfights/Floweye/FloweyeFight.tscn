@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://8pvtns5hj4s0"]
+[gd_scene load_steps=19 format=3 uid="uid://8pvtns5hj4s0"]
 
 [ext_resource type="PackedScene" uid="uid://bemq8nyf8v5t2" path="res://Scenes/Template Room.tscn" id="1_o6o00"]
+[ext_resource type="AudioStream" uid="uid://b6kt3gq6gwiwy" path="res://Music/WeedofLife.mp3" id="2_ehsba"]
 [ext_resource type="Texture2D" uid="uid://qfwufy1f6jcr" path="res://Bosses/Floweye/Stem.png" id="2_ijf5f"]
 [ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/Floweye.gd" id="2_vg1f6"]
 [ext_resource type="Theme" uid="uid://bl1f4yupoqt8a" path="res://Objects/Lobby/UI Theme.tres" id="3_8341r"]
@@ -15,11 +16,18 @@
 [ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/SummonVinesState.gd" id="7_r618m"]
 [ext_resource type="Texture2D" uid="uid://btbxm5ejd4hag" path="res://Bosses/Floweye/VineSummoner.png" id="8_rc4qq"]
 [ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/ShootFlowersState.gd" id="9_4cqls"]
+[ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/PedalVolleyState.gd" id="16_321it"]
+[ext_resource type="AudioStream" uid="uid://pj5o1yp1nrdj" path="res://Music/FinalAscent.mp3" id="18_jiip7"]
 
 [node name="Room" instance=ExtResource("1_o6o00")]
 texture_filter = 1
 
-[node name="Y-Sortables" parent="." index="2"]
+[node name="Weed of Life" type="AudioStreamPlayer" parent="." index="0"]
+stream = ExtResource("2_ehsba")
+autoplay = true
+bus = &"Music"
+
+[node name="Y-Sortables" parent="." index="3"]
 position = Vector2(0, 16)
 
 [node name="TileMap" parent="Y-Sortables" index="0"]
@@ -172,5 +180,14 @@ script = ExtResource("9_4cqls")
 [node name="SummonVinesState" type="Node" parent="Y-Sortables/Floweye/StateMachine" index="1"]
 script = ExtResource("7_r618m")
 
+[node name="PedalVolleyState" type="Node" parent="Y-Sortables/Floweye/StateMachine" index="2"]
+script = ExtResource("16_321it")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("18_jiip7")
+
 [connection signal="HealthReachedZero" from="Y-Sortables/Floweye/HealthComponent" to="Y-Sortables/Floweye" method="OnHealthZero"]
 [connection signal="Hit" from="Y-Sortables/Floweye/HurtBoxComponent" to="Y-Sortables/Floweye" method="FloweyeHit"]
+[connection signal="Complete" from="Y-Sortables/Floweye/StateMachine/ShootFlowersState" to="Y-Sortables/Floweye" method="StateComplete"]
+[connection signal="Complete" from="Y-Sortables/Floweye/StateMachine/SummonVinesState" to="Y-Sortables/Floweye" method="StateComplete"]
+[connection signal="Complete" from="Y-Sortables/Floweye/StateMachine/PedalVolleyState" to="Y-Sortables/Floweye" method="StateComplete"]

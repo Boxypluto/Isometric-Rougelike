@@ -43,7 +43,7 @@ var Areas : Dictionary = {
 var AreaMusicList = [
 	preload("res://Music/FloweringSeaStacks.mp3"),
 	preload("res://Music/TheSnowstormBelowTheWorld.mp3"),
-	preload("res://Music/KingdomOfTheRainingMountains.mp3")
+	preload("res://Music/FinalAscent.mp3")
 ]
 
 var WorldDictionary : Dictionary = {}
@@ -93,6 +93,7 @@ func StartGame(scene_to_remove = null):
 	get_tree().root.add_child(room)
 	
 	MusicPlayer.stream = AreaMusicList[CurrentAreaIndex]
+	MusicPlayer.bus = "Music"
 	MusicPlayer.play()
 	
 	if scene_to_remove is Node:
