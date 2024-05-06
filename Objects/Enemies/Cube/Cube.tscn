@@ -42,7 +42,7 @@ frame_progress = 0.0777359
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_31f3j")
-InitialMaxHealth = 10
+InitialMaxHealth = 3
 
 [node name="DeathComponent" type="Node2D" parent="." node_paths=PackedStringArray("ObjectParent")]
 script = ExtResource("4_sku36")

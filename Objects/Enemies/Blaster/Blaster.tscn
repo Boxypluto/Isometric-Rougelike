@@ -37,7 +37,7 @@ texture = ExtResource("3_hl6lv")
 [node name="HealthComponent" type="Node2D" parent="."]
 position = Vector2(0, 4)
 script = ExtResource("4_vwpjy")
-InitialMaxHealth = 4
+InitialMaxHealth = 3
 
 [node name="DeathComponent" type="Node2D" parent="." node_paths=PackedStringArray("ObjectParent")]
 position = Vector2(0, 4)

@@ -20,7 +20,8 @@ func _ready():
 	material = FLASH_MAT.duplicate()
 
 func OnDeath():
-	RoomNode.EnemiesDict.erase(IndexInEnemyDict)
+	if RoomNode:
+		RoomNode.EnemiesDict.erase(IndexInEnemyDict)
 
 func OnHit(damage):
 	material.set_shader_parameter("White", true)

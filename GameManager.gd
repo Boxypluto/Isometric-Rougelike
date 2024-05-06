@@ -124,3 +124,6 @@ func FrameFreeze(duration : float, fps : int):
 	await get_tree().create_timer(duration * (fps / 60.0)).timeout
 	Engine.physics_ticks_per_second = fps
 	Engine.time_scale = 1
+
+func InstatiateEnemy(enemy : Enemy):
+	pass

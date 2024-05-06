@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1qcim8vxi6li"]
+
+[ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/FlowerProjectile.gd" id="1_j2pvp"]
+[ext_resource type="Texture2D" uid="uid://lodmsabntgwu" path="res://Bosses/Floweye/Flower.png" id="2_usxmp"]
+[ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/Spin.gd" id="3_kqy2u"]
+[ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="4_jqldl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bec8y"]
+radius = 27.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o7ts0"]
+
+[node name="FlowerProjectile" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(1, 0.5)
+script = ExtResource("1_j2pvp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_usxmp")
+script = ExtResource("3_kqy2u")
+speed = 3.0
+
+[node name="DamagingAreaComponent" type="Area2D" parent="."]
+script = ExtResource("4_jqldl")
+hitTags = Array[String](["Player"])
+Damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamagingAreaComponent"]
+shape = SubResource("CircleShape2D_bec8y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_o7ts0")
+disabled = true

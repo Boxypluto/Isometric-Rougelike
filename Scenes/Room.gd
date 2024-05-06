@@ -4,6 +4,8 @@ class_name Room
 @export var EnemiesDict : Dictionary
 @onready var EnemiesNode = $"Y-Sortables/Enemies"
 
+@export var RoomMode = "ENEMY"
+
 func _ready():
 	var EnemyGroupChildren : Array = EnemiesNode.get_children()
 	for index in range(len(EnemyGroupChildren)):
