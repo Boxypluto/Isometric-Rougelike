@@ -26,6 +26,10 @@ func _process(delta):
 		Laser.scale.x = 1 + (sin(frames / 10.0)*0.1)
 
 func enter():
+	var DirectionTo = Parent.global_position.direction_to(Target.global_position)
+	DirectionTo = Vector2(DirectionTo.x, DirectionTo.y * 2.0)
+	var RotateTo : float = DirectionTo.angle() - PI/2
+	Laser.rotation = RotateTo
 	IsMovingLaser = true
 	Collision.disabled = true
 	Laser.modulate.a = 0.1
