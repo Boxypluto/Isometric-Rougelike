@@ -20,6 +20,7 @@ func _ready():
 	material = FLASH_MAT.duplicate()
 
 func OnDeath():
+	GameManager.EnemiesDefeated += 1
 	if RoomNode:
 		RoomNode.EnemiesDict.erase(IndexInEnemyDict)
 

@@ -10,6 +10,9 @@ const ATTACKING_WALK_SPEED = 96/2
 # Frames, counts the physics frames
 var frames : int
 
+# Main Node
+@onready var room = $"../.."
+
 # Audio Players
 @onready var hit : AudioStreamPlayer2D = $Hit
 @onready var deep_hit : AudioStreamPlayer2D = $"Deep Hit"
@@ -130,6 +133,7 @@ func PlayerIsHit(damage):
 	print("Player took " + str(damage) + "!")
 	health.DealDamage(damage)
 	deep_hit.play()
+	GameManager.DamageTaken += damage
 
 func SlashAnimationFinished():
 	if slash.animation == "Slash":
@@ -140,3 +144,7 @@ func SlashAnimationFinished():
 
 func SuccessfulHit():
 	hit.play()
+	GameManager.DamageDealt += 1
+
+func OnHealthZero():
+	GameManager.EndGame(room, false)

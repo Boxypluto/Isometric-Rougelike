@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://imvch3hmqhfa"]
+
+[ext_resource type="FontFile" uid="uid://dya3051urfn01" path="res://Fonts/m3x6.ttf" id="1_mp1mr"]
+
+[resource]
+font = ExtResource("1_mp1mr")
+font_size = 32
+outline_size = 4
+outline_color = Color(0.247059, 0.247059, 0.454902, 1)
+shadow_size = 6
+shadow_color = Color(0.133333, 0.12549, 0.203922, 1)

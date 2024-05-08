@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://btkls1gwsekl0"]
+
+[ext_resource type="Shader" path="res://Scenes/Menus/Game End Menu/ScrollingShader.gdshader" id="1_n55oj"]
+
+[resource]
+shader = ExtResource("1_n55oj")
+shader_parameter/XSpeed = 0.4
+shader_parameter/YSpeed = 0.5
+shader_parameter/ColorChoice = Vector4(0.133, 0.125, 0.203, 0.3)

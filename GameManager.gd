@@ -2,6 +2,15 @@ extends Node
 
 var DEBUG_MODE = true
 
+# Statistics
+var DamageDealt : int = 0
+var DamageTaken : int = 0
+var EnemiesDefeated : int = 0
+
+const LOBBY = preload("res://Scenes/Lobby.tscn")
+
+const GAME_END = preload("res://Scenes/Menus/Game End Menu/Game End.tscn")
+
 var TestingRooms : Array = [
 	preload("res://Scenes/Rooms/Room 1.tscn"),
 	preload("res://Scenes/Rooms/Room 2.tscn"),
@@ -109,23 +118,41 @@ func StartGame(scene_to_remove = null):
 func ProgressRooms(scene_to_remove = null):
 	
 	if not CurrentAreaIndex < 2:
-		print("CONGRADULATIONS YOU FOUND ALL 7 NOTEBOOKS!!!!!!!!!!!!!!!!!!!!?!?!")
-	if CurrentRoomIndex == len(WorldDictionary.values()[CurrentAreaIndex]) - 1:
-		CurrentAreaIndex += 1
-		CurrentRoomIndex = 0
-		MusicPlayer.stream = AreaMusicList[CurrentAreaIndex]
-		MusicPlayer.play()
+		EndGame(scene_to_remove, true)
+	
 	else:
-		CurrentRoomIndex += 1
+		if CurrentRoomIndex == len(WorldDictionary.values()[CurrentAreaIndex]) - 1:
+			CurrentAreaIndex += 1
+			CurrentRoomIndex = 0
+			MusicPlayer.stream = AreaMusicList[CurrentAreaIndex]
+			MusicPlayer.play()
+		else:
+			CurrentRoomIndex += 1
+		
+		if CurrentRoomIndex == AreaLevelCount:
+				if CurrentAreaIndex == 0:
+					MusicPlayer.stream = WEED_OF_LIFE
+					MusicPlayer.play()
+		
+		var room = WorldDictionary.values()[CurrentAreaIndex][CurrentRoomIndex].instantiate()
+		get_tree().root.add_child(room)
+		CurrentRoomScene = room
+		
+		if scene_to_remove is Node:
+			scene_to_remove.queue_free()
+
+func ResetGame(scene_to_remove = null):
+	var lobby = LOBBY.instantiate()
+	get_tree().root.add_child(lobby)
+	if scene_to_remove is Node:
+		scene_to_remove.queue_free()
+
+func EndGame(scene_to_remove = null, Won : bool = false):
 	
-	if CurrentRoomIndex == AreaLevelCount:
-			if CurrentAreaIndex == 0:
-				MusicPlayer.stream = WEED_OF_LIFE
-				MusicPlayer.play()
-	
-	var room = WorldDictionary.values()[CurrentAreaIndex][CurrentRoomIndex].instantiate()
-	get_tree().root.add_child(room)
-	CurrentRoomScene = room
+	var GameEnd = GAME_END.instantiate()
+	GameEnd.position = Vector2(0, 0)
+	get_tree().root.add_child(GameEnd)
+	GameEnd.enter(Won)
 	
 	if scene_to_remove is Node:
 		scene_to_remove.queue_free()

@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=3 uid="uid://kcdpay3p07vl"]
+
+[ext_resource type="Texture2D" uid="uid://dl2jciocvmcox" path="res://Scenes/Menus/Game End Menu/Game Over.png" id="1_7to8g"]
+[ext_resource type="Material" uid="uid://btkls1gwsekl0" path="res://Scenes/Menus/Game End Menu/ScrollingShader.tres" id="1_a2aed"]
+[ext_resource type="Texture2D" uid="uid://dgly7pqmlwjh0" path="res://Scenes/Menus/Game End Menu/Final Screen Tiles.png" id="1_athdb"]
+[ext_resource type="Script" path="res://Scenes/Menus/Game End Menu/Game End.gd" id="1_jk4sx"]
+[ext_resource type="Texture2D" uid="uid://pwyuvlns3h4s" path="res://Scenes/Menus/Game End Menu/Congradulations.png" id="2_73yl3"]
+[ext_resource type="Shader" path="res://Scenes/Menus/Game End Menu/ScrollingShader.gdshader" id="3_6rjvu"]
+[ext_resource type="LabelSettings" uid="uid://imvch3hmqhfa" path="res://Scenes/Menus/Game End Menu/Text.tres" id="6_6evc8"]
+[ext_resource type="Texture2D" uid="uid://ucysq7b4l6oo" path="res://Player/PlayerPlaceholder.png" id="7_yon7s"]
+[ext_resource type="FontFile" uid="uid://dya3051urfn01" path="res://Fonts/m3x6.ttf" id="8_yycw0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smqmw"]
+shader = ExtResource("3_6rjvu")
+shader_parameter/XSpeed = -0.2
+shader_parameter/YSpeed = -0.4
+shader_parameter/ColorChoice = Vector4(0.227, 0.195, 0.277, 0.3)
+
+[sub_resource type="Theme" id="Theme_rpa65"]
+default_font = ExtResource("8_yycw0")
+default_font_size = 32
+
+[node name="GameEnd" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jk4sx")
+
+[node name="Back" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 640.0
+offset_bottom = 336.0
+color = Color(0, 0, 0, 1)
+
+[node name="Tiles 1" type="TextureRect" parent="."]
+modulate = Color(0.133333, 0.12549, 0.203922, 1)
+material = ExtResource("1_a2aed")
+layout_mode = 0
+offset_left = -32.0
+offset_top = -16.0
+offset_right = 688.0
+offset_bottom = 368.0
+texture = ExtResource("1_athdb")
+stretch_mode = 1
+
+[node name="Tiles 2" type="TextureRect" parent="."]
+modulate = Color(0.227451, 0.196078, 0.278431, 1)
+material = SubResource("ShaderMaterial_smqmw")
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 688.0
+offset_bottom = 352.0
+texture = ExtResource("1_athdb")
+stretch_mode = 1
+
+[node name="Game Over" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 264.0
+offset_top = 64.0
+offset_right = 371.0
+offset_bottom = 86.0
+texture = ExtResource("1_7to8g")
+stretch_mode = 2
+
+[node name="Congradulations" type="TextureRect" parent="."]
+offset_left = 240.0
+offset_top = 64.0
+offset_right = 404.0
+offset_bottom = 90.0
+texture = ExtResource("2_73yl3")
+stretch_mode = 2
+
+[node name="Damage Dealt" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 168.0
+offset_top = 112.0
+offset_right = 298.0
+offset_bottom = 138.0
+text = "Damage Dealt: 48"
+label_settings = ExtResource("6_6evc8")
+
+[node name="Damage Taken" type="Label" parent="."]
+texture_filter = 1
+offset_left = 168.0
+offset_top = 152.0
+offset_right = 298.0
+offset_bottom = 178.0
+text = "Damage Taken: 12
+"
+label_settings = ExtResource("6_6evc8")
+
+[node name="Enemies Defeated" type="Label" parent="."]
+texture_filter = 1
+offset_left = 168.0
+offset_top = 192.0
+offset_right = 298.0
+offset_bottom = 218.0
+text = "Enemies Defeated: 5
+"
+label_settings = ExtResource("6_6evc8")
+
+[node name="Player" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 136.0
+offset_right = 432.0
+offset_bottom = 187.0
+texture = ExtResource("7_yon7s")
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 256.0
+offset_right = 432.0
+offset_bottom = 290.0
+theme = SubResource("Theme_rpa65")
+theme_type_variation = &"FlatButton"
+text = "{ Click here to Continue }"
+flat = true
+
+[connection signal="button_down" from="Continue" to="." method="ContinueButtonPressed"]

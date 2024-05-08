@@ -132,6 +132,7 @@ bus = &"SFX"
 
 [connection signal="Hit" from="HurtBoxComponent" to="." method="PlayerIsHit"]
 [connection signal="Hit" from="BigHurtBoxComponent" to="." method="PlayerIsHit"]
+[connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnHealthZero"]
 [connection signal="animation_finished" from="Slash" to="." method="SlashAnimationFinished"]
 [connection signal="Success" from="Slash/DamagingAreaComponent" to="." method="SuccessfulHit"]
 [connection signal="area_entered" from="Slash/DamagingAreaComponent" to="Slash/DamagingAreaComponent" method="AreaEntered"]
