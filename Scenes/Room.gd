@@ -7,6 +7,7 @@ class_name Room
 @export var RoomMode = "ENEMY"
 
 @export var IsEnemyRoom : bool = true
+var RoomEnded = false
 
 func _ready():
 	var EnemyGroupChildren : Array = EnemiesNode.get_children()
@@ -23,7 +24,8 @@ func _process(_delta):
 		for key in EnemiesDict.values():
 			if key != null:
 				EnemiesGone = false
-		if EnemiesGone and not GameManager.DEBUG_MODE:
+		if EnemiesGone and not GameManager.DEBUG_MODE and not RoomEnded:
+			RoomEnded = true
 			ProgressRooms()
 
 func ProgressRooms():

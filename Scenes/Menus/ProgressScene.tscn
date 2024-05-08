@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba6wf1wuh1gug"]
+
+[ext_resource type="Texture2D" uid="uid://c12jv51ieqaap" path="res://Sprites/ProgressScreen.png" id="1_csw2q"]
+[ext_resource type="Script" path="res://Scenes/Menus/ProgressScreen.gd" id="2_64efp"]
+
+[node name="ProgressScene" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_64efp")
+
+[node name="Progress" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -1192.0
+offset_top = -64.0
+offset_right = 74.0
+offset_bottom = 358.0
+pivot_offset = Vector2(1192, 0)
+texture = ExtResource("1_csw2q")
