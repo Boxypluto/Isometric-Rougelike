@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c12iequh36kyc"
+path="res://.godot/imported/Lost and not Forgotten.mp3-cb03c59535fb96c48bbdf9cb2f47b707.mp3str"
+
+[deps]
+
+source_file="res://Music/Lost and not Forgotten.mp3"
+dest_files=["res://.godot/imported/Lost and not Forgotten.mp3-cb03c59535fb96c48bbdf9cb2f47b707.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

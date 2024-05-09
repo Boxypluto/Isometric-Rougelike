@@ -43,7 +43,7 @@ HSlider/styles/slider = ExtResource("11_5geho")
 [node name="Room" type="Node2D"]
 texture_filter = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="UneasySolace" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_sugb0")
 autoplay = true
 bus = &"Music"

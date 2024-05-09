@@ -52,6 +52,7 @@ stretch_mode = 1
 [node name="Tiles 2" type="TextureRect" parent="."]
 modulate = Color(0.227451, 0.196078, 0.278431, 1)
 material = SubResource("ShaderMaterial_smqmw")
+layout_mode = 0
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 688.0
@@ -70,6 +71,7 @@ texture = ExtResource("1_7to8g")
 stretch_mode = 2
 
 [node name="Congradulations" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 240.0
 offset_top = 64.0
 offset_right = 404.0
@@ -89,6 +91,7 @@ label_settings = ExtResource("6_6evc8")
 
 [node name="Damage Taken" type="Label" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 168.0
 offset_top = 152.0
 offset_right = 298.0
@@ -99,6 +102,7 @@ label_settings = ExtResource("6_6evc8")
 
 [node name="Enemies Defeated" type="Label" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 168.0
 offset_top = 192.0
 offset_right = 298.0

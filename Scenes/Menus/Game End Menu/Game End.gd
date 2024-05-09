@@ -25,4 +25,18 @@ func ContinueButtonPressed():
 	GameManager.DamageTaken = 0
 	GameManager.EnemiesDefeated = 0
 	
-	GameManager.ResetGame(self)
+	var progress = GameManager.PROGRESS.instantiate()
+	progress.global_position = Vector2(-progress.size.x-320, 0)
+	get_tree().root.add_child(progress)
+	progress.z_index = 4
+	progress.start()
+	
+	await progress.Closed
+	
+	var tween : Tween = create_tween()
+	tween.tween_property(GameManager.MusicPlayer, "volume_db", -80, 1)
+	await tween.finished
+	GameManager.MusicPlayer.stop()
+	GameManager.MusicPlayer.volume_db = GameManager.MusicVolume
+	
+	GameManager.ResetGame(self, progress)

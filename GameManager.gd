@@ -61,6 +61,8 @@ var AreaMusicList = [
 	preload("res://Music/FinalAscent.mp3")
 ]
 
+const LOST_AND_NOT_FORGOTTEN = preload("res://Music/Lost and not Forgotten.mp3")
+
 const WEED_OF_LIFE = preload("res://Music/WeedofLife.mp3")
 
 var WorldDictionary : Dictionary = {}
@@ -71,6 +73,7 @@ var CurrentAreaIndex : int
 var CurrentRoomScene : Node
 
 @onready var MusicPlayer = AudioStreamPlayer.new()
+var EndedGame : bool = false
 
 func _ready():
 	add_child(MusicPlayer)
@@ -106,7 +109,9 @@ func GenerateRooms():
 func StartGame(scene_to_remove = null):
 	GenerateRooms()
 	
+	EndedGame = false
 	MusicVolume = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
+	MusicPlayer.volume_db = MusicVolume
 	
 	CurrentAreaIndex = 0
 	CurrentRoomIndex = 0
@@ -121,7 +126,13 @@ func StartGame(scene_to_remove = null):
 	if scene_to_remove is Node:
 		scene_to_remove.queue_free()
 
+var ProgressingRooms : bool = false
+
 func ProgressRooms(scene_to_remove = null):
+	
+	if ProgressingRooms: return
+	
+	ProgressingRooms = true
 	
 	if not CurrentAreaIndex < 2:
 		EndGame(scene_to_remove, true)
@@ -129,7 +140,7 @@ func ProgressRooms(scene_to_remove = null):
 	else:
 		
 		var progress = PROGRESS.instantiate()
-		progress.global_position = Vector2(-progress.size.x-320, (-320/2)-64)
+		progress.global_position = Vector2(-progress.size.x-320, (-320/2))
 		get_tree().root.add_child(progress)
 		progress.z_index = 4
 		progress.start()
@@ -167,22 +178,55 @@ func ProgressRooms(scene_to_remove = null):
 		else:
 			await get_tree().create_timer(1).timeout
 			progress.end()
+	
+	ProgressingRooms = false
 
-func ResetGame(scene_to_remove = null):
+func ResetGame(scene_to_remove = null, progress = null):
+	
 	var lobby = LOBBY.instantiate()
 	get_tree().root.add_child(lobby)
 	if scene_to_remove is Node:
 		scene_to_remove.queue_free()
+	
+	if progress:
+		progress.end()
 
 func EndGame(scene_to_remove = null, Won : bool = false):
+	
+	if EndedGame: return
+	EndedGame = true
+	var progress = PROGRESS.instantiate()
+	progress.global_position = Vector2(-progress.size.x-320, (-320/2))
+	get_tree().root.add_child(progress)
+	progress.z_index = 4
+	progress.start()
+	
+	await progress.Closed
+	
+	if scene_to_remove is Node:
+		scene_to_remove.queue_free()
+	
+	if MusicPlayer.stream:
+		var tween : Tween = create_tween()
+		tween.tween_property(MusicPlayer, "volume_db", -80, 1)
+		await tween.finished
+		MusicPlayer.stream = LOST_AND_NOT_FORGOTTEN
+		MusicPlayer.volume_db = MusicVolume
+		MusicPlayer.play()
+		progress.end()
+		progress.global_position = Vector2(progress.position.x, 0)
+	else:
+		MusicPlayer.stream = LOST_AND_NOT_FORGOTTEN
+		MusicPlayer.volume_db = MusicVolume
+		MusicPlayer.play()
+		await get_tree().create_timer(1).timeout
+		progress.end()
+		progress.global_position = Vector2(progress.position.x, 0)
 	
 	var GameEnd = GAME_END.instantiate()
 	GameEnd.position = Vector2(0, 0)
 	get_tree().root.add_child(GameEnd)
 	GameEnd.enter(Won)
-	
-	if scene_to_remove is Node:
-		scene_to_remove.queue_free()
 
 ## @deprecated
 func FrameFreeze(duration : float, fps : int):
