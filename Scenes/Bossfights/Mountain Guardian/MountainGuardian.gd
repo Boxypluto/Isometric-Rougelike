@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var state_machine : StateMachine = $StateMachine
 @onready var guardian_laser : GuardianLaserState = $StateMachine/GuardianLaserState
-@onready var throw_projectile = $StateMachine/ThrowTowerProjectileState
+@onready var throw_projectile : ThrowTowerProjectileState = $StateMachine/ThrowTowerProjectileState
 @onready var spawn_birds = $StateMachine/SpawnBirdsState
 
 @onready var player = $"../Player"
@@ -17,14 +17,15 @@ extends CharacterBody2D
 @onready var enemies_node : Node2D = $"../Enemies"
 
 const StateArray : Array[String] = [
-	"summon_vines",
-	"shoot_flowers",
-	"shoot_flowers",
-	"shoot_flowers",
-	"shoot_flowers",
-	"pedal_volley",
-	"pedal_volley",
-	"pedal_volley"
+	"birds",
+	"tower",
+	"laser",
+	"tower",
+	"laser",
+	"laser",
+	"tower",
+	"tower",
+	"laser",
 ]
 
 func _ready():
@@ -54,6 +55,24 @@ func _ready():
 	state_machine.change_state(throw_projectile.name)
 	await COMP
 	state_machine.change_state(guardian_laser.name)
+	Speed = 0
+	Smoothing = 0
+	await COMP
+	Speed = 160
+	Smoothing = 0.03
+
+var Speed : float = 160
+var Distance : float = 128.0
+var Smoothing : float = 0.03
+
+@onready var Angle : float = player.global_position.angle_to_point(global_position)
+
+func _process(delta):
+	
+	Angle += (Speed/Distance) * delta
+	print(Angle)
+	var Point : Vector2 = player.global_position + ((Vector2(cos(Angle), sin(Angle)) * Distance) / Vector2(1, 2))
+	global_position = global_position.lerp(Point, Smoothing)
 
 func MountainGuardianHit(damage):
 	pass # Replace with function body.
@@ -61,3 +80,4 @@ signal COMP
 
 func StateComplete():
 	COMP.emit()
+	# DO A LINEAR STATE ARYY ATHING

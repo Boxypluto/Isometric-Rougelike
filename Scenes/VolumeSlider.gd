@@ -7,6 +7,7 @@ const TICK = preload("res://SFX/Tick.wav")
 @onready var player = AudioStreamPlayer.new()
 
 func _ready():
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(Bus), linear_to_db(max_value))
 	value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(Bus)))
 	player.stream = TICK
 	player.bus = "SFX"

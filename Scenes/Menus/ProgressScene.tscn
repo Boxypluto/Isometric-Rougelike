@@ -31,6 +31,7 @@ offset_bottom = 736.0
 color = Color(0.133333, 0.12549, 0.203922, 1)
 
 [node name="Progress" type="TextureRect" parent="Progress"]
+layout_mode = 0
 offset_left = 224.0
 offset_top = -422.0
 offset_right = 1490.0
