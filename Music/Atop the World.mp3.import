@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dodjues8gq5r0"
+path="res://.godot/imported/Atop the World.mp3-86e7cbee6c7b90ae1b2bc182f69b6f6e.mp3str"
+
+[deps]
+
+source_file="res://Music/Atop the World.mp3"
+dest_files=["res://.godot/imported/Atop the World.mp3-86e7cbee6c7b90ae1b2bc182f69b6f6e.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=51.2
+bpm=150.0
+beat_count=0
+bar_beats=4

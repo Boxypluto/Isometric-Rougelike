@@ -63,6 +63,7 @@ var AreaMusicList = [
 ]
 
 const LOST_AND_NOT_FORGOTTEN = preload("res://Music/Lost and not Forgotten.mp3")
+const ATOP_THE_WORLD = preload("res://Music/Atop the World.mp3")
 
 const LEECH_FLOWER = preload("res://Music/LeechFlower.mp3")
 const ANGEL_GUARDIAN = preload("res://Music/AngelGuardian.mp3")
@@ -216,13 +217,15 @@ func EndGame(scene_to_remove = null, Won : bool = false):
 		var tween : Tween = create_tween()
 		tween.tween_property(MusicPlayer, "volume_db", -80, 1)
 		await tween.finished
-		MusicPlayer.stream = LOST_AND_NOT_FORGOTTEN
+		if Won: MusicPlayer.stream = ATOP_THE_WORLD
+		else: MusicPlayer.stream = LOST_AND_NOT_FORGOTTEN
 		MusicPlayer.volume_db = MusicVolume
 		MusicPlayer.play()
 		progress.end()
 		progress.global_position = Vector2(progress.position.x, 0)
 	else:
-		MusicPlayer.stream = LOST_AND_NOT_FORGOTTEN
+		if Won: MusicPlayer.stream = ATOP_THE_WORLD
+		else: MusicPlayer.stream = LOST_AND_NOT_FORGOTTEN
 		MusicPlayer.volume_db = MusicVolume
 		MusicPlayer.play()
 		await get_tree().create_timer(1).timeout
