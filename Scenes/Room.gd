@@ -30,3 +30,8 @@ func _process(_delta):
 
 func ProgressRooms():
 	GameManager.ProgressRooms(self)
+
+func OnHit(damage):
+	material.set_shader_parameter("White", true)
+	await get_tree().create_timer(0.1).timeout
+	material.set_shader_parameter("White", false)

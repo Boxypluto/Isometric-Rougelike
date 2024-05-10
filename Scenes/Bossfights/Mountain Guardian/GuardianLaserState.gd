@@ -33,9 +33,9 @@ func enter():
 	IsMovingLaser = true
 	Collision.disabled = true
 	Laser.modulate.a = 0.1
-	Speed = 2
+	Speed = 0.7
 	await get_tree().create_timer(1).timeout
-	Speed = 0.4
+	Speed = 0.2
 	await get_tree().create_timer(3).timeout
 	Laser.modulate.a = 1
 	IsMovingLaser = false

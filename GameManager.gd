@@ -46,6 +46,7 @@ var Area3 : Array = [
 ]
 
 const FLOWEYE_FIGHT = preload("res://Scenes/Bossfights/Floweye/FloweyeFight.tscn")
+const MOUNTAIN_GUARDIAN_FIGHT = preload("res://Scenes/Bossfights/Mountain Guardian/Mountain Guardian Fight.tscn")
 
 var AreaLevelCount : int = 1
 
@@ -63,7 +64,8 @@ var AreaMusicList = [
 
 const LOST_AND_NOT_FORGOTTEN = preload("res://Music/Lost and not Forgotten.mp3")
 
-const WEED_OF_LIFE = preload("res://Music/WeedofLife.mp3")
+const LEECH_FLOWER = preload("res://Music/LeechFlower.mp3")
+const ANGEL_GUARDIAN = preload("res://Music/AngelGuardian.mp3")
 
 var WorldDictionary : Dictionary = {}
 var AreaArray : Array
@@ -103,6 +105,8 @@ func GenerateRooms():
 		
 		if area == 0:
 			WorldDictionary[area][AreaLevelCount] = FLOWEYE_FIGHT
+		if area == 1:
+			WorldDictionary[area][AreaLevelCount] = MOUNTAIN_GUARDIAN_FIGHT
 	
 	print(WorldDictionary)
 
@@ -161,7 +165,9 @@ func ProgressRooms(scene_to_remove = null):
 		
 		if CurrentRoomIndex == AreaLevelCount:
 				if CurrentAreaIndex == 0:
-					Stream = WEED_OF_LIFE
+					Stream = LEECH_FLOWER
+				if CurrentAreaIndex == 1:
+					Stream = ANGEL_GUARDIAN
 		
 		var room = WorldDictionary.values()[CurrentAreaIndex][CurrentRoomIndex].instantiate()
 		get_tree().root.add_child(room)

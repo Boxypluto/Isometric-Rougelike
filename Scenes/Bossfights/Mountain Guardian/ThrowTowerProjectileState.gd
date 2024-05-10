@@ -45,7 +45,7 @@ func enter():
 		# Set the Target Node to the TARGET
 		projectile.TargetNode = target
 		# Set the speed so it scales with distance
-		projectile.Speed = projectile.position.distance_to(projectile.Target) / 35.0
+		projectile.Speed = projectile.position.distance_to(projectile.Target) / 45.0
 		
 		bong.play()
 		
