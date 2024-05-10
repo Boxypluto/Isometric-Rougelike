@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://v4yweoak0vnx"]
+[gd_scene load_steps=21 format=3 uid="uid://v4yweoak0vnx"]
 
 [ext_resource type="AudioStream" uid="uid://dm8sw2mwati0o" path="res://Music/UneasySolace.mp3" id="1_sugb0"]
 [ext_resource type="PackedScene" uid="uid://dqudfxufqnmfe" path="res://GUI/MainGUI.tscn" id="2_la1rv"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://b6paixhth3mpp" path="res://Tileset/Default Tiles.tres" id="4_mqxtd"]
 [ext_resource type="PackedScene" uid="uid://co3hr8p30ged5" path="res://Player/Player.tscn" id="5_mejb6"]
 [ext_resource type="Texture2D" uid="uid://3p8we22q6sga" path="res://Objects/Lobby/ClickToAttack.png" id="5_xg7a8"]
+[ext_resource type="Texture2D" uid="uid://1v6823ma27l8" path="res://Sprites/Title.png" id="6_j2bso"]
 [ext_resource type="Texture2D" uid="uid://rn274gs4m1b1" path="res://Objects/Lobby/DefeatAllEnemiesToProgress.png" id="6_kn81a"]
 [ext_resource type="Texture2D" uid="uid://dwaoky4qbok7q" path="res://Objects/Lobby/EnterDoorToStart.png" id="7_ax02q"]
 [ext_resource type="Script" path="res://Scenes/LobbyDoor.gd" id="8_r2b0k"]
@@ -88,6 +89,10 @@ y_sort_enabled = true
 
 [node name="Objects" type="Node2D" parent="Y-Sortables"]
 y_sort_enabled = true
+
+[node name="Isometrica" type="Sprite2D" parent="Y-Sortables/Objects"]
+position = Vector2(-160, -168)
+texture = ExtResource("6_j2bso")
 
 [node name="ClickToAttack" type="Sprite2D" parent="Y-Sortables/Objects"]
 position = Vector2(-336, -104)

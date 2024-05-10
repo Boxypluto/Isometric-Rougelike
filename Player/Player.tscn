@@ -92,7 +92,6 @@ shape = SubResource("CapsuleShape2D_730lq")
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("6_a2pee")
 InitialMaxHealth = 6
-InvincibilityState = true
 
 [node name="Sword" type="Sprite2D" parent="."]
 visible = false
