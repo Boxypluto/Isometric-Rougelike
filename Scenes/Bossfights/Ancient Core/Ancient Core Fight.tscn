@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu3s1d1xlng4k"]
+[gd_scene load_steps=7 format=3 uid="uid://cu3s1d1xlng4k"]
 
 [ext_resource type="PackedScene" uid="uid://bemq8nyf8v5t2" path="res://Scenes/Template Room.tscn" id="1_adeex"]
+[ext_resource type="Script" path="res://Scenes/Bossfights/Ancient Core/SpinChildren.gd" id="2_vd4c2"]
 [ext_resource type="Texture2D" uid="uid://dpjyrmlg23sg4" path="res://Bosses/Ancient Core/Center.png" id="2_vpyd7"]
-[ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/Spin.gd" id="3_cmn1i"]
 [ext_resource type="Texture2D" uid="uid://kgeav21ontjo" path="res://Bosses/Ancient Core/Bottom.png" id="4_6sjd4"]
 [ext_resource type="Texture2D" uid="uid://hywrwiassnyd" path="res://Bosses/Ancient Core/Top.png" id="5_merrk"]
+[ext_resource type="Texture2D" uid="uid://cioc4wd5g8u3w" path="res://Bosses/Ancient Core/Ancient Pillar.png" id="6_h2odk"]
 
 [node name="Room" instance=ExtResource("1_adeex")]
 texture_filter = 1
@@ -19,114 +20,119 @@ position = Vector2(0, -72)
 scale = Vector2(1, 0.5)
 
 [node name="LAYER" type="Node2D" parent="Y-Sortables/AncientCore/Squasher" index="0"]
-script = ExtResource("3_cmn1i")
-speed = 1.0
+script = ExtResource("2_vd4c2")
+Speed = 1
 
 [node name="Sprite2D4" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER" index="0"]
 modulate = Color(0.270588, 0.231373, 0.458824, 1)
 use_parent_material = true
 position = Vector2(0, 24)
-rotation = 1.0472
 texture = ExtResource("2_vpyd7")
 
 [node name="Sprite2D7" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER" index="1"]
 modulate = Color(0.270588, 0.231373, 0.458824, 1)
 use_parent_material = true
 position = Vector2(0, 20)
-rotation = 1.0472
 texture = ExtResource("2_vpyd7")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER" index="2"]
 modulate = Color(0.572549, 0.552941, 0.619608, 1)
 use_parent_material = true
 position = Vector2(0, 16)
-rotation = 1.0472
 texture = ExtResource("2_vpyd7")
 
 [node name="Sprite2D6" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER" index="3"]
 modulate = Color(0.572549, 0.552941, 0.619608, 1)
 use_parent_material = true
 position = Vector2(0, 12)
-rotation = 1.0472
 texture = ExtResource("2_vpyd7")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER" index="4"]
 use_parent_material = true
 position = Vector2(0, 8)
-rotation = 1.0472
 texture = ExtResource("2_vpyd7")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER" index="5"]
 use_parent_material = true
 position = Vector2(0, 4)
-rotation = 1.0472
 texture = ExtResource("2_vpyd7")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER" index="6"]
 use_parent_material = true
 position = Vector2(0, 16)
-rotation = 1.0472
 scale = Vector2(0.583333, 0.583333)
 texture = ExtResource("4_6sjd4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER" index="7"]
 use_parent_material = true
-rotation = 1.0472
 texture = ExtResource("5_merrk")
 
 [node name="LAYER2" type="Node2D" parent="Y-Sortables/AncientCore/Squasher" index="1"]
+z_index = 1
 position = Vector2(0, -24)
-script = ExtResource("3_cmn1i")
-speed = -1.0
+script = ExtResource("2_vd4c2")
+Speed = -1
 
 [node name="Sprite2D4" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER2" index="0"]
 modulate = Color(0.270588, 0.231373, 0.458824, 1)
 use_parent_material = true
 position = Vector2(0, 24)
-rotation = 1.0472
 texture = ExtResource("2_vpyd7")
 
 [node name="Sprite2D7" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER2" index="1"]
 modulate = Color(0.270588, 0.231373, 0.458824, 1)
 use_parent_material = true
 position = Vector2(0, 20)
-rotation = 1.0472
 texture = ExtResource("2_vpyd7")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER2" index="2"]
 modulate = Color(0.572549, 0.552941, 0.619608, 1)
 use_parent_material = true
 position = Vector2(0, 16)
-rotation = 1.0472
 texture = ExtResource("2_vpyd7")
 
 [node name="Sprite2D6" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER2" index="3"]
 modulate = Color(0.572549, 0.552941, 0.619608, 1)
 use_parent_material = true
 position = Vector2(0, 12)
-rotation = 1.0472
 texture = ExtResource("2_vpyd7")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER2" index="4"]
 use_parent_material = true
 position = Vector2(0, 8)
-rotation = 1.0472
 texture = ExtResource("2_vpyd7")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER2" index="5"]
 use_parent_material = true
 position = Vector2(0, 4)
-rotation = 1.0472
 texture = ExtResource("2_vpyd7")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER2" index="6"]
 use_parent_material = true
 position = Vector2(0, 16)
-rotation = 1.0472
 scale = Vector2(0.583333, 0.583333)
 texture = ExtResource("4_6sjd4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER2" index="7"]
 use_parent_material = true
-rotation = 1.0472
 texture = ExtResource("5_merrk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER2/Sprite2D" index="0"]
+position = Vector2(-56, -56)
+rotation = -0.785397
+texture = ExtResource("6_h2odk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER2/Sprite2D" index="1"]
+position = Vector2(56, -56)
+rotation = 0.785397
+texture = ExtResource("6_h2odk")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER2/Sprite2D" index="2"]
+position = Vector2(56, 56)
+rotation = 2.35619
+texture = ExtResource("6_h2odk")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Y-Sortables/AncientCore/Squasher/LAYER2/Sprite2D" index="3"]
+position = Vector2(-56, 56)
+rotation = -2.35619
+texture = ExtResource("6_h2odk")

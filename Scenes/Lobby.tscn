@@ -79,7 +79,7 @@ layer_1/tile_data = PackedInt32Array(-2752497, 393216, 35, -2752496, 393216, 35,
 
 [node name="Player" parent="Y-Sortables" instance=ExtResource("5_mejb6")]
 y_sort_enabled = true
-position = Vector2(-0.124577, 2.40001)
+position = Vector2(-4.24683e-06, 64)
 
 [node name="Instantiated" type="Node2D" parent="Y-Sortables"]
 y_sort_enabled = true
