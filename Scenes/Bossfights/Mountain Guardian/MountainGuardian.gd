@@ -13,6 +13,9 @@ extends CharacterBody2D
 @onready var ring = $Squasher/Ring
 
 @onready var bong : AudioStreamPlayer2D = $Bong
+@onready var guardian_lase_shoot : AudioStreamPlayer2D = $"Guardian Laser"
+@onready var guardian_laser_charge : AudioStreamPlayer2D = $"Guardian Laser Charge"
+@onready var ambiance = $Ambiance
 
 @onready var enemies_node : Node2D = $"../Enemies"
 
@@ -51,6 +54,8 @@ func _ready():
 	guardian_laser.Target = player
 	guardian_laser.Collision = laser_collision
 	guardian_laser.Parent = ring
+	guardian_laser.shoot_sound = guardian_lase_shoot
+	guardian_laser.charge_sound = guardian_laser_charge
 	
 	# Setup Throw Projectile State
 	throw_projectile.player = player
@@ -84,9 +89,6 @@ func _process(delta):
 	global_position = global_position.lerp(Point, Smoothing)
 	
 	health_bar.value = clamp(health.Health, 0, 64000000)
-	
-	if health.Health <= 0:
-		room.ProgressRooms()
 
 var StateIndex : int = 0
 
@@ -115,7 +117,7 @@ func StateComplete():
 		StateIndex = 0
 
 func OnHealthZero():
-	pass # Replace with function body.
+	room.ProgressRooms()
 
 func OnHit(damage):
 	health.DealDamage(damage)

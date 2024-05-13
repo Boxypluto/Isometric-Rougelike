@@ -15,6 +15,11 @@ const CUBE_AFTER_IMAGE = preload("res://Objects/Enemies/Cube/CubeAfterImage.tscn
 # Target Texture
 const CUBE_TARGET = preload("res://Objects/Enemies/Cube/CubeTargetAnimation.tres")
 
+# Audio
+@onready var powerup : AudioStreamPlayer2D = $Powerup
+@onready var launch : AudioStreamPlayer2D = $Launch
+@onready var crash : AudioStreamPlayer2D = $Crash
+
 # Cast
 @onready var cast : RayCast2D = $RayCast2D
 var PlayerInSight : bool = false
@@ -89,12 +94,14 @@ func _physics_process(delta):
 	if Started:
 		if Idle:
 			if PlayerInSight:
+				if not powerup.playing: powerup.play()
 				WaitedFrames += 1
 				Target.play("Target")
 				if pointer.animation != "Grow": pointer.animation = "Grow"
 				pointer.frame = floorf((WaitedFrames/float(WaitFrames))*4)-1
 				print(pointer.frame)
 			else:
+				if powerup.playing: powerup.stop()
 				WaitedFrames = 0
 				Target.play("Blank")
 				if pointer.animation != "Shrink": pointer.play("Shrink")
@@ -104,6 +111,7 @@ func _physics_process(delta):
 				move_state.TargetPos = player.position
 				animations.speed_scale = 0.5
 				animations.modulate = Color.from_hsv(0.8, clamp(WaitedFrames/float(WaitFrames), 0, 1)*0.6, (clamp(WaitedFrames/float(WaitFrames), 0, 1)*2) + 1)
+				launch.play()
 				await get_tree().create_timer(WaitTime).timeout
 				animations.speed_scale = 2
 				WaitedFrames = 0
@@ -136,6 +144,7 @@ func FinishedDash():
 	animations.speed_scale = 1
 	Dashing = false
 	state_machine.change_state(blank_state.name)
+	crash.play()
 	await get_tree().create_timer(WaitTime).timeout
 	Idle = true
 

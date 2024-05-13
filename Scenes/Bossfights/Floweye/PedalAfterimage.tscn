@@ -4,5 +4,6 @@
 [ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/PedalAfterimage.gd" id="2_4m3hc"]
 
 [node name="PedalAfterimage" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.490196)
 texture = ExtResource("1_bhy0s")
 script = ExtResource("2_4m3hc")

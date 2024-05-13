@@ -1,30 +1,32 @@
-[gd_scene load_steps=31 format=3 uid="uid://p2nsue2ldnyw"]
+[gd_scene load_steps=33 format=3 uid="uid://p2nsue2ldnyw"]
 
 [ext_resource type="PackedScene" uid="uid://bemq8nyf8v5t2" path="res://Scenes/Template Room.tscn" id="1_yctlu"]
-[ext_resource type="Texture2D" uid="uid://ba0qvlsobp1bf" path="res://Bosses/Mountain Guardian/Guardian.png" id="2_1ffnq"]
 [ext_resource type="Texture2D" uid="uid://bachv2govr4ja" path="res://Objects/Lobby/BlankSlider.png" id="2_eaq1x"]
 [ext_resource type="Texture2D" uid="uid://ds2gtx2sykmia" path="res://Objects/Enemies/Tower/TowerProjectileShadow.png" id="2_lg564"]
 [ext_resource type="Script" path="res://Scenes/Bossfights/Mountain Guardian/MountainGuardian.gd" id="2_poqrb"]
-[ext_resource type="Texture2D" uid="uid://bivl07hgjh6yt" path="res://Bosses/Mountain Guardian/Wing.png" id="3_1m86x"]
 [ext_resource type="AudioStream" uid="uid://k1jc5lvoq100" path="res://SFX/Bong.wav" id="3_2ql8k"]
-[ext_resource type="Texture2D" uid="uid://cb72oqjbf63ie" path="res://Bosses/Floweye/AngelRing.png" id="3_6v47g"]
-[ext_resource type="Texture2D" uid="uid://dd5f03dfsqp7s" path="res://Bosses/Floweye/AngelRingL2.png" id="3_7lir6"]
 [ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="3_h8kqi"]
 [ext_resource type="StyleBox" uid="uid://dqtneli1bq6y" path="res://Objects/Lobby/Box.tres" id="3_md3ud"]
 [ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/Sine.gd" id="3_u3hyr"]
 [ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/Spin.gd" id="4_0vmje"]
 [ext_resource type="StyleBox" uid="uid://goan48pryv81" path="res://Scenes/Bossfights/Mountain Guardian/MGBoxEmpty.tres" id="4_hjxw0"]
 [ext_resource type="Script" path="res://Classes/AngleSine.gd" id="4_p35qe"]
-[ext_resource type="Texture2D" uid="uid://cvqoac2in82yk" path="res://Bosses/Floweye/AngelRingL1.png" id="5_ppj1l"]
 [ext_resource type="StyleBox" uid="uid://bbkjh525an0ef" path="res://Scenes/Bossfights/Mountain Guardian/MGBoxFill.tres" id="5_v5ofw"]
 [ext_resource type="Script" path="res://Classes/StateMachine.gd" id="7_cdkwp"]
+[ext_resource type="AudioStream" uid="uid://fxl0fpuj71tp" path="res://SFX/Guardian Laser Charge.mp3" id="7_fxvlu"]
 [ext_resource type="StyleBox" uid="uid://byrfsem8sytbp" path="res://Scenes/Bossfights/Mountain Guardian/GuardianLaserBox.tres" id="8_cml8r"]
 [ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="9_8355l"]
+[ext_resource type="AudioStream" uid="uid://d3nwrvgyrtysi" path="res://SFX/Guardian Ambience.mp3" id="9_c872l"]
 [ext_resource type="Script" path="res://Scenes/Bossfights/Mountain Guardian/GuardianLaserState.gd" id="9_hvp4f"]
+[ext_resource type="Texture2D" uid="uid://dd5f03dfsqp7s" path="res://Bosses/Floweye/AngelRingL2.png" id="12_p32qy"]
+[ext_resource type="Texture2D" uid="uid://cvqoac2in82yk" path="res://Bosses/Floweye/AngelRingL1.png" id="14_ecpm3"]
+[ext_resource type="Texture2D" uid="uid://cb72oqjbf63ie" path="res://Bosses/Floweye/AngelRing.png" id="15_ct3na"]
 [ext_resource type="Script" path="res://Scenes/Bossfights/Mountain Guardian/ThrowTowerProjectileState.gd" id="18_1q8cl"]
+[ext_resource type="Texture2D" uid="uid://ch7gic7fb2am3" path="res://Bosses/Floweye/BirdSpawner.png" id="18_20ugd"]
+[ext_resource type="Texture2D" uid="uid://ba0qvlsobp1bf" path="res://Bosses/Mountain Guardian/Guardian.png" id="19_0f5ex"]
 [ext_resource type="Script" path="res://Scenes/Bossfights/Mountain Guardian/SpawnEnemiesState.gd" id="19_1fpby"]
 [ext_resource type="Script" path="res://Scenes/Bossfights/Mountain Guardian/Spawner.gd" id="19_qbn26"]
-[ext_resource type="Texture2D" uid="uid://ch7gic7fb2am3" path="res://Bosses/Floweye/BirdSpawner.png" id="21_prasl"]
+[ext_resource type="Texture2D" uid="uid://bivl07hgjh6yt" path="res://Bosses/Mountain Guardian/Wing.png" id="21_7bfo7"]
 [ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="26_jhej2"]
 
 [sub_resource type="Theme" id="Theme_a6dss"]
@@ -65,14 +67,33 @@ show_percentage = false
 position = Vector2(0, -136)
 script = ExtResource("2_poqrb")
 
-[node name="Bong" type="AudioStreamPlayer2D" parent="Y-Sortables/Mountain Guardian" index="0"]
-stream = ExtResource("3_2ql8k")
+[node name="Guardian Laser" type="AudioStreamPlayer2D" parent="Y-Sortables/Mountain Guardian" index="0"]
+stream = ExtResource("7_fxvlu")
+pitch_scale = 1.89
+bus = &"SFX"
 
-[node name="HealthComponent" type="Node2D" parent="Y-Sortables/Mountain Guardian" index="1"]
+[node name="Guardian Laser Charge" type="AudioStreamPlayer2D" parent="Y-Sortables/Mountain Guardian" index="1"]
+stream = ExtResource("7_fxvlu")
+volume_db = -2.811
+pitch_scale = 0.75
+bus = &"SFX"
+
+[node name="Bong" type="AudioStreamPlayer2D" parent="Y-Sortables/Mountain Guardian" index="2"]
+stream = ExtResource("3_2ql8k")
+bus = &"SFX"
+
+[node name="Ambiance" type="AudioStreamPlayer2D" parent="Y-Sortables/Mountain Guardian" index="3"]
+position = Vector2(0, 26)
+stream = ExtResource("9_c872l")
+autoplay = true
+attenuation = 22.6274
+bus = &"SFX"
+
+[node name="HealthComponent" type="Node2D" parent="Y-Sortables/Mountain Guardian" index="4"]
 script = ExtResource("26_jhej2")
 InitialMaxHealth = 40
 
-[node name="HurtBoxComponent" type="Area2D" parent="Y-Sortables/Mountain Guardian" index="2"]
+[node name="HurtBoxComponent" type="Area2D" parent="Y-Sortables/Mountain Guardian" index="5"]
 script = ExtResource("3_h8kqi")
 HurtBoxType = "Enemy"
 
@@ -81,7 +102,7 @@ position = Vector2(0, 28)
 scale = Vector2(1, 0.5)
 shape = SubResource("CircleShape2D_e31hu")
 
-[node name="DamagingAreaComponent" type="Area2D" parent="Y-Sortables/Mountain Guardian" index="3"]
+[node name="DamagingAreaComponent" type="Area2D" parent="Y-Sortables/Mountain Guardian" index="6"]
 script = ExtResource("9_8355l")
 hitTags = Array[String](["Player"])
 Damage = 1
@@ -93,7 +114,7 @@ shape = SubResource("CircleShape2D_e31hu")
 disabled = true
 debug_color = Color(0.690196, 0.34902, 0.898039, 0.419608)
 
-[node name="Squasher" type="Node2D" parent="Y-Sortables/Mountain Guardian" index="4"]
+[node name="Squasher" type="Node2D" parent="Y-Sortables/Mountain Guardian" index="7"]
 position = Vector2(0, 24)
 scale = Vector2(1.5, 0.75)
 
@@ -118,153 +139,153 @@ disabled = true
 [node name="Ring3" type="Sprite2D" parent="Y-Sortables/Mountain Guardian/Squasher" index="1"]
 position = Vector2(0, 5.33333)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_7lir6")
+texture = ExtResource("12_p32qy")
 script = ExtResource("4_0vmje")
 speed = -1.0
 
 [node name="Ring2" type="Sprite2D" parent="Y-Sortables/Mountain Guardian/Squasher" index="2"]
 position = Vector2(0, 2.66667)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("5_ppj1l")
+texture = ExtResource("14_ecpm3")
 script = ExtResource("4_0vmje")
 speed = -1.0
 
 [node name="Ring" type="Sprite2D" parent="Y-Sortables/Mountain Guardian/Squasher" index="3"]
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_6v47g")
+texture = ExtResource("15_ct3na")
 script = ExtResource("4_0vmje")
 speed = -1.0
 
-[node name="Shadow" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="5"]
+[node name="Shadow" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="8"]
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(0, 30)
 texture = ExtResource("2_lg564")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Y-Sortables/Mountain Guardian" index="6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Y-Sortables/Mountain Guardian" index="9"]
 visible = false
 shape = SubResource("RectangleShape2D_j0gtu")
 disabled = true
 
-[node name="BirdSpawner" type="Node2D" parent="Y-Sortables/Mountain Guardian" index="7" groups=["BirdSpawner"]]
+[node name="BirdSpawner" type="Node2D" parent="Y-Sortables/Mountain Guardian" index="10" groups=["BirdSpawner"]]
 position = Vector2(80, 24)
 scale = Vector2(1.5, 0.75)
 script = ExtResource("19_qbn26")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Y-Sortables/Mountain Guardian/BirdSpawner" index="0"]
 position = Vector2(0, 2)
-texture = ExtResource("21_prasl")
+texture = ExtResource("18_20ugd")
 script = ExtResource("4_0vmje")
 speed = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="Y-Sortables/Mountain Guardian/BirdSpawner" index="1"]
-texture = ExtResource("21_prasl")
+texture = ExtResource("18_20ugd")
 script = ExtResource("4_0vmje")
 speed = 0.2
 
-[node name="BirdSpawner3" type="Node2D" parent="Y-Sortables/Mountain Guardian" index="8" groups=["BirdSpawner"]]
+[node name="BirdSpawner3" type="Node2D" parent="Y-Sortables/Mountain Guardian" index="11" groups=["BirdSpawner"]]
 position = Vector2(3.8147e-06, 72)
 scale = Vector2(1.5, 0.75)
 script = ExtResource("19_qbn26")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Y-Sortables/Mountain Guardian/BirdSpawner3" index="0"]
 position = Vector2(0, 2)
-texture = ExtResource("21_prasl")
+texture = ExtResource("18_20ugd")
 script = ExtResource("4_0vmje")
 speed = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="Y-Sortables/Mountain Guardian/BirdSpawner3" index="1"]
-texture = ExtResource("21_prasl")
+texture = ExtResource("18_20ugd")
 script = ExtResource("4_0vmje")
 speed = 0.2
 
-[node name="BirdSpawner5" type="Node2D" parent="Y-Sortables/Mountain Guardian" index="9" groups=["BirdSpawner"]]
+[node name="BirdSpawner5" type="Node2D" parent="Y-Sortables/Mountain Guardian" index="12" groups=["BirdSpawner"]]
 position = Vector2(-80, 24)
 scale = Vector2(1.5, 0.75)
 script = ExtResource("19_qbn26")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Y-Sortables/Mountain Guardian/BirdSpawner5" index="0"]
 position = Vector2(0, 2)
-texture = ExtResource("21_prasl")
+texture = ExtResource("18_20ugd")
 script = ExtResource("4_0vmje")
 speed = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="Y-Sortables/Mountain Guardian/BirdSpawner5" index="1"]
-texture = ExtResource("21_prasl")
+texture = ExtResource("18_20ugd")
 script = ExtResource("4_0vmje")
 speed = 0.2
 
-[node name="Guardian" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="10"]
+[node name="Guardian" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="13"]
 use_parent_material = true
-texture = ExtResource("2_1ffnq")
+texture = ExtResource("19_0f5ex")
 script = ExtResource("3_u3hyr")
 Amplitude = 4.0
 Frequency = 1.0
 
-[node name="TR-WING" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="11"]
+[node name="TR-WING" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="14"]
 use_parent_material = true
 position = Vector2(0, 2.86102e-06)
-texture = ExtResource("3_1m86x")
+texture = ExtResource("21_7bfo7")
 offset = Vector2(46.0876, -42.4531)
 script = ExtResource("4_p35qe")
 Amplitude = 0.2
 Frequency = 1.0
 
-[node name="MR-WING" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="12"]
+[node name="MR-WING" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="15"]
 use_parent_material = true
 position = Vector2(0, 1.90735e-06)
 rotation = 0.261799
-texture = ExtResource("3_1m86x")
+texture = ExtResource("21_7bfo7")
 offset = Vector2(46.0876, -42.4531)
 script = ExtResource("4_p35qe")
 Amplitude = 0.2
 Frequency = 1.0
 OffsetFrames = 10.0
 
-[node name="BR-WING" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="13"]
+[node name="BR-WING" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="16"]
 use_parent_material = true
 position = Vector2(0, 3.8147e-06)
 rotation = 0.523599
-texture = ExtResource("3_1m86x")
+texture = ExtResource("21_7bfo7")
 offset = Vector2(46.0876, -42.4531)
 script = ExtResource("4_p35qe")
 Amplitude = 0.2
 Frequency = 1.0
 OffsetFrames = 20.0
 
-[node name="TL-WING" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="14"]
+[node name="TL-WING" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="17"]
 use_parent_material = true
 rotation = 3.14159
 scale = Vector2(1, -1)
-texture = ExtResource("3_1m86x")
+texture = ExtResource("21_7bfo7")
 offset = Vector2(46.0876, -42.4531)
 script = ExtResource("4_p35qe")
 Amplitude = 0.2
 Frequency = -1.0
 
-[node name="TM-WING" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="15"]
+[node name="TM-WING" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="18"]
 use_parent_material = true
 rotation = 2.87979
 scale = Vector2(1, -1)
-texture = ExtResource("3_1m86x")
+texture = ExtResource("21_7bfo7")
 offset = Vector2(46.0876, -42.4531)
 script = ExtResource("4_p35qe")
 Amplitude = 0.2
 Frequency = -1.0
 OffsetFrames = 10.0
 
-[node name="BL-WING" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="16"]
+[node name="BL-WING" type="Sprite2D" parent="Y-Sortables/Mountain Guardian" index="19"]
 use_parent_material = true
 position = Vector2(0, 2.86102e-06)
 rotation = -0.523599
 scale = Vector2(-1, 1)
-texture = ExtResource("3_1m86x")
+texture = ExtResource("21_7bfo7")
 offset = Vector2(46.0876, -42.4531)
 script = ExtResource("4_p35qe")
 Amplitude = 0.2
 Frequency = -1.0
 OffsetFrames = 20.0
 
-[node name="StateMachine" type="Node" parent="Y-Sortables/Mountain Guardian" index="17"]
+[node name="StateMachine" type="Node" parent="Y-Sortables/Mountain Guardian" index="20"]
 script = ExtResource("7_cdkwp")
 
 [node name="GuardianLaserState" type="Node" parent="Y-Sortables/Mountain Guardian/StateMachine" index="0"]

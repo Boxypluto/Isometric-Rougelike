@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqudfxufqnmfe"]
+[gd_scene load_steps=5 format=3 uid="uid://dqudfxufqnmfe"]
 
 [ext_resource type="Script" path="res://GUI/MainGUI.gd" id="1_hgttp"]
+[ext_resource type="Texture2D" uid="uid://n1hwqsl4xwab" path="res://Player/Health Bar.png" id="2_mh8fy"]
+[ext_resource type="Texture2D" uid="uid://dwctgrjpbshyh" path="res://Player/Health Bit.png" id="3_xjnj7"]
+[ext_resource type="Script" path="res://GUI/HealthBit.gd" id="4_k1cda"]
 
 [node name="MainGui" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,10 +15,45 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hgttp")
 
-[node name="HealthLabel" type="Label" parent="."]
-layout_mode = 1
-offset_left = 3.0
-offset_top = -2.0
-offset_right = 73.0
-offset_bottom = 21.0
-text = "Health: 5"
+[node name="Health" type="Node2D" parent="."]
+position = Vector2(8, 8)
+
+[node name="Bar" type="Sprite2D" parent="Health"]
+position = Vector2(33, 16)
+texture = ExtResource("2_mh8fy")
+
+[node name="Bit1" type="Sprite2D" parent="Health" groups=["HealthBit"]]
+position = Vector2(17, 16)
+texture = ExtResource("3_xjnj7")
+script = ExtResource("4_k1cda")
+index = 1
+
+[node name="Bit2" type="Sprite2D" parent="Health" groups=["HealthBit"]]
+position = Vector2(25, 16)
+texture = ExtResource("3_xjnj7")
+script = ExtResource("4_k1cda")
+index = 2
+
+[node name="Bit3" type="Sprite2D" parent="Health" groups=["HealthBit"]]
+position = Vector2(33, 16)
+texture = ExtResource("3_xjnj7")
+script = ExtResource("4_k1cda")
+index = 3
+
+[node name="Bit4" type="Sprite2D" parent="Health" groups=["HealthBit"]]
+position = Vector2(41, 16)
+texture = ExtResource("3_xjnj7")
+script = ExtResource("4_k1cda")
+index = 4
+
+[node name="Bit5" type="Sprite2D" parent="Health" groups=["HealthBit"]]
+position = Vector2(49, 16)
+texture = ExtResource("3_xjnj7")
+script = ExtResource("4_k1cda")
+index = 5
+
+[node name="Bit6" type="Sprite2D" parent="Health" groups=["HealthBit"]]
+position = Vector2(57, 16)
+texture = ExtResource("3_xjnj7")
+script = ExtResource("4_k1cda")
+index = 6

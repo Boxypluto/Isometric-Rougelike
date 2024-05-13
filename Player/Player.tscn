@@ -130,6 +130,9 @@ bus = &"SFX"
 stream = ExtResource("8_k8mhp")
 bus = &"SFX"
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
 [connection signal="Hit" from="HurtBoxComponent" to="." method="PlayerIsHit"]
 [connection signal="Hit" from="BigHurtBoxComponent" to="." method="PlayerIsHit"]
 [connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnHealthZero"]

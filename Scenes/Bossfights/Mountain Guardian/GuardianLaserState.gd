@@ -7,6 +7,9 @@ var Speed : float = 4
 var Collision : CollisionPolygon2D
 var Parent : Node2D
 
+var shoot_sound : AudioStreamPlayer2D
+var charge_sound : AudioStreamPlayer2D
+
 var IsMovingLaser : bool = true
 
 signal Complete
@@ -34,13 +37,17 @@ func enter():
 	Collision.disabled = true
 	Laser.modulate.a = 0.1
 	Speed = 0.7
+	charge_sound.play()
 	await get_tree().create_timer(1).timeout
 	Speed = 0.2
 	await get_tree().create_timer(3).timeout
+	charge_sound.stop()
+	shoot_sound.play()
 	Laser.modulate.a = 1
 	IsMovingLaser = false
 	Collision.disabled = false
 	await get_tree().create_timer(2).timeout
+	shoot_sound.stop()
 	Collision.disabled = true
 	Laser.modulate.a = 0
 	Speed = 0.5

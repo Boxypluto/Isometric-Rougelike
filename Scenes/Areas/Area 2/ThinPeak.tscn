@@ -375,4 +375,4 @@ position = Vector2(-87, -75)
 
 [node name="Bird" parent="Y-Sortables/Enemies" index="2" instance=ExtResource("5_iw5ec")]
 material = SubResource("ShaderMaterial_7l51s")
-position = Vector2(-127, 9)
+position = Vector2(56, -53)

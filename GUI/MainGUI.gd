@@ -1,7 +1,8 @@
 extends Control
 
 @onready var player = $"../Y-Sortables/Player"
-@onready var health_label = $HealthLabel
 
-func _process(_delta):
-	health_label.text = "Health: " + str(player.health.Health)
+func _ready():
+	var bits = get_tree().get_nodes_in_group("HealthBit")
+	for bit in bits:
+		bit.player = player

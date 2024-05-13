@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://8pvtns5hj4s0"]
+[gd_scene load_steps=19 format=3 uid="uid://8pvtns5hj4s0"]
 
 [ext_resource type="PackedScene" uid="uid://bemq8nyf8v5t2" path="res://Scenes/Template Room.tscn" id="1_o6o00"]
 [ext_resource type="Texture2D" uid="uid://qfwufy1f6jcr" path="res://Bosses/Floweye/Stem.png" id="2_ijf5f"]
@@ -15,8 +15,9 @@
 [ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/SummonVinesState.gd" id="7_r618m"]
 [ext_resource type="Texture2D" uid="uid://btbxm5ejd4hag" path="res://Bosses/Floweye/VineSummoner.png" id="8_rc4qq"]
 [ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/ShootFlowersState.gd" id="9_4cqls"]
+[ext_resource type="AudioStream" uid="uid://e2eqxhwtedx0" path="res://SFX/Vine Summon.wav" id="13_byebs"]
 [ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/PedalVolleyState.gd" id="16_321it"]
-[ext_resource type="AudioStream" uid="uid://pj5o1yp1nrdj" path="res://Music/FinalAscent.mp3" id="18_jiip7"]
+[ext_resource type="AudioStream" uid="uid://d3qdrs238cgln" path="res://SFX/Pedal Shoot.wav" id="17_rpte3"]
 
 [node name="Room" instance=ExtResource("1_o6o00")]
 texture_filter = 1
@@ -92,6 +93,10 @@ texture = ExtResource("8_rc4qq")
 script = ExtResource("5_ufu2a")
 speed = 0.3
 
+[node name="Vine Summon" type="AudioStreamPlayer2D" parent="Y-Sortables/Floweye/VineSummoner1" index="1"]
+stream = ExtResource("13_byebs")
+bus = &"SFX"
+
 [node name="VineSummoner2" type="Node2D" parent="Y-Sortables/Floweye" index="7" groups=["VineSummoner"]]
 position = Vector2(56, 48)
 scale = Vector2(1, 0.5)
@@ -101,6 +106,10 @@ script = ExtResource("6_qn8wt")
 texture = ExtResource("8_rc4qq")
 script = ExtResource("5_ufu2a")
 speed = 0.3
+
+[node name="Vine Summon" type="AudioStreamPlayer2D" parent="Y-Sortables/Floweye/VineSummoner2" index="1"]
+stream = ExtResource("13_byebs")
+bus = &"SFX"
 
 [node name="VineSummoner3" type="Node2D" parent="Y-Sortables/Floweye" index="8" groups=["VineSummoner"]]
 position = Vector2(0, 64)
@@ -112,6 +121,10 @@ texture = ExtResource("8_rc4qq")
 script = ExtResource("5_ufu2a")
 speed = 0.3
 
+[node name="Vine Summon" type="AudioStreamPlayer2D" parent="Y-Sortables/Floweye/VineSummoner3" index="1"]
+stream = ExtResource("13_byebs")
+bus = &"SFX"
+
 [node name="VineSummoner4" type="Node2D" parent="Y-Sortables/Floweye" index="9" groups=["VineSummoner"]]
 position = Vector2(-56, 48)
 scale = Vector2(1, 0.5)
@@ -121,6 +134,10 @@ script = ExtResource("6_qn8wt")
 texture = ExtResource("8_rc4qq")
 script = ExtResource("5_ufu2a")
 speed = 0.3
+
+[node name="Vine Summon" type="AudioStreamPlayer2D" parent="Y-Sortables/Floweye/VineSummoner4" index="1"]
+stream = ExtResource("13_byebs")
+bus = &"SFX"
 
 [node name="VineSummoner5" type="Node2D" parent="Y-Sortables/Floweye" index="10" groups=["VineSummoner"]]
 position = Vector2(-72, 8)
@@ -132,6 +149,10 @@ texture = ExtResource("8_rc4qq")
 script = ExtResource("5_ufu2a")
 speed = 0.3
 
+[node name="Vine Summon" type="AudioStreamPlayer2D" parent="Y-Sortables/Floweye/VineSummoner5" index="1"]
+stream = ExtResource("13_byebs")
+bus = &"SFX"
+
 [node name="VineSummoner6" type="Node2D" parent="Y-Sortables/Floweye" index="11" groups=["VineSummoner"]]
 position = Vector2(80, 96)
 scale = Vector2(1, 0.5)
@@ -142,6 +163,10 @@ texture = ExtResource("8_rc4qq")
 script = ExtResource("5_ufu2a")
 speed = 0.3
 
+[node name="Vine Summon" type="AudioStreamPlayer2D" parent="Y-Sortables/Floweye/VineSummoner6" index="1"]
+stream = ExtResource("13_byebs")
+bus = &"SFX"
+
 [node name="VineSummoner7" type="Node2D" parent="Y-Sortables/Floweye" index="12" groups=["VineSummoner"]]
 position = Vector2(-80, 104)
 scale = Vector2(1, 0.5)
@@ -151,6 +176,10 @@ script = ExtResource("6_qn8wt")
 texture = ExtResource("8_rc4qq")
 script = ExtResource("5_ufu2a")
 speed = 0.3
+
+[node name="Vine Summon" type="AudioStreamPlayer2D" parent="Y-Sortables/Floweye/VineSummoner7" index="1"]
+stream = ExtResource("13_byebs")
+bus = &"SFX"
 
 [node name="FlowerSummoner1" type="Node2D" parent="Y-Sortables/Floweye" index="13"]
 position = Vector2(-400, -104)
@@ -182,8 +211,9 @@ script = ExtResource("7_r618m")
 [node name="PedalVolleyState" type="Node" parent="Y-Sortables/Floweye/StateMachine" index="2"]
 script = ExtResource("16_321it")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
-stream = ExtResource("18_jiip7")
+[node name="Pedal Shoot" type="AudioStreamPlayer2D" parent="Y-Sortables/Floweye" index="20"]
+stream = ExtResource("17_rpte3")
+bus = &"SFX"
 
 [connection signal="HealthReachedZero" from="Y-Sortables/Floweye/HealthComponent" to="Y-Sortables/Floweye" method="OnHealthZero"]
 [connection signal="Hit" from="Y-Sortables/Floweye/HurtBoxComponent" to="Y-Sortables/Floweye" method="FloweyeHit"]

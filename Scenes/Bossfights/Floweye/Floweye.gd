@@ -7,6 +7,9 @@ extends Node2D
 
 @onready var room : Room = $"../.."
 
+# Audio
+@onready var pedal_shoot : AudioStreamPlayer2D = $"Pedal Shoot"
+
 const StateArray : Array[String] = [
 	"summon_vines",
 	"shoot_flowers",
@@ -80,6 +83,7 @@ func _ready():
 	pedal_volley.FireNode = flower
 	pedal_volley.TargetNode = player
 	pedal_volley.ProjectileOwner = self
+	pedal_volley.sound = pedal_shoot
 	
 	await get_tree().create_timer(3.20).timeout
 	
@@ -114,18 +118,13 @@ func StateComplete():
 	else:
 		print("INVALID STATE!")
 
-func _process(delta):
-	
-	health_bar.value = clamp(health.Health, 0, 64000000)
-	
-	if health.Health <= 0:
-		room.ProgressRooms()
+func _process(delta): health_bar.value = clamp(health.Health, 0, 64000000)
 
 func FloweyeHit(damage):
 	health.DealDamage(damage)
 
 func OnHealthZero():
-	pass # Replace with function body.
+	room.ProgressRooms()
 
 func OnHit(damage):
 	material.set_shader_parameter("White", true)

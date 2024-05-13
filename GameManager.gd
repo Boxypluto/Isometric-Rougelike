@@ -47,8 +47,9 @@ var Area3 : Array = [
 
 const FLOWEYE_FIGHT = preload("res://Scenes/Bossfights/Floweye/FloweyeFight.tscn")
 const MOUNTAIN_GUARDIAN_FIGHT = preload("res://Scenes/Bossfights/Mountain Guardian/Mountain Guardian Fight.tscn")
+const ANCIENT_CORE_FIGHT = preload("res://Scenes/Bossfights/Ancient Core/Ancient Core Fight.tscn")
 
-var AreaLevelCount : int = 1
+var AreaLevelCount : int = 3
 
 var Areas : Dictionary = {
 	"Area1" : Area1,
@@ -67,6 +68,7 @@ const ATOP_THE_WORLD = preload("res://Music/Atop the World.mp3")
 
 const LEECH_FLOWER = preload("res://Music/LeechFlower.mp3")
 const ANGEL_GUARDIAN = preload("res://Music/AngelGuardian.mp3")
+const PENULTIMATUM = preload("res://Music/Penultimatum.mp3")
 
 var WorldDictionary : Dictionary = {}
 var AreaArray : Array
@@ -80,6 +82,17 @@ var EndedGame : bool = false
 
 func _ready():
 	add_child(MusicPlayer)
+
+func _input(event):
+	if Input.is_action_just_pressed("Fullscreen"):
+		print("FULLSCREEN SWAP")
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+
+		
 
 func GenerateRooms():
 	
@@ -108,6 +121,8 @@ func GenerateRooms():
 			WorldDictionary[area][AreaLevelCount] = FLOWEYE_FIGHT
 		if area == 1:
 			WorldDictionary[area][AreaLevelCount] = MOUNTAIN_GUARDIAN_FIGHT
+		if area == 2:
+			WorldDictionary[area][AreaLevelCount] = ANCIENT_CORE_FIGHT
 	
 	print(WorldDictionary)
 
@@ -132,14 +147,27 @@ func StartGame(scene_to_remove = null):
 		scene_to_remove.queue_free()
 
 var ProgressingRooms : bool = false
+var ProgressingNotToEnd : bool = false
 
-func ProgressRooms(scene_to_remove = null):
+func ProgressRooms(scene_to_remove = null, IsEnd = false):
 	
-	if ProgressingRooms: return
+	print("PROGRESS!")
+	
+	if EndedGame:
+		print("NO PROGRESS: ALREADY ENDED")
+		return
+	
+	if ProgressingRooms:
+		print("NO PROGRESS: ALREADY PROGRESSING")
+		return
 	
 	ProgressingRooms = true
+	ProgressingNotToEnd = true
 	
-	if not CurrentAreaIndex < 2:
+	print("CURRENT AREA INDEX: " + str(CurrentAreaIndex))
+	
+	if CurrentAreaIndex == 2 and IsEnd:
+		ProgressingNotToEnd = false
 		EndGame(scene_to_remove, true)
 	
 	else:
@@ -169,6 +197,8 @@ func ProgressRooms(scene_to_remove = null):
 					Stream = LEECH_FLOWER
 				if CurrentAreaIndex == 1:
 					Stream = ANGEL_GUARDIAN
+				if CurrentAreaIndex == 2:
+					Stream = PENULTIMATUM
 		
 		var room = WorldDictionary.values()[CurrentAreaIndex][CurrentRoomIndex].instantiate()
 		get_tree().root.add_child(room)
@@ -185,8 +215,9 @@ func ProgressRooms(scene_to_remove = null):
 		else:
 			await get_tree().create_timer(1).timeout
 			progress.end()
-	
+		
 	ProgressingRooms = false
+	ProgressingNotToEnd = false
 
 func ResetGame(scene_to_remove = null, progress = null):
 	
@@ -200,7 +231,13 @@ func ResetGame(scene_to_remove = null, progress = null):
 
 func EndGame(scene_to_remove = null, Won : bool = false):
 	
+	print("ENDING GAME TRY")
+	
+	if ProgressingNotToEnd: return
 	if EndedGame: return
+	
+	print("ENDING GAME")
+	
 	EndedGame = true
 	var progress = PROGRESS.instantiate()
 	progress.global_position = Vector2(-progress.size.x-320, (-320/2))

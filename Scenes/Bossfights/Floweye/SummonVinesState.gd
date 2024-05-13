@@ -13,10 +13,11 @@ func enter():
 	
 	for spot in GrowSpotArray:
 		if spot.vine == null:
-			await get_tree().create_timer(0.1).timeout
+			await get_tree().create_timer(0.3).timeout
 			var vine : Node2D = VINE.instantiate()
 			EnemiesNode.add_child(vine)
 			spot.vine = vine
 			vine.global_position = spot.global_position
+			spot.vine_summon.play()
 	
 	Complete.emit()

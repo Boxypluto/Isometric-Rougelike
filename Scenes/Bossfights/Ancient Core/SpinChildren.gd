@@ -1,7 +1,7 @@
 extends Node2D
 
 var Children : Array
-@export var Speed : int
+@export var Speed : float
 
 func _ready(): Children = get_children()
 

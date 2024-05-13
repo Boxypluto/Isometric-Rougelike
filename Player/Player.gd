@@ -146,5 +146,9 @@ func SuccessfulHit():
 	hit.play()
 	GameManager.DamageDealt += 1
 
+var IsDead : bool = false
 func OnHealthZero():
-	GameManager.EndGame(room, false)
+	print("PLAYER HAS DIED")
+	if IsDead == false:
+		IsDead = true
+		GameManager.EndGame(room, false)

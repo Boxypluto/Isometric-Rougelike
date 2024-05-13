@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://co41oveodw210"
+path="res://.godot/imported/Guardian Ambience.wav-6cd3f7de196808e5cd8bdf35799ce0c5.sample"
+
+[deps]
+
+source_file="res://SFX/Guardian Ambience.wav"
+dest_files=["res://.godot/imported/Guardian Ambience.wav-6cd3f7de196808e5cd8bdf35799ce0c5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

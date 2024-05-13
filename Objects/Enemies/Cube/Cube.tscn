@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvsku3svveqwc"]
+[gd_scene load_steps=18 format=3 uid="uid://dvsku3svveqwc"]
 
 [ext_resource type="Material" uid="uid://c476aywx1ixii" path="res://Objects/Enemies/EnemyFlashMAT.tres" id="1_ofb8w"]
 [ext_resource type="Script" path="res://Objects/Enemies/Cube/Cube.gd" id="1_x1827"]
@@ -11,6 +11,9 @@
 [ext_resource type="Script" path="res://States/BlankState.gd" id="8_p0kqh"]
 [ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="9_hy6in"]
 [ext_resource type="SpriteFrames" uid="uid://oyeidfqh3i8a" path="res://Objects/Enemies/Cube/CubePointerAnimations.tres" id="10_vtt41"]
+[ext_resource type="AudioStream" uid="uid://3nolcr5gl6b8" path="res://SFX/CubePowerup.wav" id="12_3vap4"]
+[ext_resource type="AudioStream" uid="uid://dt2x4faayovsi" path="res://SFX/Cube Launch.wav" id="13_s6ic0"]
+[ext_resource type="AudioStream" uid="uid://20fo4hq2tiy3" path="res://SFX/Crash.wav" id="14_3r2du"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]
 radius = 2.06155
@@ -84,6 +87,18 @@ position = Vector2(0, -8)
 sprite_frames = ExtResource("10_vtt41")
 animation = &"Shrink"
 offset = Vector2(21, 0)
+
+[node name="Powerup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_3vap4")
+bus = &"SFX"
+
+[node name="Launch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_s6ic0")
+bus = &"SFX"
+
+[node name="Crash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_3r2du")
+bus = &"SFX"
 
 [connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnHealthZero"]
 [connection signal="Hit" from="HurtBoxComponent" to="." method="OnCubeHit"]

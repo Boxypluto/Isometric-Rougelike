@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://brddgd2254uhc"]
+[gd_scene load_steps=11 format=3 uid="uid://brddgd2254uhc"]
 
 [ext_resource type="Shader" uid="uid://b3xu3thfk3w7v" path="res://Objects/Enemies/EnemyFlash.tres" id="1_8i63x"]
 [ext_resource type="Script" path="res://Objects/Enemies/Blaster/Blaster.gd" id="2_f6jdy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="4_vwpjy"]
 [ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="5_we63r"]
 [ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="6_qim32"]
+[ext_resource type="AudioStream" uid="uid://b7khml2egujgo" path="res://SFX/Blast.wav" id="7_pswcv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_prvxg"]
 shader = ExtResource("1_8i63x")
@@ -56,6 +57,10 @@ shape = SubResource("RectangleShape2D_aa344")
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
+
+[node name="Blast" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_pswcv")
+bus = &"SFX"
 
 [connection signal="HealthReachedZero" from="HealthComponent" to="." method="OnHealthZero"]
 [connection signal="Hit" from="HurtBoxComponent" to="." method="BlasterHit"]

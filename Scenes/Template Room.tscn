@@ -10,6 +10,7 @@
 script = ExtResource("1_oja0b")
 
 [node name="MainGui" parent="." instance=ExtResource("1_axkqf")]
+z_index = 2
 offset_left = -316.0
 offset_top = -213.0
 offset_right = -316.0

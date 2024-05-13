@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://v4yweoak0vnx"]
+[gd_scene load_steps=22 format=3 uid="uid://v4yweoak0vnx"]
 
 [ext_resource type="AudioStream" uid="uid://dm8sw2mwati0o" path="res://Music/UneasySolace.mp3" id="1_sugb0"]
 [ext_resource type="PackedScene" uid="uid://dqudfxufqnmfe" path="res://GUI/MainGUI.tscn" id="2_la1rv"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://b6paixhth3mpp" path="res://Tileset/Default Tiles.tres" id="4_mqxtd"]
 [ext_resource type="PackedScene" uid="uid://co3hr8p30ged5" path="res://Player/Player.tscn" id="5_mejb6"]
 [ext_resource type="Texture2D" uid="uid://3p8we22q6sga" path="res://Objects/Lobby/ClickToAttack.png" id="5_xg7a8"]
+[ext_resource type="LabelSettings" uid="uid://imvch3hmqhfa" path="res://Scenes/Menus/Game End Menu/Text.tres" id="6_f7vuu"]
 [ext_resource type="Texture2D" uid="uid://1v6823ma27l8" path="res://Sprites/Title.png" id="6_j2bso"]
 [ext_resource type="Texture2D" uid="uid://rn274gs4m1b1" path="res://Objects/Lobby/DefeatAllEnemiesToProgress.png" id="6_kn81a"]
 [ext_resource type="Texture2D" uid="uid://dwaoky4qbok7q" path="res://Objects/Lobby/EnterDoorToStart.png" id="7_ax02q"]
@@ -50,6 +51,7 @@ autoplay = true
 bus = &"Music"
 
 [node name="MainGui" parent="." instance=ExtResource("2_la1rv")]
+visible = false
 offset_left = -316.0
 offset_top = -213.0
 offset_right = -316.0
@@ -90,19 +92,33 @@ y_sort_enabled = true
 [node name="Objects" type="Node2D" parent="Y-Sortables"]
 y_sort_enabled = true
 
+[node name="Label" type="Label" parent="Y-Sortables/Objects"]
+offset_left = -413.0
+offset_top = -85.0
+offset_right = -151.0
+offset_bottom = 28.0
+text = "- Click to Attack
+- WASD to Move
+- Deafeat all Enmies to Progress
+Walk through Door to Start"
+label_settings = ExtResource("6_f7vuu")
+
 [node name="Isometrica" type="Sprite2D" parent="Y-Sortables/Objects"]
 position = Vector2(-160, -168)
 texture = ExtResource("6_j2bso")
 
 [node name="ClickToAttack" type="Sprite2D" parent="Y-Sortables/Objects"]
+visible = false
 position = Vector2(-336, -104)
 texture = ExtResource("5_xg7a8")
 
 [node name="DefeatAllEnemiesToProgress" type="Sprite2D" parent="Y-Sortables/Objects"]
+visible = false
 position = Vector2(-256, -64)
 texture = ExtResource("6_kn81a")
 
 [node name="EnterDoorToStart" type="Sprite2D" parent="Y-Sortables/Objects"]
+visible = false
 position = Vector2(-312, -24)
 texture = ExtResource("7_ax02q")
 
@@ -114,14 +130,15 @@ position = Vector2(0, -52)
 shape = SubResource("RectangleShape2D_2x8da")
 
 [node name="Wasd" type="Sprite2D" parent="Y-Sortables/Objects"]
+visible = false
 position = Vector2(-440, -64)
 texture = ExtResource("9_iiwxd")
 
 [node name="MasterVolume" type="HSlider" parent="Y-Sortables/Objects"]
-offset_left = -416.0
-offset_top = 8.0
-offset_right = -241.0
-offset_bottom = 24.0
+offset_left = -713.0
+offset_top = -109.0
+offset_right = -538.0
+offset_bottom = -93.0
 theme = SubResource("Theme_s5d5j")
 max_value = 1.0
 step = 0.05
@@ -129,10 +146,10 @@ script = ExtResource("10_bnsn1")
 Bus = "Master"
 
 [node name="MusicVolume" type="HSlider" parent="Y-Sortables/Objects"]
-offset_left = -416.0
-offset_top = 32.0
-offset_right = -241.0
-offset_bottom = 48.0
+offset_left = -713.0
+offset_top = -85.0
+offset_right = -538.0
+offset_bottom = -69.0
 theme = SubResource("Theme_mldha")
 max_value = 1.0
 step = 0.05
@@ -140,10 +157,10 @@ script = ExtResource("10_bnsn1")
 Bus = "Music"
 
 [node name="SFXVolume" type="HSlider" parent="Y-Sortables/Objects"]
-offset_left = -416.0
-offset_top = 56.0
-offset_right = -241.0
-offset_bottom = 72.0
+offset_left = -713.0
+offset_top = -61.0
+offset_right = -538.0
+offset_bottom = -45.0
 theme = SubResource("Theme_tp7ma")
 max_value = 4.0
 step = 0.05

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://w8t4vw0e20o2"
+path="res://.godot/imported/Flower Idle.wav-00378fe4464771b01580725f93e713fd.sample"
+
+[deps]
+
+source_file="res://SFX/Flower Idle.wav"
+dest_files=["res://.godot/imported/Flower Idle.wav-00378fe4464771b01580725f93e713fd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
