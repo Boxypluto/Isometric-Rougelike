@@ -94,9 +94,9 @@ y_sort_enabled = true
 
 [node name="Label" type="Label" parent="Y-Sortables/Objects"]
 offset_left = -413.0
-offset_top = -85.0
+offset_top = -111.0
 offset_right = -151.0
-offset_bottom = 28.0
+offset_bottom = 2.0
 text = "- Click to Attack
 - WASD to Move
 - Deafeat all Enmies to Progress
@@ -135,10 +135,10 @@ position = Vector2(-440, -64)
 texture = ExtResource("9_iiwxd")
 
 [node name="MasterVolume" type="HSlider" parent="Y-Sortables/Objects"]
-offset_left = -713.0
-offset_top = -109.0
-offset_right = -538.0
-offset_bottom = -93.0
+offset_left = -386.0
+offset_top = 18.0
+offset_right = -211.0
+offset_bottom = 34.0
 theme = SubResource("Theme_s5d5j")
 max_value = 1.0
 step = 0.05
@@ -146,10 +146,10 @@ script = ExtResource("10_bnsn1")
 Bus = "Master"
 
 [node name="MusicVolume" type="HSlider" parent="Y-Sortables/Objects"]
-offset_left = -713.0
-offset_top = -85.0
-offset_right = -538.0
-offset_bottom = -69.0
+offset_left = -386.0
+offset_top = 42.0
+offset_right = -211.0
+offset_bottom = 58.0
 theme = SubResource("Theme_mldha")
 max_value = 1.0
 step = 0.05
@@ -157,10 +157,10 @@ script = ExtResource("10_bnsn1")
 Bus = "Music"
 
 [node name="SFXVolume" type="HSlider" parent="Y-Sortables/Objects"]
-offset_left = -713.0
-offset_top = -61.0
-offset_right = -538.0
-offset_bottom = -45.0
+offset_left = -386.0
+offset_top = 66.0
+offset_right = -211.0
+offset_bottom = 82.0
 theme = SubResource("Theme_tp7ma")
 max_value = 4.0
 step = 0.05
