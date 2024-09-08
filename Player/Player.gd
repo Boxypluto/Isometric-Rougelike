@@ -73,8 +73,16 @@ func _physics_process(_delta):
 			DashIsOnCooldown = false
 	
 	#region WALKING
-	# Set a Vector2 names "direction" to the axis of the player's input
-	direction = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
+	# Set a Vector2 named "direction" to the axis of the player's input
+	
+	direction = Vector2.ZERO
+	
+	if Input.is_action_pressed("Left"): direction.x += -1
+	if Input.is_action_pressed("Right"): direction.x += 1
+	if Input.is_action_pressed("Up"): direction.y += -1
+	if Input.is_action_pressed("Down"): direction.y += 1
+	
+	direction = direction.normalized()
 	
 	# If two directions are pressed at once, reduce the speed to be consistent with diagonal and 
 	
@@ -91,7 +99,7 @@ func _physics_process(_delta):
 		
 	if PlayerCanMove:
 		var Speed
-		if Input.is_action_pressed("Attack"): Speed = ATTACKING_WALK_SPEED
+		if Input.is_action_just_pressed("Attack"): Speed = ATTACKING_WALK_SPEED
 		else: Speed = SPEED
 		velocity = (direction * Speed) + RecoilVelocity
 		RecoilVelocity = Vector2.ZERO
@@ -102,6 +110,12 @@ func _physics_process(_delta):
 func _process(_delta):
 	var MousePos = get_global_mouse_position()
 	if not Attacking: slash.rotation = slash.global_position.angle_to_point(get_global_mouse_position())
+	var attack_dir : Vector2
+	attack_dir.x = Input.get_axis("Aim Left", "Aim Right")
+	attack_dir.y = Input.get_axis("Aim Up", "Aim Down")
+	if attack_dir != Vector2.ZERO:
+		slash.rotation = attack_dir.normalized().angle()
+		
 
 func _input(event):
 	

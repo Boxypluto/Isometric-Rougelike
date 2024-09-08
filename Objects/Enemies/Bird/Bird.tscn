@@ -29,16 +29,13 @@ radius = 4.0
 random_pitch = 2.23
 streams_count = 1
 stream_0/stream = ExtResource("13_gs04f")
-stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7obki"]
 playback_mode = 1
 random_pitch = 2.0
 streams_count = 2
 stream_0/stream = ExtResource("14_6ye52")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("15_1jh5d")
-stream_1/weight = 1.0
 
 [node name="Bird" type="CharacterBody2D"]
 texture_filter = 1
