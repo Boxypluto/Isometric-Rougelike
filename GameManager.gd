@@ -133,8 +133,8 @@ func StartGame(scene_to_remove = null):
 	MusicVolume = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
 	MusicPlayer.volume_db = MusicVolume
 	
-	CurrentAreaIndex = 2
-	CurrentRoomIndex = 2
+	CurrentAreaIndex = 0
+	CurrentRoomIndex = 0
 	
 	var room = WorldDictionary.values()[CurrentAreaIndex][CurrentRoomIndex].instantiate()
 	get_tree().root.add_child(room)
