@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://polfjc5t40a6"]
 
 [ext_resource type="SpriteFrames" uid="uid://urgtfqmt6mis" path="res://Objects/Enemies/Cube/CubeAnimation.tres" id="1_j42a1"]
-[ext_resource type="Script" path="res://Objects/Enemies/Cube/CubeAfterImage.gd" id="2_5cbw6"]
+[ext_resource type="Script" uid="uid://be2ajtmspy8l1" path="res://Objects/Enemies/Cube/CubeAfterImage.gd" id="2_5cbw6"]
 
 [node name="CubeAfterImage" type="AnimatedSprite2D"]
 texture_filter = 1

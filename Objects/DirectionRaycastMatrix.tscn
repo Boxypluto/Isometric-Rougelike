@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c544cthdrupsc"]
 
-[ext_resource type="Script" path="res://Tools/DirectionRaycastMatrix.gd" id="1_t7xug"]
+[ext_resource type="Script" uid="uid://bhc5oy8dvubhf" path="res://Tools/DirectionRaycastMatrix.gd" id="1_t7xug"]
 
 [node name="DirectionRaycastMatrix" type="Node2D"]
 visible = false

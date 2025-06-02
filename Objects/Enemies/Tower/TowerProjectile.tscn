@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgmvaawfvsunc"]
 
-[ext_resource type="Script" path="res://Objects/Enemies/Tower/TowerProjectile.gd" id="1_8au33"]
+[ext_resource type="Script" uid="uid://b8e06fcw8uevq" path="res://Objects/Enemies/Tower/TowerProjectile.gd" id="1_8au33"]
 [ext_resource type="SpriteFrames" uid="uid://bjfji1emempn7" path="res://Objects/Enemies/Tower/TowerProjectileSprites.tres" id="2_cyy3s"]
 [ext_resource type="Texture2D" uid="uid://ds2gtx2sykmia" path="res://Objects/Enemies/Tower/TowerProjectileShadow.png" id="3_px8tx"]
 

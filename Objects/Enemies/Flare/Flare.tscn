@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://bkmjhyr7cc1f7"]
 
-[ext_resource type="Script" path="res://Objects/Enemies/Flare/Flare.gd" id="1_0e6t5"]
+[ext_resource type="Script" uid="uid://bwec7sk50y3ni" path="res://Objects/Enemies/Flare/Flare.gd" id="1_0e6t5"]
 [ext_resource type="Material" uid="uid://c476aywx1ixii" path="res://Objects/Enemies/EnemyFlashMAT.tres" id="1_1svtr"]
 [ext_resource type="SpriteFrames" uid="uid://udtoluc37p5i" path="res://Objects/Enemies/Flare/FlareAnimations.tres" id="2_2iwwn"]
-[ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="3_521ww"]
-[ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="4_mqbur"]
-[ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="5_30s8q"]
-[ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="6_6ilmd"]
+[ext_resource type="Script" uid="uid://b1yrsia5jjdsb" path="res://Classes/Components/DamagingAreaComponent.gd" id="3_521ww"]
+[ext_resource type="Script" uid="uid://b8bam5hh7heik" path="res://Classes/Components/HealthComponent.gd" id="4_mqbur"]
+[ext_resource type="Script" uid="uid://bvf2gbxjpo5hs" path="res://Classes/Components/DeathComponent.gd" id="5_30s8q"]
+[ext_resource type="Script" uid="uid://d075b8je2ugrm" path="res://Classes/Components/HurtBoxComponent.gd" id="6_6ilmd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r4624"]
 radius = 4.12311

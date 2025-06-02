@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://r373ocbucnt"]
 
 [ext_resource type="SpriteFrames" uid="uid://cc1hu4q782l04" path="res://Objects/Enemies/Tower/TowerTargetAnimation.tres" id="1_nw2n5"]
-[ext_resource type="Script" path="res://Objects/Enemies/Tower/TowerTarget.gd" id="2_2p0lg"]
-[ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="3_5am2u"]
+[ext_resource type="Script" uid="uid://di5fx663vkk0t" path="res://Objects/Enemies/Tower/TowerTarget.gd" id="2_2p0lg"]
+[ext_resource type="Script" uid="uid://b1yrsia5jjdsb" path="res://Classes/Components/DamagingAreaComponent.gd" id="3_5am2u"]
 [ext_resource type="AudioStream" uid="uid://20fo4hq2tiy3" path="res://SFX/Crash.wav" id="4_djk3e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ds8k3"]

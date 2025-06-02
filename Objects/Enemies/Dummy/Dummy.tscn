@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://dfp6m2dnsb2pa"]
 
-[ext_resource type="Script" path="res://Objects/Enemies/Dummy/Dummy.gd" id="1_5b88o"]
+[ext_resource type="Script" uid="uid://2oblibfl5r1g" path="res://Objects/Enemies/Dummy/Dummy.gd" id="1_5b88o"]
 [ext_resource type="Shader" uid="uid://b3xu3thfk3w7v" path="res://Objects/Enemies/EnemyFlash.tres" id="1_l2wk7"]
 [ext_resource type="Texture2D" uid="uid://baenhglam4ysl" path="res://Objects/Enemies/Dummy/Dummy.png" id="1_lyhvl"]
-[ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="2_ro6rq"]
-[ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="3_rjwtb"]
-[ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="4_8kmbq"]
+[ext_resource type="Script" uid="uid://b8bam5hh7heik" path="res://Classes/Components/HealthComponent.gd" id="2_ro6rq"]
+[ext_resource type="Script" uid="uid://bvf2gbxjpo5hs" path="res://Classes/Components/DeathComponent.gd" id="3_rjwtb"]
+[ext_resource type="Script" uid="uid://d075b8je2ugrm" path="res://Classes/Components/HurtBoxComponent.gd" id="4_8kmbq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_prvxg"]
 shader = ExtResource("1_l2wk7")

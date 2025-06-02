@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://bnqccr3eyfj36"]
 
 [ext_resource type="Material" uid="uid://c476aywx1ixii" path="res://Objects/Enemies/EnemyFlashMAT.tres" id="1_ofc3b"]
-[ext_resource type="Script" path="res://Objects/Enemies/Tower/Tower.gd" id="1_u3vx4"]
+[ext_resource type="Script" uid="uid://ccap3wf12337n" path="res://Objects/Enemies/Tower/Tower.gd" id="1_u3vx4"]
 [ext_resource type="SpriteFrames" uid="uid://c62nu6tfw1b7g" path="res://Objects/Enemies/Tower/TowerAnimation.tres" id="2_xbjht"]
-[ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="3_a5mma"]
-[ext_resource type="Script" path="res://Classes/Components/DeathComponent.gd" id="4_24ps8"]
-[ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="5_q6ppk"]
+[ext_resource type="Script" uid="uid://b8bam5hh7heik" path="res://Classes/Components/HealthComponent.gd" id="3_a5mma"]
+[ext_resource type="Script" uid="uid://bvf2gbxjpo5hs" path="res://Classes/Components/DeathComponent.gd" id="4_24ps8"]
+[ext_resource type="Script" uid="uid://d075b8je2ugrm" path="res://Classes/Components/HurtBoxComponent.gd" id="5_q6ppk"]
 [ext_resource type="AudioStream" uid="uid://k1jc5lvoq100" path="res://SFX/Bong.wav" id="7_3073k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fir61"]

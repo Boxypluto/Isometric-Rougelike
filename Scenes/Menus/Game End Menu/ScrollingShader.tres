@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://btkls1gwsekl0"]
 
-[ext_resource type="Shader" path="res://Scenes/Menus/Game End Menu/ScrollingShader.gdshader" id="1_n55oj"]
+[ext_resource type="Shader" uid="uid://yyexusg27aho" path="res://Scenes/Menus/Game End Menu/ScrollingShader.gdshader" id="1_n55oj"]
 
 [resource]
 shader = ExtResource("1_n55oj")

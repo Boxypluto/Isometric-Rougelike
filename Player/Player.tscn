@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://co3hr8p30ged5"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_seqry"]
+[ext_resource type="Script" uid="uid://t42oksxfdmoe" path="res://Player/Player.gd" id="1_seqry"]
 [ext_resource type="Texture2D" uid="uid://ucysq7b4l6oo" path="res://Player/PlayerPlaceholder.png" id="2_i0uht"]
-[ext_resource type="Script" path="res://Classes/Components/HurtBoxComponent.gd" id="5_4wr88"]
-[ext_resource type="Script" path="res://Classes/Components/HealthComponent.gd" id="6_a2pee"]
+[ext_resource type="Script" uid="uid://d075b8je2ugrm" path="res://Classes/Components/HurtBoxComponent.gd" id="5_4wr88"]
+[ext_resource type="Script" uid="uid://b8bam5hh7heik" path="res://Classes/Components/HealthComponent.gd" id="6_a2pee"]
 [ext_resource type="SpriteFrames" uid="uid://bgfj1cdpda4j4" path="res://Player/SlashAnimations.tres" id="6_tpkyy"]
-[ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="7_3y08f"]
+[ext_resource type="Script" uid="uid://b1yrsia5jjdsb" path="res://Classes/Components/DamagingAreaComponent.gd" id="7_3y08f"]
 [ext_resource type="AudioStream" uid="uid://cmitmjgayatf4" path="res://SFX/Hit.wav" id="7_cvfvq"]
 [ext_resource type="AudioStream" uid="uid://ctgb625w1cqs" path="res://SFX/Deep Hit.wav" id="8_k8mhp"]
 
@@ -48,7 +48,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bhyj0"]
 _data = {
-"SwordIdle": SubResource("Animation_5ovh1")
+&"SwordIdle": SubResource("Animation_5ovh1")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jynhi"]
@@ -102,7 +102,7 @@ flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bhyj0")
+&"": SubResource("AnimationLibrary_bhyj0")
 }
 
 [node name="Slash" type="AnimatedSprite2D" parent="."]

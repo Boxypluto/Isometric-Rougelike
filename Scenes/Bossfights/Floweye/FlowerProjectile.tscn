@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://d1qcim8vxi6li"]
 
-[ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/FlowerProjectile.gd" id="1_j2pvp"]
+[ext_resource type="Script" uid="uid://b7rdww07e48iw" path="res://Scenes/Bossfights/Floweye/FlowerProjectile.gd" id="1_j2pvp"]
 [ext_resource type="Texture2D" uid="uid://lodmsabntgwu" path="res://Bosses/Floweye/Flower.png" id="2_usxmp"]
-[ext_resource type="Script" path="res://Scenes/Bossfights/Floweye/Spin.gd" id="3_kqy2u"]
-[ext_resource type="Script" path="res://Classes/Components/DamagingAreaComponent.gd" id="4_jqldl"]
+[ext_resource type="Script" uid="uid://lwa4yyonvyue" path="res://Scenes/Bossfights/Floweye/Spin.gd" id="3_kqy2u"]
+[ext_resource type="Script" uid="uid://b1yrsia5jjdsb" path="res://Classes/Components/DamagingAreaComponent.gd" id="4_jqldl"]
 [ext_resource type="AudioStream" uid="uid://ba076ahg3q6s" path="res://SFX/Flower Idle.mp3" id="5_2x714"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bec8y"]

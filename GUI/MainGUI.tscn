@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqudfxufqnmfe"]
 
-[ext_resource type="Script" path="res://GUI/MainGUI.gd" id="1_hgttp"]
+[ext_resource type="Script" uid="uid://cwot7a4a4cf37" path="res://GUI/MainGUI.gd" id="1_hgttp"]
 [ext_resource type="Texture2D" uid="uid://n1hwqsl4xwab" path="res://Player/Health Bar.png" id="2_mh8fy"]
 [ext_resource type="Texture2D" uid="uid://dwctgrjpbshyh" path="res://Player/Health Bit.png" id="3_xjnj7"]
-[ext_resource type="Script" path="res://GUI/HealthBit.gd" id="4_k1cda"]
+[ext_resource type="Script" uid="uid://bx73rbafu0lt8" path="res://GUI/HealthBit.gd" id="4_k1cda"]
 
 [node name="MainGui" type="Control"]
 texture_filter = 1
